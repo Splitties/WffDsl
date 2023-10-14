@@ -3,8 +3,48 @@
  */
 package louis2.wear.wff
 
-class Library {
+import kotlinx.html.*
+import kotlinx.html.stream.createHTML
+
+internal class Library {
     fun someLibraryMethod(): Boolean {
         return true
     }
 }
+
+internal fun sampleWatchFace(): String {
+    return createHTML(
+        xhtmlCompatible = true
+    ).watchFace(width = 480, height = 480) {
+        scene(backgroundColor = 0xFF_000003u) {
+//            TODO()
+        }
+    }
+}
+
+internal fun kotlinxHtmlExample() {
+    createHTML().html {
+        body {
+            div outerDiv@{
+                lol()
+                button {
+                    this@outerDiv.lol()
+//                    lol()
+                }
+            }
+            h1 { +"Lol" }
+            a(href = "https://jetbrains.com")
+        }
+    }.toString().also { println(it) }
+}
+
+internal fun main() {
+    println(sampleWatchFace())
+    kotlinxHtmlExample()
+}
+
+//@HtmlTagMarker
+internal fun DIV.lol() {
+
+}
+
