@@ -8,8 +8,7 @@ repositories {
 }
 
 dependencies {
-    //TODO: Remove this when we're done implementing.
-    implementation("org.jetbrains.kotlinx:kotlinx-html:0.9.1")
+    implementation("org.jetbrains.kotlinx:kotlin x-html:0.9.1")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
