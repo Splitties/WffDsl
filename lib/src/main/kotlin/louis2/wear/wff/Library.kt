@@ -12,7 +12,8 @@ internal class Library {
     }
 }
 
-internal fun <T> TagConsumer<T>.sampleWatchFace(
+context(TagConsumer<T>)
+internal fun <T> sampleWatchFace(
     width: Int = 480,
     height: Int = 480
 ): T = watchFace(width = width, height = height) {
@@ -39,25 +40,26 @@ internal fun <T> TagConsumer<T>.sampleWatchFace(
     }
 }
 
-internal fun kotlinxHtmlExample() {
-    createHTML().html {
-        body {
-            div outerDiv@{
-                lol()
-                button {
-                    this@outerDiv.lol()
+context(TagConsumer<T>)
+internal fun <T> kotlinxHtmlExample(): T = html {
+    body {
+        div outerDiv@{
+            lol()
+            button {
+                this@outerDiv.lol()
 //                    lol()
-                }
             }
-            h1 { +"Lol" }
-            a(href = "https://jetbrains.com")
         }
-    }.toString().also { println(it) }
+        h1 { +"Lol" }
+        a(href = "https://jetbrains.com")
+    }
 }
 
 internal fun main() {
-    println(createHTML(xhtmlCompatible = true).sampleWatchFace())
-    kotlinxHtmlExample()
+    with(createHTML(xhtmlCompatible = true)) {
+        println(sampleWatchFace())
+        println(kotlinxHtmlExample())
+    }
 }
 
 //@HtmlTagMarker

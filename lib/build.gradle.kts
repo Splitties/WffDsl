@@ -21,6 +21,10 @@ java {
     }
 }
 
+kotlin {
+    compilerOptions.freeCompilerArgs.add("-Xcontext-receivers")
+}
+
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
