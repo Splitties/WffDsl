@@ -12,12 +12,20 @@ internal class Library {
     }
 }
 
-internal fun sampleWatchFace(): String {
-    return createHTML(
-        xhtmlCompatible = true
-    ).watchFace(width = 480, height = 480) {
-        scene(backgroundColor = 0xFF_000003u) {
-//            TODO()
+internal fun <T> TagConsumer<T>.sampleWatchFace(
+    width: Int = 480,
+    height: Int = 480
+): T = watchFace(width = width, height = height) {
+    scene(backgroundColor = 0xFF_000003u) {
+        bitmapFonts {
+            bitmapFont(name = "whatever") {
+                for (c in 0..9) character(
+                    name = "$c",
+                    resource = "whatever/$c.png",
+                    width = 20,
+                    height = 30
+                )
+            }
         }
     }
 }
@@ -39,7 +47,7 @@ internal fun kotlinxHtmlExample() {
 }
 
 internal fun main() {
-    println(sampleWatchFace())
+    println(createHTML(xhtmlCompatible = true).sampleWatchFace())
     kotlinxHtmlExample()
 }
 
