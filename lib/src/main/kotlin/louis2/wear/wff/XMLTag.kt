@@ -4,6 +4,7 @@ import kotlinx.html.Tag
 import kotlinx.html.TagConsumer
 import kotlinx.html.impl.DelegatingMap
 
+@WffTagMarker
 open class XMLTag(
     override val tagName: String,
     override val consumer: TagConsumer<*>,

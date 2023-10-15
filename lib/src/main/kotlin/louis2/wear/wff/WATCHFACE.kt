@@ -11,7 +11,7 @@ import kotlinx.html.*
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/watch-face)
  */
-@HtmlTagMarker
+@WffTagMarker
 inline fun <T, C : TagConsumer<T>> C.watchFace(
     width: Int,
     height: Int,

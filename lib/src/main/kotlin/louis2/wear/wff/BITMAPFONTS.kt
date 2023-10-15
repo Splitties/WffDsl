@@ -1,6 +1,5 @@
 package louis2.wear.wff
 
-import kotlinx.html.HtmlTagMarker
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
@@ -14,7 +13,7 @@ import kotlinx.html.visit
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/bitmap-fonts)
  */
-@HtmlTagMarker
+@WffTagMarker
 inline fun SCENE.bitmapFonts(
     crossinline block: BITMAPFONTS.() -> Unit
 ) : Unit = BITMAPFONTS(
@@ -27,7 +26,7 @@ inline fun SCENE.bitmapFonts(
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/bitmap-fonts)
  */
-@HtmlTagMarker
+@WffTagMarker
 inline fun BITMAPFONTS.bitmapFont(
     name: String,
     crossinline block: BITMAPFONTS.BITMAPFONT.() -> Unit
@@ -46,7 +45,7 @@ inline fun BITMAPFONTS.bitmapFont(
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/bitmap-fonts)
  */
-@HtmlTagMarker
+@WffTagMarker
 fun BITMAPFONTS.BITMAPFONT.character(
     name: String,
     resource: String,
@@ -76,7 +75,7 @@ fun BITMAPFONTS.BITMAPFONT.character(
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/bitmap-fonts)
  */
-@HtmlTagMarker
+@WffTagMarker
 fun BITMAPFONTS.BITMAPFONT.word(
     name: String,
     resource: String,

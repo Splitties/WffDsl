@@ -1,6 +1,8 @@
 package louis2.wear.wff
 
-import kotlinx.html.*
+import kotlinx.html.TagConsumer
+import kotlinx.html.attributesMapOf
+import kotlinx.html.visit
 
 /**
  * Represents a predefined or user-defined key-value pair.
@@ -9,7 +11,7 @@ import kotlinx.html.*
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/metadata)
  */
-@HtmlTagMarker
+@WffTagMarker
 fun SCENE.metadata(
     key: String,
     value: String

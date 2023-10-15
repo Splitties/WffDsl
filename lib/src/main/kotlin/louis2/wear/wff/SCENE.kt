@@ -1,13 +1,15 @@
 package louis2.wear.wff
 
-import kotlinx.html.*
+import kotlinx.html.TagConsumer
+import kotlinx.html.attributesMapOf
+import kotlinx.html.visit
 
 /**
  * A scene is a container of visual tags. Each watch face must contain exactly one Scene element.
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/scene)
  */
-@HtmlTagMarker
+@WffTagMarker
 inline fun WATCHFACE.scene(
     backgroundColor: UInt = 0xFF_000000u,
     crossinline block: SCENE.() -> Unit
