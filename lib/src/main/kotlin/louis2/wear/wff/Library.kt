@@ -17,26 +17,26 @@ internal fun <T> sampleWatchFace(
     width: Int = 480,
     height: Int = 480
 ): T = watchFace(width = width, height = height) {
-    scene(backgroundColor = 0xFF_000003u) {
-        clockType(type = ClockType.DIGITAL)
-        previewTime("07:35:15")
-        stepGoal(9_000)
-        bitmapFonts {
-            bitmapFont(name = "whatever") {
-                for (c in 0..9) character(
-                    name = "$c",
-                    resource = "whatever/$c.png",
-                    width = 20,
-                    height = 30
-                )
-                word(
-                    name = "11",
-                    resource = "whatever/11-fancy.png",
-                    width = 20 * 2,
-                    height = 30
-                )
-            }
+    bitmapFonts {
+        bitmapFont(name = "whatever") {
+            for (c in 0..9) character(
+                name = "$c",
+                resource = "whatever/$c.png",
+                width = 20,
+                height = 30
+            )
+            word(
+                name = "11",
+                resource = "whatever/11-fancy.png",
+                width = 20 * 2,
+                height = 30
+            )
         }
+    }
+    clockType(type = ClockType.DIGITAL)
+    previewTime("07:35:15")
+    stepGoal(9_000)
+    scene(backgroundColor = 0xFF_000003u) {
     }
 }
 

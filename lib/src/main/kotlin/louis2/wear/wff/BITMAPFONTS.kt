@@ -14,7 +14,7 @@ import kotlinx.html.visit
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/bitmap-fonts)
  */
 @WffTagMarker
-inline fun SCENE.bitmapFonts(
+inline fun WATCHFACE.bitmapFonts(
     crossinline block: BITMAPFONTS.() -> Unit
 ) : Unit = BITMAPFONTS(
     initialAttributes = emptyMap(),

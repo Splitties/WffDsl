@@ -12,7 +12,7 @@ import kotlinx.html.visit
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/metadata)
  */
 @WffTagMarker
-fun SCENE.metadata(
+fun WATCHFACE.metadata(
     key: String,
     value: String
 ) : Unit = METADATA(
@@ -27,7 +27,7 @@ fun SCENE.metadata(
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/metadata)
  */
-fun SCENE.previewTime(format: String) = metadata(
+fun WATCHFACE.previewTime(format: String) = metadata(
     key = "PREVIEW_TIME",
     value = format.also {
         require(format.length == 8)
@@ -47,7 +47,7 @@ fun SCENE.previewTime(format: String) = metadata(
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/metadata)
  */
-fun SCENE.clockType(type: ClockType = ClockType.ANALOG) = metadata(
+fun WATCHFACE.clockType(type: ClockType = ClockType.ANALOG) = metadata(
     key = "CLOCK_TYPE",
     value = type.name
 )
@@ -59,7 +59,7 @@ fun SCENE.clockType(type: ClockType = ClockType.ANALOG) = metadata(
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/metadata)
  */
-fun SCENE.stepGoal(goal: Int) = metadata(
+fun WATCHFACE.stepGoal(goal: Int) = metadata(
     key = "STEP_GOAL",
     value = goal.toString()
 )
