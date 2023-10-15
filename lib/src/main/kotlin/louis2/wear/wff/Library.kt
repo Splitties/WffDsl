@@ -5,6 +5,7 @@ package louis2.wear.wff
 
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
+import louis2.wear.wff.clock.group
 
 internal class Library {
     fun someLibraryMethod(): Boolean {
@@ -36,7 +37,32 @@ internal fun <T> sampleWatchFace(
     clockType(type = ClockType.DIGITAL)
     previewTime("07:35:15")
     stepGoal(9_000)
+    //TODO: Add UserConfigurations
     scene(backgroundColor = 0xFF_000003u) {
+        group(
+            id = "g1",
+            x = 0,
+            y = 0,
+            width = width,
+            height = height
+        ) {
+            group(
+                id = "g2",
+                x = 0,
+                y = 0,
+                width = width,
+                height = height
+            ) {
+
+            }
+        }
+        //TODO: Add Condition
+        //TODO: Add ListConfiguration
+        //TODO: Add BooleanConfiguration
+        //TODO: Add Variant
+        //TODO: Add ComplicationSlot
+        //TODO: Add AnalogClock
+        //TODO: Add DigitalClock
     }
 }
 

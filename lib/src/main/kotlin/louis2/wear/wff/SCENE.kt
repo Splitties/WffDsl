@@ -28,4 +28,4 @@ class SCENE(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-)
+), SceneOrGroup
