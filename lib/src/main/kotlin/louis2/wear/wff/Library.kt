@@ -7,7 +7,6 @@ import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 import louis2.wear.wff.clock.*
 import louis2.wear.wff.common.variant.ambientVariant
-import louis2.wear.wff.group.group
 
 internal class Library {
     fun someLibraryMethod(): Boolean {

@@ -1,4 +1,6 @@
-package louis2.wear.wff.group
+@file:Suppress("PackageDirectoryMismatch")
+
+package louis2.wear.wff
 
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
