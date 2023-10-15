@@ -23,7 +23,7 @@ inline fun SceneOrGroup.group(
     alpha: UByte = 0xFFu,
     scaleX: Float = 1f,
     scaleY: Float = 1f,
-    renderMode: GROUP.RenderMode = GROUP.RenderMode.SOURCE,
+    renderMode: RenderMode = RenderMode.SOURCE,
     tintColor: UInt? = null,
     crossinline block: GROUP.() -> Unit
 ): Unit = GROUP(
@@ -39,7 +39,7 @@ inline fun SceneOrGroup.group(
         "alpha", alpha.takeUnless { it == 0xFFu.toUByte() }?.toString(),
         "scaleX", scaleX.takeUnless { it == 1f }?.toString(),
         "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
-        "renderMode", renderMode.takeUnless { it == GROUP.RenderMode.SOURCE }?.name,
+        "renderMode", renderMode.xmlValue(),
         "tintColor", tintColor?.let { "#${it.toString(radix = 16)}" },
     ),
     consumer = consumer
@@ -55,8 +55,4 @@ class GROUP(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SceneOrGroup {
-    enum class RenderMode {
-        SOURCE, MASK, ALL
-    }
-}
+), SceneOrGroup
