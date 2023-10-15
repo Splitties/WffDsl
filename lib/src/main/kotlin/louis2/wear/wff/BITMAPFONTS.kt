@@ -39,6 +39,11 @@ inline fun BITMAPFONTS.bitmapFont(
 /**
  * Specifies a particular user-defined bitmap font.
  *
+ * @param name The character or word itself.
+ * @param resource A resource ID corresponding to where the character or word is defined.
+ * @param width The width of the character or word, in pixels.
+ * @param height The height of the character or word, in pixels.
+ *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/bitmap-fonts)
  */
 @HtmlTagMarker
@@ -48,6 +53,36 @@ fun BITMAPFONTS.BITMAPFONT.character(
     width: Int,
     height: Int,
 ) : Unit = BITMAPFONTS.BITMAPFONT.CHARACTER(
+    initialAttributes = attributesMapOf(
+        "name",
+        name,
+        "resource",
+        resource,
+        "width",
+        width.toString(),
+        "height",
+        height.toString(),
+    ),
+    consumer = consumer
+).visit {}
+
+/**
+ * Specifies a particular user-defined bitmap font.
+ *
+ * @param name The character or word itself.
+ * @param resource A resource ID corresponding to where the character or word is defined.
+ * @param width The width of the character or word, in pixels.
+ * @param height The height of the character or word, in pixels.
+ *
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/bitmap-fonts)
+ */
+@HtmlTagMarker
+fun BITMAPFONTS.BITMAPFONT.word(
+    name: String,
+    resource: String,
+    width: Int,
+    height: Int,
+) : Unit = BITMAPFONTS.BITMAPFONT.WORD(
     initialAttributes = attributesMapOf(
         "name",
         name,
@@ -88,6 +123,18 @@ class BITMAPFONTS(
             override val consumer: TagConsumer<*>
         ) : XMLTag(
             tagName = "Character",
+            consumer = consumer,
+            initialAttributes = initialAttributes,
+            namespace = null,
+            inlineTag = false,
+            emptyTag = true
+        )
+
+        class WORD(
+            initialAttributes: Map<String, String>,
+            override val consumer: TagConsumer<*>
+        ) : XMLTag(
+            tagName = "Word",
             consumer = consumer,
             initialAttributes = initialAttributes,
             namespace = null,

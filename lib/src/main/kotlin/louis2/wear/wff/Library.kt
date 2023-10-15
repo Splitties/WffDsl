@@ -25,6 +25,12 @@ internal fun <T> TagConsumer<T>.sampleWatchFace(
                     width = 20,
                     height = 30
                 )
+                word(
+                    name = "11",
+                    resource = "whatever/11-fancy.png",
+                    width = 20 * 2,
+                    height = 30
+                )
             }
         }
     }
