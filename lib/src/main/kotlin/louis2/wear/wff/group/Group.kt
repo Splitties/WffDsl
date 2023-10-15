@@ -57,4 +57,4 @@ class GROUP(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SceneOrGroup
+), SceneOrGroup, LocalizationAware, VariantScope
