@@ -51,5 +51,5 @@ class VARIANT(
     initialAttributes = initialAttributes,
     namespace = null,
     inlineTag = false,
-    emptyTag = false
+    emptyTag = true
 )
