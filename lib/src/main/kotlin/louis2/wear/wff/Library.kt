@@ -17,6 +17,9 @@ internal fun <T> TagConsumer<T>.sampleWatchFace(
     height: Int = 480
 ): T = watchFace(width = width, height = height) {
     scene(backgroundColor = 0xFF_000003u) {
+        clockType(type = ClockType.DIGITAL)
+        previewTime("07:35:15")
+        stepGoal(9_000)
         bitmapFonts {
             bitmapFont(name = "whatever") {
                 for (c in 0..9) character(
