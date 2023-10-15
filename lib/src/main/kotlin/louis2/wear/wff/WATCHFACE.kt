@@ -12,7 +12,7 @@ import kotlinx.html.*
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/watch-face)
  */
 @WffTagMarker
-inline fun <T, C : TagConsumer<T>> C.watchFace(
+inline fun <T> WatchFaceDsl<T>.watchFace(
     width: Int,
     height: Int,
     clipShape: WATCHFACE.ClipShape = WATCHFACE.ClipShape.CIRCLE,
@@ -32,8 +32,8 @@ inline fun <T, C : TagConsumer<T>> C.watchFace(
         "cornerRadiusY",
         cornerRadiusY?.toString()
     ),
-    consumer = this,
-).visitAndFinalize(this, block)
+    consumer = consumer,
+).visitAndFinalize(consumer, block)
 
 class WATCHFACE(
     initialAttributes: Map<String, String>,

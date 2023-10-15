@@ -2,4 +2,8 @@ package louis2.wear.wff
 
 import kotlinx.html.Tag
 
-interface SceneOrGroup : Tag
+sealed interface SceneOrGroup : Tag
+
+interface VariantScope : Tag
+
+interface AnalogHand : VariantScope

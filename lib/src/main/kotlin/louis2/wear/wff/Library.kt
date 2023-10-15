@@ -5,6 +5,8 @@ package louis2.wear.wff
 
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
+import louis2.wear.wff.clock.*
+import louis2.wear.wff.common.variant.ambientVariant
 import louis2.wear.wff.group.group
 
 internal class Library {
@@ -13,7 +15,7 @@ internal class Library {
     }
 }
 
-context(TagConsumer<T>)
+context(WatchFaceDsl<T>)
 internal fun <T> sampleWatchFace(
     width: Int = 480,
     height: Int = 480
@@ -52,8 +54,50 @@ internal fun <T> sampleWatchFace(
                 y = 0,
                 width = width,
                 height = height
+            ) {}
+            analogClock(
+                x = 0, y = 0,
+                width = width,
+                height = height
             ) {
-
+                hourHand(
+                    resource = "hands/hour.png",
+                    x = 0,
+                    y = 0,
+                    width = width,
+                    height = height
+                ) {
+                    ambientVariant(
+                        target = "resource",
+                        value = "hands/hour-ambient.png"
+                    )
+                }
+                minuteHand(
+                    resource = "hands/minute.png",
+                    x = 0,
+                    y = 0,
+                    width = width,
+                    height = height
+                ) {
+                    ambientVariant(
+                        target = "resource",
+                        value = "hands/minute-ambient.png"
+                    )
+                }
+                secondHand(
+                    resource = "hands/second.png",
+                    x = 0,
+                    y = 0,
+                    width = width,
+                    height = height
+                ) {
+                    ambientVariant(
+                        target = "resource",
+                        value = "hands/second-ambient.png"
+                    )
+                    sweep(frequency = 15)
+                    tick(duration = .2f, strength = 1f)
+                }
             }
         }
         //TODO: Add Condition
@@ -61,7 +105,6 @@ internal fun <T> sampleWatchFace(
         //TODO: Add BooleanConfiguration
         //TODO: Add Variant
         //TODO: Add ComplicationSlot
-        //TODO: Add AnalogClock
         //TODO: Add DigitalClock
     }
 }
@@ -77,13 +120,17 @@ internal fun <T> kotlinxHtmlExample(): T = html {
             }
         }
         h1 { +"Lol" }
-        a(href = "https://jetbrains.com")
+        a(href = "https://jetbrains.com") {
+            href = "d.android.com"
+        }
     }
 }
 
 internal fun main() {
-    with(createHTML(xhtmlCompatible = true)) {
+    with(WatchFaceDsl()) {
         println(sampleWatchFace())
+    }
+    with(createHTML(xhtmlCompatible = true)) {
         println(kotlinxHtmlExample())
     }
 }
