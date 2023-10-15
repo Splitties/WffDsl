@@ -140,6 +140,6 @@ internal fun main() {
 
 //@HtmlTagMarker
 internal fun DIV.lol() {
-
+    +"lol"
 }
 
