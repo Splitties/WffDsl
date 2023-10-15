@@ -47,7 +47,7 @@ fun BITMAPFONTS.BITMAPFONT.character(
     resource: String,
     width: Int,
     height: Int,
-) : Unit = BITMAPFONTS.BITMAPFONT(
+) : Unit = BITMAPFONTS.BITMAPFONT.CHARACTER(
     initialAttributes = attributesMapOf(
         "name",
         name,
@@ -87,7 +87,7 @@ class BITMAPFONTS(
             initialAttributes: Map<String, String>,
             override val consumer: TagConsumer<*>
         ) : XMLTag(
-            tagName = "BitmapCharacter",
+            tagName = "Character",
             consumer = consumer,
             initialAttributes = initialAttributes,
             namespace = null,
