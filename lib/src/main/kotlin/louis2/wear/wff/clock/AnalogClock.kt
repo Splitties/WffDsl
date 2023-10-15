@@ -55,4 +55,4 @@ class ANALOGCLOCK(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-)
+), LocalizationAware, VariantScope

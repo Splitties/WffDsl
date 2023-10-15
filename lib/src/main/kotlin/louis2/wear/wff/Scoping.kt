@@ -7,3 +7,5 @@ sealed interface SceneOrGroup : Tag
 interface VariantScope : Tag
 
 interface AnalogHand : VariantScope
+
+interface LocalizationAware : Tag

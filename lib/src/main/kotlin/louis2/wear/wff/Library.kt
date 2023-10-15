@@ -59,6 +59,10 @@ internal fun <T> sampleWatchFace(
                 width = width,
                 height = height
             ) {
+                ambientVariant(
+                    target = "tintColor",
+                    value = "#" + "f".repeat(8)
+                )
                 hourHand(
                     resource = "hands/hour.png",
                     x = 0,
