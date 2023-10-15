@@ -5,7 +5,7 @@ package louis2.wear.wff
 
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
-import louis2.wear.wff.clock.group
+import louis2.wear.wff.group.group
 
 internal class Library {
     fun someLibraryMethod(): Boolean {

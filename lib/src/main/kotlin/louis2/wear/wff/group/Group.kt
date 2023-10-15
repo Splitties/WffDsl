@@ -1,4 +1,4 @@
-package louis2.wear.wff.clock
+package louis2.wear.wff.group
 
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
