@@ -6,9 +6,9 @@ import kotlinx.html.visit
 import louis2.wear.wff.*
 
 /**
- * A scene is a container of visual tags. Each watch face must contain exactly one Scene element.
+ * A Group is a container for other elements. Child elements are rendered relative to the position, size, angle, and color of the group.
  *
- * [AndroidX doc](https://developer.android.com/training/wearables/wff/scene)
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/group)
  */
 @WffTagMarker
 inline fun SceneOrGroup.group(
