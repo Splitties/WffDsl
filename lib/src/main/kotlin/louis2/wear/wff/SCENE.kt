@@ -15,11 +15,13 @@ inline fun WATCHFACE.scene(
     crossinline block: SCENE.() -> Unit
 ) : Unit = SCENE(
     initialAttributes = attributesMapOf("backgroundColor", "#${backgroundColor.toString(radix = 16)}"),
+    watchface = this,
     consumer = consumer
 ).visit(block)
 
 class SCENE(
     initialAttributes: Map<String, String>,
+    val watchface: WATCHFACE,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
     tagName = "Scene",
@@ -28,4 +30,7 @@ class SCENE(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SceneOrGroup
+), SceneOrGroup {
+    override val width: Int get() = watchface.width
+    override val height: Int get() = watchface.height
+}

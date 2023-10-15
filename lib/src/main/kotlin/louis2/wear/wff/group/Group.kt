@@ -5,7 +5,8 @@ package louis2.wear.wff
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.*
+import louis2.wear.wff.internal.h
+import louis2.wear.wff.internal.w
 
 /**
  * A Group is a container for other elements. Child elements are rendered relative to the position, size, angle, and color of the group.
@@ -15,10 +16,10 @@ import louis2.wear.wff.*
 @WffTagMarker
 inline fun SceneOrGroup.group(
     id: String,
-    x: Int,
-    y: Int,
-    width: Int,
-    height: Int,
+    x: Int = 0,
+    y: Int = 0,
+    width: Int = this.width,
+    height: Int = this.height,
     pivotX: Float = .5f,
     pivotY: Float = .5f,
     angle: Float = 0f,
@@ -57,4 +58,7 @@ class GROUP(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SceneOrGroup, LocalizationAware, VariantScope
+), SceneOrGroup, LocalizationAware, VariantScope {
+    override val width: Int get() = w()
+    override val height: Int get() = h()
+}

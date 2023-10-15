@@ -15,10 +15,10 @@ import louis2.wear.wff.*
 @WffTagMarker
 inline fun ANALOGCLOCK.secondHand(
     resource: String,
-    x: Int,
-    y: Int,
-    width: Int,
-    height: Int,
+    x: Int = 0,
+    y: Int = 0,
+    width: Int = this.width,
+    height: Int = this.height,
     pivotX: Float = .5f,
     pivotY: Float = .5f,
     alpha: UByte = 0xFFu,

@@ -40,60 +40,26 @@ internal fun <T> sampleWatchFace(
     stepGoal(9_000)
     //TODO: Add UserConfigurations
     scene(backgroundColor = 0xFF_000003u) {
-        group(
-            id = "g1",
-            x = 0,
-            y = 0,
-            width = width,
-            height = height
-        ) {
-            group(
-                id = "g2",
-                x = 0,
-                y = 0,
-                width = width,
-                height = height
-            ) {}
-            analogClock(
-                x = 0, y = 0,
-                width = width,
-                height = height
-            ) {
+        group(id = "g1") {
+            group(id = "g2") {}
+            analogClock {
                 ambientVariant(
                     target = "tintColor",
                     value = "#" + "f".repeat(8)
                 )
-                hourHand(
-                    resource = "hands/hour.png",
-                    x = 0,
-                    y = 0,
-                    width = width,
-                    height = height
-                ) {
+                hourHand(resource = "hands/hour.png") {
                     ambientVariant(
                         target = "resource",
                         value = "hands/hour-ambient.png"
                     )
                 }
-                minuteHand(
-                    resource = "hands/minute.png",
-                    x = 0,
-                    y = 0,
-                    width = width,
-                    height = height
-                ) {
+                minuteHand(resource = "hands/minute.png") {
                     ambientVariant(
                         target = "resource",
                         value = "hands/minute-ambient.png"
                     )
                 }
-                secondHand(
-                    resource = "hands/second.png",
-                    x = 0,
-                    y = 0,
-                    width = width,
-                    height = height
-                ) {
+                secondHand(resource = "hands/second.png") {
                     ambientVariant(
                         target = "resource",
                         value = "hands/second-ambient.png"

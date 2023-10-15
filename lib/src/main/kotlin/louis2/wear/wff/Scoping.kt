@@ -2,7 +2,13 @@ package louis2.wear.wff
 
 import kotlinx.html.Tag
 
-sealed interface SceneOrGroup : Tag
+
+interface Container : Tag {
+    val width: Int
+    val height: Int
+}
+
+sealed interface SceneOrGroup : Container
 
 interface VariantScope : Tag
 

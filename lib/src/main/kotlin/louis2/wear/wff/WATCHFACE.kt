@@ -1,6 +1,8 @@
 package louis2.wear.wff
 
 import kotlinx.html.*
+import louis2.wear.wff.internal.h
+import louis2.wear.wff.internal.w
 
 /**
  * The root element of every watchface.xml file.
@@ -45,8 +47,11 @@ class WATCHFACE(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-) {
+), Container {
     enum class ClipShape {
         NONE, CIRCLE, RECTANGLE
     }
+
+    override val width: Int get() = w()
+    override val height: Int get() = h()
 }

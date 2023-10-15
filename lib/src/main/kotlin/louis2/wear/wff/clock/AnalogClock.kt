@@ -4,6 +4,8 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.internal.h
+import louis2.wear.wff.internal.w
 
 /**
  * An analog clock is a container for AnalogHands inner elements, which display a series of clock hands that rotate around a watch face.
@@ -14,10 +16,10 @@ import louis2.wear.wff.*
  */
 @WffTagMarker
 inline fun SceneOrGroup.analogClock(
-    x: Int,
-    y: Int,
-    width: Int,
-    height: Int,
+    x: Int = 0,
+    y: Int = 0,
+    width: Int = this.width,
+    height: Int = this.height,
     pivotX: Float = .5f,
     pivotY: Float = .5f,
     angle: Float = 0f,
@@ -55,4 +57,7 @@ class ANALOGCLOCK(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), LocalizationAware, VariantScope
+), LocalizationAware, VariantScope, Container {
+    override val width: Int get() = w()
+    override val height: Int get() = h()
+}
