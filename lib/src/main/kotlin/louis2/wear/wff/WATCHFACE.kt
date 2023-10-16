@@ -28,7 +28,7 @@ inline fun <T> WatchFaceDsl<T>.watchFace(
         "height",
         height.toString(),
         "clipShape",
-        clipShape.name,
+        clipShape.xmlValue(),
         "cornerRadiusX",
         cornerRadiusX?.toString(),
         "cornerRadiusY",
@@ -49,7 +49,11 @@ class WATCHFACE(
     emptyTag = false
 ), Container {
     enum class ClipShape {
-        NONE, CIRCLE, RECTANGLE
+        NONE, CIRCLE, RECTANGLE;
+        fun xmlValue(): String? = when (this) {
+            CIRCLE -> null
+            else -> name
+        }
     }
 
     override val width: Int get() = w()
