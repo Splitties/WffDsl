@@ -23,8 +23,9 @@ inline fun FontScope.font(
     slant: FONT.Slant = FONT.Slant.NORMAL,
     width: FONT.Width = FONT.Width.NORMAL,
     weight: FONT.Weight = FONT.Weight.NORMAL,
-    crossinline block: FONT.() -> Unit = {}
+    crossinline block: FONT.() -> Unit
 ): Unit = FONT(
+    emptyTag = false,
     initialAttributes = attributesMapOf(
         "family", family,
         "size", size.toString(),
@@ -36,7 +37,36 @@ inline fun FontScope.font(
     consumer = consumer
 ).visit(block)
 
+/**
+ * Provides rendering instructions for a specific text element.
+ *
+ * Introduced in Wear OS 4.
+ *
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/font)
+ */
+@WffTagMarker
+inline fun FontScope.font(
+    family: String = "SYNC_TO_DEVICE",
+    size: Float,
+    color: UInt? = null,
+    slant: FONT.Slant = FONT.Slant.NORMAL,
+    width: FONT.Width = FONT.Width.NORMAL,
+    weight: FONT.Weight = FONT.Weight.NORMAL,
+): Unit = FONT(
+    emptyTag = true,
+    initialAttributes = attributesMapOf(
+        "family", family,
+        "size", size.toString(),
+        "slant", slant.xmlValue(),
+        "width", width.xmlValue(),
+        "weight", weight.xmlValue(),
+        "color", color?.asArgbColor(),
+    ),
+    consumer = consumer
+).visit {}
+
 class FONT(
+    emptyTag: Boolean,
     initialAttributes: Map<String, String>,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
@@ -45,7 +75,7 @@ class FONT(
     initialAttributes = initialAttributes,
     namespace = null,
     inlineTag = false,
-    emptyTag = false
+    emptyTag = emptyTag
 ) {
     enum class Slant {
         NORMAL, ITALIC;
