@@ -12,6 +12,8 @@ import louis2.wear.wff.XMLTag
  * Introduced in Wear OS 4.
  *
  * @param frequency The frequency, in Hz, at which the hand is redrawn. Must be one of: 2, 5, 10, 15
+ *
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/clock/sweep)
  */
 @WffTagMarker
 fun SECONDHAND.sweep(frequency: Int): Unit = SWEEP(

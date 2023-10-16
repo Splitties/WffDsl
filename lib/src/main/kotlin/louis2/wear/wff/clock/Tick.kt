@@ -13,6 +13,8 @@ import louis2.wear.wff.XMLTag
  *
  * @param duration The duration of the tick, for a given second, in the range `(0.0-1.0)`. For example, a value of `0.2`, would mean the movement would take place over the first 200ms, then no movement would occur in the remaining 800ms.
  * @param strength The strength of the tick movement, should be in the range `(0.0-1.0]`.
+ *
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/clock/tick)
  */
 @WffTagMarker
 fun SECONDHAND.tick(
