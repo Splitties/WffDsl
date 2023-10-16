@@ -17,7 +17,7 @@ import louis2.wear.wff.internal.asArgbColor
  */
 @WffTagMarker
 inline fun FontScope.font(
-    family: String,
+    family: String = "SYNC_TO_DEVICE",
     size: Float,
     color: UInt? = null,
     slant: FONT.Slant = FONT.Slant.NORMAL,
