@@ -4,7 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * Specifies a plain-text configuration.
