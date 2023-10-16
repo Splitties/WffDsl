@@ -22,6 +22,34 @@ fun VariantScope.ambientVariant(
 )
 
 /**
+ * @param target The attribute whose value should change when the specified Wear OS device mode takes effect.
+ * @param value The value that the attribute should have when the specified Wear OS device mode takes effect.
+ */
+@WffTagMarker
+fun VariantScope.ambientVariant(
+    target: String,
+    value: Int
+): Unit = variant(
+    mode = "AMBIENT",
+    target = target,
+    value = value.toString()
+)
+
+/**
+ * @param target The attribute whose value should change when the specified Wear OS device mode takes effect.
+ * @param value The value that the attribute should have when the specified Wear OS device mode takes effect.
+ */
+@WffTagMarker
+fun VariantScope.ambientVariant(
+    target: String,
+    value: UByte
+): Unit = variant(
+    mode = "AMBIENT",
+    target = target,
+    value = value.toString()
+)
+
+/**
  * Allows watch face creators to define modified appearances, by changing the values of specific color and geometric properties, when the Wear OS device is in different display modes. As of Wear OS 4, the only supported mode is ambient mode.
  *
  * Introduced in Wear OS 4.

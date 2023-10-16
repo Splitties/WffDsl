@@ -15,3 +15,6 @@ interface VariantScope : Tag
 interface AnalogHand : VariantScope
 
 interface LocalizationAware : Tag
+
+interface BitmapFontScope : Tag
+interface FontScope : Tag
