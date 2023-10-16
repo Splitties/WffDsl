@@ -5,6 +5,7 @@ package louis2.wear.wff
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
+import louis2.wear.wff.internal.asArgbColor
 import louis2.wear.wff.internal.h
 import louis2.wear.wff.internal.w
 
@@ -15,11 +16,12 @@ import louis2.wear.wff.internal.w
  */
 @WffTagMarker
 inline fun SceneOrGroup.group(
-    id: String,
+    name: String? = null,
     x: Int = 0,
     y: Int = 0,
     width: Int = this.width,
     height: Int = this.height,
+    id: String? = null,
     pivotX: Float = .5f,
     pivotY: Float = .5f,
     angle: Float = 0f,
@@ -31,11 +33,12 @@ inline fun SceneOrGroup.group(
     crossinline block: GROUP.() -> Unit
 ): Unit = GROUP(
     initialAttributes = attributesMapOf(
-        "id", id,
+        "name", name,
         "x", x.toString(),
         "y", y.toString(),
         "width", width.toString(),
         "height", height.toString(),
+        "id", id,
         "pivotX", pivotX.takeUnless { angle == 0f }?.toString(),
         "pivotY", pivotY.takeUnless { angle == 0f }?.toString(),
         "angle", angle.takeUnless { it == 0f }?.toString(),
@@ -43,7 +46,7 @@ inline fun SceneOrGroup.group(
         "scaleX", scaleX.takeUnless { it == 1f }?.toString(),
         "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
         "renderMode", renderMode.xmlValue(),
-        "tintColor", tintColor?.let { "#${it.toString(radix = 16)}" },
+        "tintColor", tintColor?.asArgbColor(),
     ),
     consumer = consumer
 ).visit(block)
