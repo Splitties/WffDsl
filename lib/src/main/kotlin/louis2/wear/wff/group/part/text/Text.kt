@@ -11,7 +11,7 @@ import louis2.wear.wff.internal.asArgbColor
  *
  * Introduced in Wear OS 4.
  *
- * @param The default value is CENTER.
+ * @param align The default value is CENTER.
  * @param ellipsis A boolean value that indicates whether to show an ellipsis if the text is too long to fit in the parent element. The default is FALSE.
  * @param maxLines A non-zero integer that indicates the maximum number of lines that the parent element can use to display the text. If this value is less than 0, the watch face arranges the text in the optimal number of lines for taking up the parent element's height.
  *
