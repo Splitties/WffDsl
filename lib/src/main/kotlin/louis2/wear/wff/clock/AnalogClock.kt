@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.internal.asArgbColor
 import louis2.wear.wff.internal.h
 import louis2.wear.wff.internal.w
 
@@ -42,7 +43,7 @@ inline fun SceneOrGroup.analogClock(
         "scaleX", scaleX.takeUnless { it == 1f }?.toString(),
         "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
         "renderMode", renderMode.xmlValue(),
-        "tintColor", tintColor?.let { "#${it.toString(radix = 16)}" },
+        "tintColor", tintColor?.asArgbColor(),
     ),
     consumer = consumer
 ).visit(block)

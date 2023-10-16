@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.internal.asArgbColor
 
 /**
  * An hour hand is a clock hand that rotates around a watch face once every 12 hours.
@@ -34,7 +35,7 @@ inline fun ANALOGCLOCK.hourHand(
         "pivotX", pivotX.toString(),
         "pivotY", pivotY.toString(),
         "alpha", alpha.takeUnless { it == 0xFFu.toUByte() }?.toString(),
-        "tintColor", tintColor?.let { "#${it.toString(radix = 16)}" },
+        "tintColor", tintColor?.asArgbColor(),
     ),
     consumer = consumer
 ).visit(block)
