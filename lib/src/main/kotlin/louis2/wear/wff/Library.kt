@@ -7,6 +7,7 @@ import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 import louis2.wear.wff.clock.*
 import louis2.wear.wff.common.variant.ambientVariant
+import louis2.wear.wff.samples.simpleDigital
 
 internal class Library {
     fun someLibraryMethod(): Boolean {
@@ -96,10 +97,13 @@ internal fun <T> kotlinxHtmlExample(): T = html {
 }
 
 internal fun main() {
-    with(WatchFaceDsl()) {
+    if (false) with(WatchFaceDsl()) {
         println(sampleWatchFace())
     }
-    with(createHTML(xhtmlCompatible = true)) {
+    with(WatchFaceDsl()) {
+        println(simpleDigital())
+    }
+    if (false) with(createHTML(xhtmlCompatible = true)) {
         println(kotlinxHtmlExample())
     }
 }
