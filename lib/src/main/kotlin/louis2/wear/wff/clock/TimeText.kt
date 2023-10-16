@@ -17,7 +17,7 @@ import louis2.wear.wff.internal.asArgbColor
 inline fun DIGITALCLOCK.timeText(
     format: String,
     hourFormat: TIMETEXT.HourFormat = TIMETEXT.HourFormat.SYNC_TO_DEVICE,
-    align: TIMETEXT.Alignment = TIMETEXT.Alignment.START,
+    align: Alignment = Alignment.START,
     x: Int = 0,
     y: Int = 0,
     width: Int = this.width,
@@ -31,7 +31,7 @@ inline fun DIGITALCLOCK.timeText(
     initialAttributes = attributesMapOf(
         "format", format,
         "hourFormat", hourFormat.xmlValue(),
-        "align", align.xmlValue(),
+        "align", align.xmlValue(Alignment.START),
         "x", x.toString(),
         "y", y.toString(),
         "width", width.toString(),
@@ -61,13 +61,6 @@ class TIMETEXT(
             SYNC_TO_DEVICE -> null
             _12 -> "12"
             _24 -> "24"
-        }
-    }
-    enum class Alignment {
-        START, CENTER, END;
-        fun xmlValue(): String? = when (this) {
-            START -> null
-            else -> name
         }
     }
 }
