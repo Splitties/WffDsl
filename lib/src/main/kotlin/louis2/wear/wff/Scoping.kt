@@ -18,3 +18,11 @@ interface LocalizationAware : Tag
 
 interface BitmapFontScope : Tag
 interface FontScope : Tag
+
+interface Transformable : Tag
+
+interface LaunchScope : Tag
+
+interface GyroAware : Tag
+
+interface ScreenReaderAware : Tag
