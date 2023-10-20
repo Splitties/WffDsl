@@ -45,7 +45,7 @@ inline fun FontScope.font(
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/font)
  */
 @WffTagMarker
-inline fun FontScope.font(
+fun FontScope.font(
     family: String = "SYNC_TO_DEVICE",
     size: Float,
     color: UInt? = null,
