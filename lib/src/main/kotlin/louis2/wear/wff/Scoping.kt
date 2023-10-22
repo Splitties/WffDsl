@@ -2,7 +2,6 @@ package louis2.wear.wff
 
 import kotlinx.html.Tag
 
-
 interface Container : Tag {
     val width: Int
     val height: Int
@@ -10,19 +9,26 @@ interface Container : Tag {
 
 sealed interface SceneOrGroup : Container
 
-interface VariantScope : Tag
+interface SupportsVariants : Tag
 
-interface AnalogHand : VariantScope
+interface AnalogHand : SupportsVariants
 
-interface LocalizationAware : Tag
+interface SupportsLocalization : Tag
 
-interface BitmapFontScope : Tag
-interface FontScope : Tag
+interface TextScope : Tag
+
+interface TextFormatterGroup : SupportsTemplate
+
+interface TextDecoration : TextFormatterGroup
+
+interface TextDecorationGroup : Tag
+
+interface SupportsTemplate : Tag
 
 interface Transformable : Tag
 
-interface LaunchScope : Tag
+interface SupportsLaunch : Tag
 
-interface GyroAware : Tag
+interface SupportsGyro : Tag
 
-interface ScreenReaderAware : Tag
+interface SupportsScreenReader : Tag

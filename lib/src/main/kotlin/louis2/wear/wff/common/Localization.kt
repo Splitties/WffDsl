@@ -3,7 +3,7 @@ package louis2.wear.wff.common
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.LocalizationAware
+import louis2.wear.wff.SupportsLocalization
 import louis2.wear.wff.WffTagMarker
 import louis2.wear.wff.XMLTag
 
@@ -23,7 +23,7 @@ import louis2.wear.wff.XMLTag
  * A value of SYNC_TO_DEVICE indicates that the expression should use the Wear OS device's current time zone.
  */
 @WffTagMarker
-fun LocalizationAware.localization(
+fun SupportsLocalization.localization(
     timeZone: String,
     calendar: String = "GREGORIAN"
 ): Unit = LOCALIZATION(

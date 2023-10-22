@@ -41,4 +41,4 @@ class TEXT(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), FontScope, BitmapFontScope
+), TextScope

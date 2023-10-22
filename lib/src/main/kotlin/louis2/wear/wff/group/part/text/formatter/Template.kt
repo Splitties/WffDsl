@@ -3,9 +3,9 @@ package louis2.wear.wff.group.part.text.formatter
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
+import louis2.wear.wff.SupportsTemplate
 import louis2.wear.wff.WffTagMarker
 import louis2.wear.wff.XMLTag
-import louis2.wear.wff.group.part.text.FONT
 
 /**
  * Allows watch face developers to specify a string format, such as %s %d. The string format is very similar to printf() in the C programming language or String.format() in the Java programming language.
@@ -21,7 +21,7 @@ import louis2.wear.wff.group.part.text.FONT
 @Suppress("conflicting_overloads")
 @WffTagMarker
 @JvmName("templateWithStringResourceName")
-inline fun FONT.template(
+inline fun SupportsTemplate.template(
     stringResourceName: String,
     crossinline block: TEMPLATE.() -> Unit = {}
 ): Unit = template {
@@ -40,7 +40,7 @@ inline fun FONT.template(
  */
 @Suppress("conflicting_overloads")
 @WffTagMarker
-inline fun FONT.template(
+inline fun SupportsTemplate.template(
     text: String,
     crossinline block: TEMPLATE.() -> Unit = {}
 ): Unit = template {
@@ -58,7 +58,7 @@ inline fun FONT.template(
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/formatter/template)
  */
 @WffTagMarker
-inline fun FONT.template(
+inline fun SupportsTemplate.template(
     crossinline block: TEMPLATE.() -> Unit
 ): Unit = TEMPLATE(
     initialAttributes = emptyMap(),

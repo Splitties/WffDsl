@@ -3,7 +3,7 @@ package louis2.wear.wff.common.variant
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.VariantScope
+import louis2.wear.wff.SupportsVariants
 import louis2.wear.wff.WffTagMarker
 import louis2.wear.wff.XMLTag
 
@@ -12,7 +12,7 @@ import louis2.wear.wff.XMLTag
  * @param value The value that the attribute should have when the specified Wear OS device mode takes effect.
  */
 @WffTagMarker
-fun VariantScope.ambientVariant(
+fun SupportsVariants.ambientVariant(
     target: String,
     value: String
 ): Unit = variant(
@@ -26,7 +26,7 @@ fun VariantScope.ambientVariant(
  * @param value The value that the attribute should have when the specified Wear OS device mode takes effect.
  */
 @WffTagMarker
-fun VariantScope.ambientVariant(
+fun SupportsVariants.ambientVariant(
     target: String,
     value: Int
 ): Unit = variant(
@@ -40,7 +40,7 @@ fun VariantScope.ambientVariant(
  * @param value The value that the attribute should have when the specified Wear OS device mode takes effect.
  */
 @WffTagMarker
-fun VariantScope.ambientVariant(
+fun SupportsVariants.ambientVariant(
     target: String,
     value: UByte
 ): Unit = variant(
@@ -57,7 +57,7 @@ fun VariantScope.ambientVariant(
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/variant/variant)
  */
 @WffTagMarker
-fun VariantScope.variant(
+fun SupportsVariants.variant(
     mode: String,
     target: String,
     value: String

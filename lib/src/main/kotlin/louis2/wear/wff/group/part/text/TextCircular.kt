@@ -54,7 +54,7 @@ class TEXTCIRCULAR(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), FontScope, BitmapFontScope, Transformable {
+), TextScope, Transformable {
     enum class Direction {
         CLOCKWISE, COUNTER_CLOCKWISE;
 

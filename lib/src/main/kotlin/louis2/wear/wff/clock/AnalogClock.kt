@@ -58,7 +58,7 @@ class ANALOGCLOCK(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), LocalizationAware, VariantScope, Container {
+), SupportsLocalization, SupportsVariants, Container {
     override val width: Int get() = w()
     override val height: Int get() = h()
 }

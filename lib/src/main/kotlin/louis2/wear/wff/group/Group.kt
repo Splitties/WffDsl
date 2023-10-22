@@ -61,7 +61,7 @@ class GROUP(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SceneOrGroup, LocalizationAware, VariantScope {
+), SceneOrGroup, SupportsLocalization, SupportsVariants {
     override val width: Int get() = w()
     override val height: Int get() = h()
 }

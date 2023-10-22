@@ -1,22 +1,20 @@
-package louis2.wear.wff.clock
+package louis2.wear.wff.group.part.draw
 
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
 import louis2.wear.wff.internal.asArgbColor
-import louis2.wear.wff.internal.h
-import louis2.wear.wff.internal.w
 
 /**
- * A digital clock is a container for a formatted set of strings that represent the current hours, minutes, and seconds associated with a clock time.
+ * A PartDraw contains a vector drawing primitives that appears on the watch face.
+ * The PartDraw determines the area of the watch face the vectors are drawn,
+ * and the inner elements determine the specifics of the vector drawing.
  *
- * Introduced in Wear OS 4.
- *
- * [AndroidX doc](https://developer.android.com/training/wearables/wff/clock/digital-clock)
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/draw/part-draw)
  */
 @WffTagMarker
-inline fun SceneOrGroup.digitalClock(
+inline fun GROUP.partDraw(
     x: Int = 0,
     y: Int = 0,
     width: Int = this.width,
@@ -25,12 +23,13 @@ inline fun SceneOrGroup.digitalClock(
     pivotY: Float = .5f,
     angle: Float = 0f,
     alpha: UByte = 0xFFu,
+    name: String? = null,
     scaleX: Float = 1f,
     scaleY: Float = 1f,
     renderMode: RenderMode = RenderMode.SOURCE,
     tintColor: UInt? = null,
-    crossinline block: DIGITALCLOCK.() -> Unit
-): Unit = DIGITALCLOCK(
+    crossinline block: PARTDRAW.() -> Unit = {}
+): Unit = PARTDRAW(
     initialAttributes = attributesMapOf(
         "x", x.toString(),
         "y", y.toString(),
@@ -40,6 +39,7 @@ inline fun SceneOrGroup.digitalClock(
         "pivotY", pivotY.takeUnless { angle == 0f }?.toString(),
         "angle", angle.takeUnless { it == 0f }?.toString(),
         "alpha", alpha.takeUnless { it == 0xFFu.toUByte() }?.toString(),
+        "name", name,
         "scaleX", scaleX.takeUnless { it == 1f }?.toString(),
         "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
         "renderMode", renderMode.xmlValue(),
@@ -48,17 +48,14 @@ inline fun SceneOrGroup.digitalClock(
     consumer = consumer
 ).visit(block)
 
-class DIGITALCLOCK(
+class PARTDRAW(
     initialAttributes: Map<String, String>,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
-    tagName = "DigitalClock",
+    tagName = "PartText",
     consumer = consumer,
     initialAttributes = initialAttributes,
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsLocalization, SupportsVariants, Container {
-    override val width: Int get() = w()
-    override val height: Int get() = h()
-}
+), SupportsVariants, SupportsLocalization

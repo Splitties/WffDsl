@@ -3,9 +3,7 @@ package louis2.wear.wff.group.part.text
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.FontScope
-import louis2.wear.wff.WffTagMarker
-import louis2.wear.wff.XMLTag
+import louis2.wear.wff.*
 import louis2.wear.wff.internal.asArgbColor
 
 /**
@@ -16,7 +14,7 @@ import louis2.wear.wff.internal.asArgbColor
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/font)
  */
 @WffTagMarker
-inline fun FontScope.font(
+inline fun TextScope.font(
     family: String = "SYNC_TO_DEVICE",
     size: Float,
     color: UInt? = null,
@@ -45,7 +43,7 @@ inline fun FontScope.font(
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/font)
  */
 @WffTagMarker
-fun FontScope.font(
+fun TextScope.font(
     family: String = "SYNC_TO_DEVICE",
     size: Float,
     color: UInt? = null,
@@ -76,7 +74,7 @@ class FONT(
     namespace = null,
     inlineTag = false,
     emptyTag = emptyTag
-) {
+), TextFormatterGroup, TextDecorationGroup {
     enum class Slant {
         NORMAL, ITALIC;
 

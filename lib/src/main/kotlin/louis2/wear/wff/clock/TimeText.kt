@@ -56,7 +56,7 @@ class TIMETEXT(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), BitmapFontScope, FontScope, VariantScope {
+), TextScope, SupportsVariants {
     enum class HourFormat {
         SYNC_TO_DEVICE, _12, _24;
         fun xmlValue(): String? = when (this) {
