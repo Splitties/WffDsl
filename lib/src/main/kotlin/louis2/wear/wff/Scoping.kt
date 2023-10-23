@@ -37,3 +37,5 @@ interface Part : SupportsLocalization, Transformable, SupportsVariants, Supports
 
 interface StrokeAble : Tag
 interface FillAble : Tag
+
+interface SupportsGradients : Tag
