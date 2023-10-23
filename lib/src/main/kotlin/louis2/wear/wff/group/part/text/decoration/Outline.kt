@@ -40,4 +40,4 @@ class OUTLINE(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), TextFormatterGroup, TextDecoration
+), TextDecoration

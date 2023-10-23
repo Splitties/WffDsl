@@ -52,4 +52,4 @@ class SHADOW(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), TextFormatterGroup, TextDecoration
+), TextDecoration
