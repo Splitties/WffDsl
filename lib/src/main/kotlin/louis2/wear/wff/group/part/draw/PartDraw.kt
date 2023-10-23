@@ -58,4 +58,4 @@ class PARTDRAW(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsVariants, SupportsLocalization
+), Part

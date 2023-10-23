@@ -32,3 +32,5 @@ interface SupportsLaunch : Tag
 interface SupportsGyro : Tag
 
 interface SupportsScreenReader : Tag
+
+interface Part : SupportsLocalization, Transformable, SupportsVariants, SupportsGyro, SupportsLaunch, SupportsScreenReader

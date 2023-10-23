@@ -58,4 +58,4 @@ class PARTTEXT(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsVariants, SupportsLocalization, Transformable, SupportsGyro, SupportsLaunch, SupportsScreenReader
+), Part
