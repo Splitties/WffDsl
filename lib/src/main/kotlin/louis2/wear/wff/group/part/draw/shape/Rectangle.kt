@@ -17,7 +17,7 @@ inline fun PARTDRAW.rectangle(
     y: Float,
     width: Float,
     height: Float,
-    crossinline block: RECTANGLE.() -> Unit = {}
+    crossinline block: RECTANGLE.() -> Unit
 ): Unit = RECTANGLE(
     initialAttributes = attributesMapOf(
         "x", x.toString(),

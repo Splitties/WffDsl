@@ -17,7 +17,7 @@ inline fun PARTDRAW.arc(
     startY: Float,
     endX: Float,
     endY: Float,
-    crossinline block: LINE.() -> Unit = {}
+    crossinline block: LINE.() -> Unit
 ): Unit = LINE(
     initialAttributes = attributesMapOf(
         "startX", startX.toString(),

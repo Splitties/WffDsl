@@ -23,7 +23,7 @@ inline fun PARTDRAW.arc(
     startAngle: Float,
     endAngle: Float,
     direction: Direction = Direction.CLOCKWISE,
-    crossinline block: ARC.() -> Unit = {}
+    crossinline block: ARC.() -> Unit
 ): Unit = ARC(
     initialAttributes = attributesMapOf(
         "centerX", centerX.toString(),

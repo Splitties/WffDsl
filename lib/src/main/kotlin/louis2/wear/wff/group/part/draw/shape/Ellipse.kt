@@ -17,7 +17,7 @@ inline fun PARTDRAW.ellipse(
     y: Float,
     width: Float,
     height: Float,
-    crossinline block: ELLIPSE.() -> Unit = {}
+    crossinline block: ELLIPSE.() -> Unit
 ): Unit = ELLIPSE(
     initialAttributes = attributesMapOf(
         "x", x.toString(),

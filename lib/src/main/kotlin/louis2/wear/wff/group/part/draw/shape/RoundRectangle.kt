@@ -19,7 +19,7 @@ inline fun PARTDRAW.roundRectangle(
     height: Float,
     cornerRadiusX: Float,
     cornerRadiusY: Float,
-    crossinline block: ROUNDRECTANGLE.() -> Unit = {}
+    crossinline block: ROUNDRECTANGLE.() -> Unit
 ): Unit = ROUNDRECTANGLE(
     initialAttributes = attributesMapOf(
         "x", x.toString(),
