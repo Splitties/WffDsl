@@ -25,7 +25,7 @@ inline fun PARTTEXT.textCircular(
     height: Float,
     startAngle: Float,
     endAngle: Float,
-    direction: TEXTCIRCULAR.Direction = TEXTCIRCULAR.Direction.CLOCKWISE,
+    direction: Direction = Direction.CLOCKWISE,
     align: Alignment = Alignment.CENTER,
     ellipsis: Boolean = false,
     crossinline block: TEXTCIRCULAR.() -> Unit = {}
@@ -54,13 +54,4 @@ class TEXTCIRCULAR(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), TextScope, Transformable {
-    enum class Direction {
-        CLOCKWISE, COUNTER_CLOCKWISE;
-
-        fun xmlValue(): String? = when (this) {
-            CLOCKWISE -> null
-            COUNTER_CLOCKWISE -> name
-        }
-    }
-}
+), TextScope, Transformable
