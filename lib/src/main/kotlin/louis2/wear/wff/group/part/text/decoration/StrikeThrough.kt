@@ -40,7 +40,7 @@ class STRIKETHROUGH(
     initialAttributes: Map<String, String>,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
-    tagName = "Underline",
+    tagName = "StrikeThrough",
     consumer = consumer,
     initialAttributes = initialAttributes,
     namespace = null,
