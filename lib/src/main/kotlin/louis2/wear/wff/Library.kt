@@ -9,8 +9,9 @@ import louis2.wear.wff.clock.*
 import louis2.wear.wff.common.*
 import louis2.wear.wff.common.variant.ambientVariant
 import louis2.wear.wff.samples.simpleDigital
+import louis2.wear.wff.group.configuration.booleanConfiguration
+import louis2.wear.wff.group.configuration.booleanOption
 import louis2.wear.wff.userConfiguration.booleanConfiguration
-import louis2.wear.wff.userConfiguration.booleanOption
 import louis2.wear.wff.userConfiguration.userConfigurations
 
 internal class Library {

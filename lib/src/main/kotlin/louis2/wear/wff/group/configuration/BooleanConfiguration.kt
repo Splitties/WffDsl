@@ -1,4 +1,4 @@
-package louis2.wear.wff.userConfiguration
+package louis2.wear.wff.group.configuration
 
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
@@ -6,11 +6,11 @@ import kotlinx.html.visit
 import louis2.wear.wff.*
 
 /**
- * A Boolean Configuration gives the user an option that can be turned on or off when customizing the watch face in the watch face editor.
+ * Allows for conditionally showing a set of text and graphical elements based on the user's current true-or-false selection from a watch face options screen. This element references a user configuration BooleanConfiguration element that's defined elsewhere in the watch face file.
  *
  * Introduced in Wear OS 4.
  *
- * [AndroidX doc](https://developer.android.com/training/wearables/wff/user-configuration/boolean-configuration)
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/configuration/boolean-configuration)
  */
 @WffTagMarker
 inline fun SupportsBooleanConfiguration.booleanConfiguration(
