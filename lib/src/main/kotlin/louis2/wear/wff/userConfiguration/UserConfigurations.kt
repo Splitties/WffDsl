@@ -20,24 +20,6 @@ inline fun WATCHFACE.userConfigurations(
     consumer = consumer
 ).visit(block)
 
-@WffTagMarker
-fun USERCONFIGURATIONS.booleanConfiguration(
-    id: String,
-    displayName: String,
-    icon: String? = null,
-    screenReaderText: String? = null,
-    defaultValue: Boolean,
-): Unit = USERCONFIGURATIONS.BOOLEANCONFIGURATION(
-    initialAttributes = attributesMapOf(
-        "id", id,
-        "displayName", displayName,
-        "icon", icon,
-        "screenReaderText", screenReaderText,
-        "defaultValue", defaultValue.toString().uppercase(),
-    ),
-    consumer = consumer
-).visit {}
-
 class USERCONFIGURATIONS(
     initialAttributes: Map<String, String> = emptyMap(),
     override val consumer: TagConsumer<*>
@@ -48,16 +30,4 @@ class USERCONFIGURATIONS(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-) {
-    class BOOLEANCONFIGURATION(
-        initialAttributes: Map<String, String> = emptyMap(),
-        override val consumer: TagConsumer<*>
-    ) : XMLTag(
-        tagName = "BooleanConfiguration",
-        consumer = consumer,
-        initialAttributes = initialAttributes,
-        namespace = null,
-        inlineTag = false,
-        emptyTag = true
-    )
-}
+)
