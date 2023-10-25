@@ -53,7 +53,7 @@ class USERCONFIGURATIONS(
         initialAttributes: Map<String, String> = emptyMap(),
         override val consumer: TagConsumer<*>
     ) : XMLTag(
-        tagName = "BooleanOption",
+        tagName = "BooleanConfiguration",
         consumer = consumer,
         initialAttributes = initialAttributes,
         namespace = null,
