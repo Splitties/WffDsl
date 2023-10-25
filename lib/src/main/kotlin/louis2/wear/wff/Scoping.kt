@@ -19,6 +19,8 @@ interface SupportsClock : Container
 
 interface SupportsVariants : Tag
 
+interface SupportsBooleanConfiguration : Container
+
 interface AnalogHand : SupportsVariants
 
 interface SupportsLocalization : Tag

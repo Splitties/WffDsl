@@ -9,6 +9,9 @@ import louis2.wear.wff.clock.*
 import louis2.wear.wff.common.*
 import louis2.wear.wff.common.variant.ambientVariant
 import louis2.wear.wff.samples.simpleDigital
+import louis2.wear.wff.userConfiguration.booleanConfiguration
+import louis2.wear.wff.userConfiguration.booleanOption
+import louis2.wear.wff.userConfiguration.userConfigurations
 
 internal class Library {
     fun someLibraryMethod(): Boolean {
@@ -41,8 +44,34 @@ internal fun <T> sampleWatchFace(
     previewTime("07:35:15")
     stepGoal(9_000)
     //TODO: Add UserConfigurations
+    userConfigurations {
+        booleanConfiguration(
+            id = "something",
+            displayName = "Something",
+            defaultValue = true
+        )
+        booleanConfiguration(
+            id = "something.whatever",
+            displayName = "Whatever if something",
+            defaultValue = true
+        )
+    }
     scene(backgroundColor = 0xFF_000003u) {
         condition { default { condition {  } } }
+        booleanConfiguration(id = "something") {
+            booleanOption(value = true) {
+                group {
+                    booleanConfiguration(id = "something.whatever") {
+                        booleanOption(value = true) {
+                            group {}
+                        }
+                        booleanOption(value = false) {
+                            group {}
+                        }
+                    }
+                }
+            }
+        }
         group(id = "g1") {
             condition {
                 expressions {
