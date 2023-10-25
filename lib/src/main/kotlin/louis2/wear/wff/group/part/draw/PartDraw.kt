@@ -14,7 +14,7 @@ import louis2.wear.wff.internal.asArgbColor
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/draw/part-draw)
  */
 @WffTagMarker
-inline fun GROUP.partDraw(
+inline fun SupportsPart.partDraw(
     x: Int = 0,
     y: Int = 0,
     width: Int = this.width,

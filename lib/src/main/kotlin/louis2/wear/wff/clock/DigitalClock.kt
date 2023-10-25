@@ -16,7 +16,7 @@ import louis2.wear.wff.internal.w
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/clock/digital-clock)
  */
 @WffTagMarker
-inline fun SceneOrGroup.digitalClock(
+inline fun SupportsClock.digitalClock(
     x: Int = 0,
     y: Int = 0,
     width: Int = this.width,
