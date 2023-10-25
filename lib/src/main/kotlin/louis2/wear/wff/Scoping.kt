@@ -21,6 +21,8 @@ interface SupportsVariants : Tag
 
 interface SupportsBooleanConfiguration : Container
 
+interface SupportsComplicationSlot : Container
+
 interface AnalogHand : SupportsVariants
 
 interface SupportsLocalization : Tag
@@ -49,3 +51,5 @@ interface StrokeAble : Tag
 interface FillAble : Tag
 
 interface SupportsGradients : Tag
+
+interface SupportsImage : Tag
