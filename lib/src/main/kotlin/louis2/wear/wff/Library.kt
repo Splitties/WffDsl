@@ -43,7 +43,6 @@ internal fun <T> sampleWatchFace(
     clockType(type = ClockType.DIGITAL)
     previewTime("07:35:15")
     stepGoal(9_000)
-    //TODO: Add UserConfigurations
     userConfigurations {
         booleanConfiguration(
             id = "something",
@@ -110,7 +109,6 @@ internal fun <T> sampleWatchFace(
             }
         }
         //TODO: Add ListConfiguration
-        //TODO: Add BooleanConfiguration
         //TODO: Add ComplicationSlot
     }
 }
