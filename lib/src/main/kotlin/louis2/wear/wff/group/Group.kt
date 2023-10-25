@@ -15,7 +15,7 @@ import louis2.wear.wff.internal.w
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/group)
  */
 @WffTagMarker
-inline fun SceneOrGroup.group(
+inline fun SupportsGroup.group(
     name: String? = null,
     x: Int = 0,
     y: Int = 0,
@@ -61,7 +61,7 @@ class GROUP(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SceneOrGroup, SupportsPart, SupportsLocalization, SupportsVariants {
+), SupportsGroup, SupportsConditions, SupportsClock, SupportsPart, SupportsLocalization, SupportsVariants {
     override val width: Int get() = w()
     override val height: Int get() = h()
 }

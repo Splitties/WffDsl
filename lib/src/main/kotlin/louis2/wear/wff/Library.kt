@@ -6,6 +6,7 @@ package louis2.wear.wff
 import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 import louis2.wear.wff.clock.*
+import louis2.wear.wff.common.*
 import louis2.wear.wff.common.variant.ambientVariant
 import louis2.wear.wff.samples.simpleDigital
 
@@ -41,7 +42,16 @@ internal fun <T> sampleWatchFace(
     stepGoal(9_000)
     //TODO: Add UserConfigurations
     scene(backgroundColor = 0xFF_000003u) {
+        condition { default { condition {  } } }
         group(id = "g1") {
+            condition {
+                expressions {
+                    expression("alwaysTrue", "true")
+                }
+                compare("alwaysTrue") {
+                    group { }
+                }
+            }
             group(id = "g2") {}
             analogClock {
                 ambientVariant(
@@ -70,12 +80,9 @@ internal fun <T> sampleWatchFace(
                 }
             }
         }
-        //TODO: Add Condition
         //TODO: Add ListConfiguration
         //TODO: Add BooleanConfiguration
-        //TODO: Add Variant
         //TODO: Add ComplicationSlot
-        //TODO: Add DigitalClock
     }
 }
 

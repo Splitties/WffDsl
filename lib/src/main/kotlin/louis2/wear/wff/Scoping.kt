@@ -7,11 +7,11 @@ interface Container : Tag {
     val height: Int
 }
 
-sealed interface SceneOrGroup : Container, SupportsConditions, SupportsClock
+interface SupportsConditions : Container
 
-interface SupportsConditions : Tag
+interface CompareScope : Container, SupportsGroup, SupportsPart, SupportsClock, SupportsConditions
 
-interface CompareScope : Tag
+interface SupportsGroup : Container
 
 interface SupportsPart : Container
 

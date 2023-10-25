@@ -21,7 +21,7 @@ inline fun WATCHFACE.scene(
 
 class SCENE(
     initialAttributes: Map<String, String>,
-    val watchface: WATCHFACE,
+    private val watchface: WATCHFACE,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
     tagName = "Scene",
@@ -30,7 +30,7 @@ class SCENE(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SceneOrGroup {
+), SupportsGroup, SupportsConditions, SupportsClock {
     override val width: Int get() = watchface.width
     override val height: Int get() = watchface.height
 }
