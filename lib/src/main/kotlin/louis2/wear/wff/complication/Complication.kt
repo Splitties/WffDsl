@@ -40,7 +40,7 @@ class COMPLICATION(
         namespace = null,
         inlineTag = false,
         emptyTag = false
-), Part, SupportsGroup, SupportsConditions, SupportsPart {
+), SupportsGroup, SupportsConditions, SupportsPart {
         enum class ComplicationType {
                 MONOCHROMATIC_IMAGE,
                 NO_DATA,
