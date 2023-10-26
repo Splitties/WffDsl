@@ -17,41 +17,41 @@ import louis2.wear.wff.*
  */
 @WffTagMarker
 inline fun COMPLICATIONSLOT.complication(
-        type: COMPLICATION.ComplicationType,
-        crossinline block: COMPLICATION.() -> Unit = {}
+    type: COMPLICATION.ComplicationType,
+    crossinline block: COMPLICATION.() -> Unit = {}
 ): Unit = COMPLICATION(
-        initialAttributes = attributesMapOf(
-                "type", type.xmlValue(),
-        ),
-        consumer = consumer,
-        width = width,
-        height = height,
+    initialAttributes = attributesMapOf(
+        "type", type.xmlValue(),
+    ),
+    consumer = consumer,
+    width = width,
+    height = height,
 ).visit(block)
 
 class COMPLICATION(
-        initialAttributes: Map<String, String>,
-        override val consumer: TagConsumer<*>,
-        override val width: Int,
-        override val height: Int
+    initialAttributes: Map<String, String>,
+    override val consumer: TagConsumer<*>,
+    override val width: Int,
+    override val height: Int
 ) : XMLTag(
-        tagName = "Complication",
-        consumer = consumer,
-        initialAttributes = initialAttributes,
-        namespace = null,
-        inlineTag = false,
-        emptyTag = false
+    tagName = "Complication",
+    consumer = consumer,
+    initialAttributes = initialAttributes,
+    namespace = null,
+    inlineTag = false,
+    emptyTag = false
 ), SupportsGroup, SupportsConditions, SupportsPart {
-        enum class ComplicationType {
-                NO_DATA,
-                NO_PERMISSION,
-                SHORT_TEXT,
-                LONG_TEXT,
-                RANGED_VALUE,
-                MONOCHROMATIC_IMAGE,
-                SMALL_IMAGE,
-                PHOTO_IMAGE,
-                GOAL_PROGRESS;
+    enum class ComplicationType {
+        NO_DATA,
+        NO_PERMISSION,
+        SHORT_TEXT,
+        LONG_TEXT,
+        RANGED_VALUE,
+        MONOCHROMATIC_IMAGE,
+        SMALL_IMAGE,
+        PHOTO_IMAGE,
+        GOAL_PROGRESS;
 
-                fun xmlValue() = name
-        }
+        fun xmlValue() = name
+    }
 }

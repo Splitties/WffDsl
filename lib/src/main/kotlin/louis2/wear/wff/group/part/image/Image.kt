@@ -16,22 +16,22 @@ import louis2.wear.wff.XMLTag
  */
 @WffTagMarker
 fun SupportsImage.image(
-        resource: String,
+    resource: String,
 ): Unit = IMAGE(
-        initialAttributes = attributesMapOf(
-                "resource", resource,
-        ),
-        consumer = consumer
+    initialAttributes = attributesMapOf(
+        "resource", resource,
+    ),
+    consumer = consumer
 ).visit {}
 
 class IMAGE(
-        initialAttributes: Map<String, String>,
-        consumer: TagConsumer<*>,
+    initialAttributes: Map<String, String>,
+    consumer: TagConsumer<*>,
 ) : XMLTag(
-        tagName = "Image",
-        consumer = consumer,
-        initialAttributes = initialAttributes,
-        namespace = null,
-        inlineTag = false,
-        emptyTag = false
+    tagName = "Image",
+    consumer = consumer,
+    initialAttributes = initialAttributes,
+    namespace = null,
+    inlineTag = false,
+    emptyTag = false
 )

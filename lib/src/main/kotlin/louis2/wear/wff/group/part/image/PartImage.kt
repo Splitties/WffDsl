@@ -15,47 +15,47 @@ import louis2.wear.wff.internal.asArgbColor
  */
 @WffTagMarker
 inline fun SupportsPart.partImage(
-        x: Int = 0,
-        y: Int = 0,
-        width: Int = this.width,
-        height: Int = this.height,
-        pivotX: Float = .5f,
-        pivotY: Float = .5f,
-        angle: Float = 0f,
-        alpha: UByte = 0xFFu,
-        name: String? = null,
-        scaleX: Float = 1f,
-        scaleY: Float = 1f,
-        renderMode: RenderMode = RenderMode.SOURCE,
-        tintColor: UInt? = null,
-        crossinline block: PARTIMAGE.() -> Unit = {}
+    x: Int = 0,
+    y: Int = 0,
+    width: Int = this.width,
+    height: Int = this.height,
+    pivotX: Float = .5f,
+    pivotY: Float = .5f,
+    angle: Float = 0f,
+    alpha: UByte = 0xFFu,
+    name: String? = null,
+    scaleX: Float = 1f,
+    scaleY: Float = 1f,
+    renderMode: RenderMode = RenderMode.SOURCE,
+    tintColor: UInt? = null,
+    crossinline block: PARTIMAGE.() -> Unit = {}
 ): Unit = PARTIMAGE(
-        initialAttributes = attributesMapOf(
-                "x", x.toString(),
-                "y", y.toString(),
-                "width", width.toString(),
-                "height", height.toString(),
-                "pivotX", pivotX.takeUnless { angle == 0f }?.toString(),
-                "pivotY", pivotY.takeUnless { angle == 0f }?.toString(),
-                "angle", angle.takeUnless { it == 0f }?.toString(),
-                "alpha", alpha.takeUnless { it == 0xFFu.toUByte() }?.toString(),
-                "name", name,
-                "scaleX", scaleX.takeUnless { it == 1f }?.toString(),
-                "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
-                "renderMode", renderMode.xmlValue(),
-                "tintColor", tintColor?.asArgbColor(),
-        ),
-        consumer = consumer
+    initialAttributes = attributesMapOf(
+        "x", x.toString(),
+        "y", y.toString(),
+        "width", width.toString(),
+        "height", height.toString(),
+        "pivotX", pivotX.takeUnless { angle == 0f }?.toString(),
+        "pivotY", pivotY.takeUnless { angle == 0f }?.toString(),
+        "angle", angle.takeUnless { it == 0f }?.toString(),
+        "alpha", alpha.takeUnless { it == 0xFFu.toUByte() }?.toString(),
+        "name", name,
+        "scaleX", scaleX.takeUnless { it == 1f }?.toString(),
+        "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
+        "renderMode", renderMode.xmlValue(),
+        "tintColor", tintColor?.asArgbColor(),
+    ),
+    consumer = consumer
 ).visit(block)
 
 class PARTIMAGE(
-        initialAttributes: Map<String, String>,
-        override val consumer: TagConsumer<*>
+    initialAttributes: Map<String, String>,
+    override val consumer: TagConsumer<*>
 ) : XMLTag(
-        tagName = "PartImage",
-        consumer = consumer,
-        initialAttributes = initialAttributes,
-        namespace = null,
-        inlineTag = false,
-        emptyTag = false
+    tagName = "PartImage",
+    consumer = consumer,
+    initialAttributes = initialAttributes,
+    namespace = null,
+    inlineTag = false,
+    emptyTag = false
 ), Part, SupportsImage

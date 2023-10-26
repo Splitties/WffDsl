@@ -18,25 +18,25 @@ import louis2.wear.wff.group.part.image.IMAGES.Change
  */
 @WffTagMarker
 inline fun PARTIMAGE.images(
-        change: Change? = null,
-        crossinline block: IMAGES.() -> Unit
+    change: Change? = null,
+    crossinline block: IMAGES.() -> Unit
 ): Unit = IMAGES(
-        initialAttributes = attributesMapOf(
-                "change", change?.xmlValue(Change.TAP),
-        ),
-        consumer = consumer
+    initialAttributes = attributesMapOf(
+        "change", change?.xmlValue(Change.TAP),
+    ),
+    consumer = consumer
 ).visit(block)
 
 class IMAGES(
-        initialAttributes: Map<String, String>,
-        consumer: TagConsumer<*>,
+    initialAttributes: Map<String, String>,
+    consumer: TagConsumer<*>,
 ) : XMLTag(
-        tagName = "Images",
-        consumer = consumer,
-        initialAttributes = initialAttributes,
-        namespace = null,
-        inlineTag = false,
-        emptyTag = false
+    tagName = "Images",
+    consumer = consumer,
+    initialAttributes = initialAttributes,
+    namespace = null,
+    inlineTag = false,
+    emptyTag = false
 ), Tag, SupportsImage {
     enum class Change {
         TAP, ON_VISIBLE, ON_NEXT_SECOND, ON_NEXT_MINUTE, ON_NEXT_HOUR;
