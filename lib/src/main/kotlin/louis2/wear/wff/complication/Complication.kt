@@ -42,12 +42,12 @@ class COMPLICATION(
         emptyTag = false
 ), SupportsGroup, SupportsConditions, SupportsPart {
         enum class ComplicationType {
-                MONOCHROMATIC_IMAGE,
                 NO_DATA,
                 NO_PERMISSION,
                 SHORT_TEXT,
                 LONG_TEXT,
                 RANGED_VALUE,
+                MONOCHROMATIC_IMAGE,
                 SMALL_IMAGE,
                 PHOTO_IMAGE,
                 GOAL_PROGRESS;
