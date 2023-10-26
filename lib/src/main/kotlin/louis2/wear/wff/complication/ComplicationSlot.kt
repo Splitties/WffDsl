@@ -3,12 +3,7 @@ package louis2.wear.wff.complication
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.Container
-import louis2.wear.wff.SupportsComplicationSlot
-import louis2.wear.wff.SupportsScreenReader
-import louis2.wear.wff.SupportsVariants
-import louis2.wear.wff.WffTagMarker
-import louis2.wear.wff.XMLTag
+import louis2.wear.wff.*
 
 /**
  * A Complication Slot is an area of the watch face that a Complication can be added by the user.
@@ -22,7 +17,7 @@ import louis2.wear.wff.XMLTag
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/complication/complication-slot)
  */
 @WffTagMarker
-inline fun SupportsComplicationSlot.complicationSlot(
+inline fun SCENE.complicationSlot(
     x: Int = 0,
     y: Int = 0,
     width: Int = this.width,

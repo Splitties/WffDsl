@@ -30,7 +30,7 @@ class SCENE(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsGroup, SupportsConditions, SupportsClock, SupportsBooleanConfiguration, SupportsComplicationSlot {
+), SupportsGroup, SupportsConditions, SupportsClock, SupportsBooleanConfiguration {
     override val width: Int get() = watchface.width
     override val height: Int get() = watchface.height
 }
