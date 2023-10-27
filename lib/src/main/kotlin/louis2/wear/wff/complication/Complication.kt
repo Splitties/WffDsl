@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.group.part.text.formatter.parameter
 
 /**
  * A Complication element defines how a particular Complication Type is displayed on the watch face.
@@ -40,4 +41,13 @@ class COMPLICATION(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsGroup, SupportsPart, SupportsConditions
+), SupportsGroup, SupportsPart, SupportsConditions {
+    companion object {
+        /** For use in Template's [parameter] */
+        const val TEXT = "[COMPLICATION.TEXT]"
+        /** For use in Template's [parameter] */
+        const val TITLE = "[COMPLICATION.TITLE]"
+        /** For use in Template's [parameter] */
+        const val ICON = "[COMPLICATION.ICON]"
+    }
+}
