@@ -32,6 +32,7 @@ inline fun SCENE.complicationSlot(
     scaleY: Float = 1f,
     tintColor: UInt? = null,
     displayName: String? = null,
+    screenReaderText: String? = null,
     isCustomizable: Boolean = true,
     crossinline block: COMPLICATIONSLOT.() -> Unit = {}
 ): Unit = COMPLICATIONSLOT(
@@ -50,6 +51,7 @@ inline fun SCENE.complicationSlot(
         "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
         "tintColor", tintColor?.toString(),
         "displayName", displayName,
+        "screenReaderText", screenReaderText,
         "isCustomizable", isCustomizable.takeUnless { it }?.toString()?.uppercase(),
     ),
     consumer = consumer,
