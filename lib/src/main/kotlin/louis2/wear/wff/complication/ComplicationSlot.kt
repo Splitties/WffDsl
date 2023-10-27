@@ -23,7 +23,7 @@ inline fun SCENE.complicationSlot(
     width: Int = this.width,
     height: Int = this.height,
     slotId: Int,
-    supportedTypes: List<COMPLICATION.ComplicationType>,
+    supportedTypes: List<ComplicationType>,
     pivotX: Float = .5f,
     pivotY: Float = .5f,
     angle: Float = 0f,

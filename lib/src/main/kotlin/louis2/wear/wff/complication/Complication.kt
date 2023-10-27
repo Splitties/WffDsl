@@ -9,7 +9,7 @@ import louis2.wear.wff.*
  * A Complication element defines how a particular Complication Type is displayed on the watch face.
  *
  * An inner Parameter element can contain an expression that's based on the data from a parent ComplicationSlot element.
- * Valid expressions include [COMPLICATION.ComplicationType].
+ * Valid expressions include [ComplicationType].
  *
  * Introduced in Wear OS 4.
  *
@@ -17,7 +17,7 @@ import louis2.wear.wff.*
  */
 @WffTagMarker
 inline fun COMPLICATIONSLOT.complication(
-    type: COMPLICATION.ComplicationType,
+    type: ComplicationType,
     crossinline block: COMPLICATION.() -> Unit = {}
 ): Unit = COMPLICATION(
     initialAttributes = attributesMapOf(
@@ -40,18 +40,4 @@ class COMPLICATION(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsGroup, SupportsPart, SupportsConditions {
-    enum class ComplicationType {
-        NO_DATA,
-        NO_PERMISSION,
-        SHORT_TEXT,
-        LONG_TEXT,
-        RANGED_VALUE,
-        MONOCHROMATIC_IMAGE,
-        SMALL_IMAGE,
-        PHOTO_IMAGE,
-        GOAL_PROGRESS;
-
-        fun xmlValue() = name
-    }
-}
+), SupportsGroup, SupportsPart, SupportsConditions
