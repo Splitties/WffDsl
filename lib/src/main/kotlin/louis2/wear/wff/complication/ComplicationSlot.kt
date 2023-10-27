@@ -31,7 +31,7 @@ inline fun SCENE.complicationSlot(
     scaleX: Float = 1f,
     scaleY: Float = 1f,
     tintColor: UInt? = null,
-    displayName: String,
+    displayName: String? = null,
     isCustomizable: Boolean = true,
     crossinline block: COMPLICATIONSLOT.() -> Unit = {}
 ): Unit = COMPLICATIONSLOT(
