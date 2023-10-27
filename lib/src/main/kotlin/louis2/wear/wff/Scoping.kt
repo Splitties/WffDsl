@@ -49,3 +49,5 @@ interface StrokeAble : Tag
 interface FillAble : Tag
 
 interface SupportsGradients : Tag
+
+interface SupportsImage : Tag
