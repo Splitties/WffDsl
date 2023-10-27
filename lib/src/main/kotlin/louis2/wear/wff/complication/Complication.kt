@@ -40,7 +40,7 @@ class COMPLICATION(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsGroup, SupportsConditions, SupportsPart {
+), SupportsGroup, SupportsPart, SupportsConditions {
     enum class ComplicationType {
         NO_DATA,
         NO_PERMISSION,
