@@ -24,16 +24,14 @@ inline fun COMPLICATIONSLOT.complication(
     initialAttributes = attributesMapOf(
         "type", type.xmlValue(),
     ),
+    parentContainer = this,
     consumer = consumer,
-    width = width,
-    height = height,
 ).visit(block)
 
 class COMPLICATION(
     initialAttributes: Map<String, String>,
+    private val parentContainer: Container,
     override val consumer: TagConsumer<*>,
-    override val width: Int,
-    override val height: Int
 ) : XMLTag(
     tagName = "Complication",
     consumer = consumer,
@@ -42,6 +40,9 @@ class COMPLICATION(
     inlineTag = false,
     emptyTag = false
 ), SupportsGroup, SupportsPart, SupportsConditions {
+    override val width: Int get() = parentContainer.width
+    override val height: Int get() = parentContainer.height
+
     companion object {
         /** For use in Template's [parameter] */
         const val TEXT = "[COMPLICATION.TEXT]"

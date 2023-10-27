@@ -54,16 +54,14 @@ inline fun SCENE.complicationSlot(
         "screenReaderText", screenReaderText,
         "isCustomizable", isCustomizable.takeUnless { it }?.toString()?.uppercase(),
     ),
+    parentContainer = this,
     consumer = consumer,
-    width = width,
-    height = height,
 ).visit(block)
 
 class COMPLICATIONSLOT(
     initialAttributes: Map<String, String>,
+    private val parentContainer: Container,
     override val consumer: TagConsumer<*>,
-    override val width: Int,
-    override val height: Int
 ) : XMLTag(
     tagName = "ComplicationSlot",
     consumer = consumer,
@@ -71,4 +69,7 @@ class COMPLICATIONSLOT(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), Container, SupportsScreenReader, SupportsVariants
+), Container, SupportsScreenReader, SupportsVariants {
+    override val width: Int get() = parentContainer.width
+    override val height: Int get() = parentContainer.height
+}
