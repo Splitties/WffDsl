@@ -21,7 +21,7 @@ inline fun PARTTEXT.text(
     align: Alignment = Alignment.CENTER,
     ellipsis: Boolean = false,
     maxLines: Int? = null,
-    crossinline block: TEXT.() -> Unit = {}
+    crossinline block: TEXT.() -> Unit
 ): Unit = TEXT(
     initialAttributes = attributesMapOf(
         "align", align.xmlValue(Alignment.CENTER),
