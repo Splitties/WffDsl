@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.clock.TIMETEXT
 import louis2.wear.wff.internal.asArgbColor
 
 /**
@@ -43,7 +44,7 @@ inline fun TextScope.font(
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/font)
  */
 @WffTagMarker
-fun TextScope.font(
+fun TIMETEXT.font(
     family: String = "SYNC_TO_DEVICE",
     size: Float,
     color: UInt? = null,

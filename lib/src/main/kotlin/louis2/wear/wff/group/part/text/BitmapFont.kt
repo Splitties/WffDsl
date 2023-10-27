@@ -7,6 +7,7 @@ import louis2.wear.wff.TextFormatterGroup
 import louis2.wear.wff.TextScope
 import louis2.wear.wff.WffTagMarker
 import louis2.wear.wff.XMLTag
+import louis2.wear.wff.clock.TIMETEXT
 import louis2.wear.wff.internal.asArgbColor
 import louis2.wear.wff.BITMAPFONTS.BITMAPFONT as BitmapFont
 
@@ -45,7 +46,7 @@ inline fun TextScope.bitmapFont(
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/font)
  */
 @WffTagMarker
-fun TextScope.bitmapFont(
+fun TIMETEXT.bitmapFont(
     family: String,
     size: Float,
     color: UInt? = null,
