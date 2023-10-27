@@ -8,9 +8,14 @@ import kotlinx.html.stream.createHTML
 import louis2.wear.wff.clock.*
 import louis2.wear.wff.common.*
 import louis2.wear.wff.common.variant.ambientVariant
+import louis2.wear.wff.complication.*
 import louis2.wear.wff.samples.simpleDigital
 import louis2.wear.wff.group.configuration.booleanConfiguration
 import louis2.wear.wff.group.configuration.booleanOption
+import louis2.wear.wff.group.part.text.font
+import louis2.wear.wff.group.part.text.formatter.template
+import louis2.wear.wff.group.part.text.partText
+import louis2.wear.wff.group.part.text.text
 import louis2.wear.wff.userConfiguration.booleanConfiguration
 import louis2.wear.wff.userConfiguration.userConfigurations
 
@@ -57,6 +62,22 @@ internal fun <T> sampleWatchFace(
         )
     }
     scene(backgroundColor = 0xFF_000003u) {
+        val supportedTypes = listOf(ComplicationType.SHORT_TEXT, ComplicationType.RANGED_VALUE, ComplicationType.MONOCHROMATIC_IMAGE)
+        complicationSlot(
+            slotId = 0,
+            supportedTypes = supportedTypes
+        ) {
+            defaultProviderPolicy(defaultSystemProvider = SystemProvider.WATCH_BATTERY, ComplicationType.RANGED_VALUE)
+            complication(ComplicationType.SHORT_TEXT) {
+                partText {
+                    text {
+                        font(size = 30f) {
+                            template(text = "Salut")
+                        }
+                    }
+                }
+            }
+        }
         condition { default { condition {  } } }
         booleanConfiguration(id = "something") {
             booleanOption(value = true) {
