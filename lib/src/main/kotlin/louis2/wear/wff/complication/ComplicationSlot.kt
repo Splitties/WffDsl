@@ -34,7 +34,7 @@ inline fun SCENE.complicationSlot(
     displayName: String? = null,
     screenReaderText: String? = null,
     isCustomizable: Boolean = true,
-    crossinline block: COMPLICATIONSLOT.() -> Unit = {}
+    crossinline block: COMPLICATIONSLOT.() -> Unit
 ): Unit = COMPLICATIONSLOT(
     initialAttributes = attributesMapOf(
         "x", x.toString(),
