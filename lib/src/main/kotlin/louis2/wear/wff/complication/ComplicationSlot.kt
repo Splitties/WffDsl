@@ -50,7 +50,7 @@ inline fun SCENE.complicationSlot(
         "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
         "tintColor", tintColor?.toString(),
         "displayName", displayName,
-        "isCustomizable", isCustomizable.takeUnless { it == true }?.toString(),
+        "isCustomizable", isCustomizable.takeUnless { it }?.toString()?.uppercase(),
     ),
     consumer = consumer,
     width = width,
