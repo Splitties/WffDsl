@@ -48,7 +48,19 @@ class COMPLICATION(
         const val TEXT = "[COMPLICATION.TEXT]"
         /** For use in Template's [parameter] */
         const val TITLE = "[COMPLICATION.TITLE]"
-        /** For use in Template's [parameter] */
+
+        /** For use in Image's resource */
+        const val MONOCHROMATIC_IMAGE = "[COMPLICATION.MONOCHROMATIC_IMAGE]"
+        /** For use in Image's resource */
         const val ICON = "[COMPLICATION.ICON]"
+        /** For use in Image's resource */
+        const val SMALL_IMAGE = "[COMPLICATION.SMALL_IMAGE]"
+
+        /** For use in arithmetic expressions */
+        const val RANGED_VALUE_VALUE = "[COMPLICATION.RANGED_VALUE_VALUE]"
+        /** For use in arithmetic expressions */
+        const val RANGED_VALUE_MIN = "[COMPLICATION.RANGED_VALUE_MIN]"
+        /** For use in arithmetic expressions */
+        const val RANGED_VALUE_MAX = "[COMPLICATION.RANGED_VALUE_MAX]"
     }
 }
