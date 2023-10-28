@@ -14,18 +14,19 @@ import louis2.wear.wff.internal.asArgbColor
 @WffTagMarker
 inline fun StrokeAble.stroke(
     thickness: Float,
-    dashIntervals: String,
-    dashPhase: String,
-    cap: STROKE.Cap,
+    dashIntervals: FloatArray? = null,
+    dashPhase: Float = 0f,
+    cap: STROKE.Cap = STROKE.Cap.BUTT,
     crossinline block: STROKE.() -> Unit
 ): Unit = STROKE(
     initialAttributes = attributesMapOf(
         "thickness", thickness.toString(),
-        "dashIntervals", dashIntervals,
-        "dashPhase", dashPhase,
+        "dashIntervals", dashIntervals?.asDashIntervalsString(),
+        "dashPhase", dashPhase.takeUnless { it == 0f }?.toString(),
         "cap", cap.xmlValue()
     ),
-    consumer = consumer
+    consumer = consumer,
+    emptyTag = false,
 ).visit(block)
 
 /**
@@ -37,22 +38,24 @@ inline fun StrokeAble.stroke(
 fun StrokeAble.stroke(
     color: UInt,
     thickness: Float,
-    dashIntervals: String,
-    dashPhase: String,
-    cap: STROKE.Cap
+    dashIntervals: FloatArray? = null,
+    dashPhase: Float = 0f,
+    cap: STROKE.Cap = STROKE.Cap.BUTT
 ): Unit = STROKE(
     initialAttributes = attributesMapOf(
         "color", color.asArgbColor(),
         "thickness", thickness.toString(),
-        "dashIntervals", dashIntervals,
-        "dashPhase", dashPhase,
+        "dashIntervals", dashIntervals?.asDashIntervalsString(),
+        "dashPhase", dashPhase.takeUnless { it == 0f }?.toString(),
         "cap", cap.xmlValue()
     ),
+    emptyTag = true,
     consumer = consumer
 ).visit {}
 
 class STROKE(
     initialAttributes: Map<String, String>,
+    emptyTag: Boolean,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
     tagName = "Stroke",
@@ -60,8 +63,8 @@ class STROKE(
     initialAttributes = initialAttributes,
     namespace = null,
     inlineTag = false,
-    emptyTag = false
-), SupportsGradients {
+    emptyTag = emptyTag
+), SupportsGradients, Transformable {
     enum class Cap {
         BUTT, ROUND, SQUARE;
 
@@ -70,4 +73,11 @@ class STROKE(
             else -> name
         }
     }
+}
+
+@PublishedApi
+internal fun FloatArray.asDashIntervalsString(): String {
+    require(size % 2 == 0)
+    require(size >= 2)
+    return joinToString(separator = " ")
 }
