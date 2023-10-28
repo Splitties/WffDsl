@@ -12,7 +12,7 @@ import louis2.wear.wff.group.part.draw.PARTDRAW
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/draw/shape/line)
  */
 @WffTagMarker
-inline fun PARTDRAW.arc(
+inline fun PARTDRAW.line(
     startX: Float,
     startY: Float,
     endX: Float,
