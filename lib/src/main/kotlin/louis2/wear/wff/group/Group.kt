@@ -61,7 +61,7 @@ class GROUP(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsGroup, SupportsConditions, SupportsClock, SupportsPart, SupportsLocalization, SupportsVariants, SupportsBooleanConfiguration {
+), SupportsGroup, SupportsConditions, SupportsClock, SupportsPart, SupportsLocalization, SupportsVariants, SupportsBooleanConfiguration, SupportsListConfiguration {
     override val width: Int get() = w()
     override val height: Int get() = h()
 }
