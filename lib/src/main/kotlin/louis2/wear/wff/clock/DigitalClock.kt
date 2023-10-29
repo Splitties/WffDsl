@@ -5,8 +5,8 @@ import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
 import louis2.wear.wff.internal.asArgbColor
-import louis2.wear.wff.internal.h
-import louis2.wear.wff.internal.w
+import louis2.wear.wff.h
+import louis2.wear.wff.w
 
 /**
  * A digital clock is a container for a formatted set of strings that represent the current hours, minutes, and seconds associated with a clock time.

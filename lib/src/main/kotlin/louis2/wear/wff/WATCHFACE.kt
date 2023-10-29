@@ -1,8 +1,6 @@
 package louis2.wear.wff
 
 import kotlinx.html.*
-import louis2.wear.wff.internal.h
-import louis2.wear.wff.internal.w
 
 /**
  * The root element of every watchface.xml file.

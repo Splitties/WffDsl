@@ -6,8 +6,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.internal.asArgbColor
-import louis2.wear.wff.internal.h
-import louis2.wear.wff.internal.w
 
 /**
  * A Group is a container for other elements. Child elements are rendered relative to the position, size, angle, and color of the group.

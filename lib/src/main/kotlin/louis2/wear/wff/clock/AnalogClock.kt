@@ -5,8 +5,8 @@ import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
 import louis2.wear.wff.internal.asArgbColor
-import louis2.wear.wff.internal.h
-import louis2.wear.wff.internal.w
+import louis2.wear.wff.h
+import louis2.wear.wff.w
 
 /**
  * An analog clock is a container for AnalogHands inner elements, which display a series of clock hands that rotate around a watch face.
