@@ -69,7 +69,4 @@ class COMPLICATIONSLOT(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), Container, SupportsScreenReader, SupportsVariants {
-    override val width: Int get() = parentContainer.width
-    override val height: Int get() = parentContainer.height
-}
+), Container by parentContainer, SupportsScreenReader, SupportsVariants

@@ -61,9 +61,7 @@ class CONDITION(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), Container {
-    override val width: Int get() = parentContainer.width
-    override val height: Int get() = parentContainer.height
+), Container by parentContainer {
 
     class EXPRESSIONS(
         initialAttributes: Map<String, String> = emptyMap(),
@@ -100,10 +98,7 @@ class CONDITION(
         namespace = null,
         inlineTag = false,
         emptyTag = false
-    ), CompareScope {
-        override val width: Int get() = parentContainer.width
-        override val height: Int get() = parentContainer.height
-    }
+    ), CompareScope, Container by parentContainer
 
     class DEFAULT(
         initialAttributes: Map<String, String> = emptyMap(),
@@ -116,8 +111,5 @@ class CONDITION(
         namespace = null,
         inlineTag = false,
         emptyTag = false
-    ), CompareScope {
-        override val width: Int get() = parentContainer.width
-        override val height: Int get() = parentContainer.height
-    }
+    ), CompareScope, Container by parentContainer
 }

@@ -2,26 +2,26 @@ package louis2.wear.wff
 
 import kotlinx.html.Tag
 
-interface Container : Tag {
+interface Container {
     val width: Int
     val height: Int
 }
 
-interface SupportsConditions : Container
+interface SupportsConditions : Container, Tag
 
-interface CompareScope : Container, SupportsGroup, SupportsPart, SupportsClock, SupportsConditions
+interface CompareScope : Tag, Container, SupportsGroup, SupportsPart, SupportsClock, SupportsConditions
 
-interface SupportsGroup : Container
+interface SupportsGroup : Tag, Container
 
-interface SupportsPart : Container
+interface SupportsPart : Tag, Container
 
-interface SupportsClock : Container
+interface SupportsClock : Tag, Container
 
 interface SupportsVariants : Tag
 
-interface SupportsBooleanConfiguration : Container
+interface SupportsBooleanConfiguration : Tag, Container
 
-interface SupportsListConfiguration : Container
+interface SupportsListConfiguration : Tag, Container
 
 interface AnalogHand : SupportsVariants
 

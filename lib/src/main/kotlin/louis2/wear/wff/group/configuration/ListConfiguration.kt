@@ -43,9 +43,7 @@ class LISTCONFIGURATION(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), Container {
-    override val width: Int get() = parentContainer.width
-    override val height: Int get() = parentContainer.height
+), Container by parentContainer {
 
     class LISTOPTION(
         initialAttributes: Map<String, String> = emptyMap(),
@@ -58,8 +56,5 @@ class LISTCONFIGURATION(
         namespace = null,
         inlineTag = false,
         emptyTag = false
-    ), SupportsPart, SupportsGroup, SupportsConditions, SupportsClock {
-        override val width: Int get() = parentContainer.width
-        override val height: Int get() = parentContainer.height
-    }
+    ), SupportsPart, SupportsGroup, SupportsConditions, SupportsClock, Container by parentContainer
 }

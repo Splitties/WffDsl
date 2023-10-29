@@ -39,9 +39,7 @@ class COMPLICATION(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsGroup, SupportsPart, SupportsConditions {
-    override val width: Int get() = parentContainer.width
-    override val height: Int get() = parentContainer.height
+), SupportsGroup, SupportsPart, SupportsConditions, Container by parentContainer {
 
     companion object {
         /** For use in Template's [parameter] */
