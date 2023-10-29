@@ -5,6 +5,8 @@ import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
 import louis2.wear.wff.internal.asArgbColor
+import louis2.wear.wff.h
+import louis2.wear.wff.w
 
 /**
  * A PartDraw contains a vector drawing primitives that appears on the watch face.
@@ -58,4 +60,7 @@ class PARTDRAW(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), Part
+), Part, Container {
+    override val width: Int get() = w()
+    override val height: Int get() = h()
+}
