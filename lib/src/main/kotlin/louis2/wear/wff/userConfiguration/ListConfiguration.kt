@@ -38,7 +38,7 @@ fun LISTCONFIGURATION.listOption(
     displayName: String,
     icon: String? = null,
     screenReaderText: String? = null,
-): Unit = LISTCONFIGURATION(
+): Unit = LISTCONFIGURATION.LISTOPTION(
     initialAttributes = attributesMapOf(
         "id", id.toString(),
         "displayName", displayName,
