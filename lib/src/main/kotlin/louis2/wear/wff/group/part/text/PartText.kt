@@ -58,4 +58,7 @@ class PARTTEXT(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), Part
+), Part, Container {
+    override val width: Int get() = w()
+    override val height: Int get() = h()
+}
