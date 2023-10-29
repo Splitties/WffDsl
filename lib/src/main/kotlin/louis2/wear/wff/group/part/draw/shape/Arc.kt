@@ -47,4 +47,7 @@ class ARC(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), StrokeAble, Transformable
+), StrokeAble, Transformable {
+    val width: Float get() = attributes.getValue("width").toFloat()
+    val height: Float get() = attributes.getValue("height").toFloat()
+}
