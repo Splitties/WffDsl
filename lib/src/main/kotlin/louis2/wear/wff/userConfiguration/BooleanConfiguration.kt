@@ -17,15 +17,15 @@ import louis2.wear.wff.XMLTag
 fun USERCONFIGURATIONS.booleanConfiguration(
     id: String,
     displayName: String,
-    icon: String? = null,
     screenReaderText: String? = null,
+    icon: String? = null,
     defaultValue: Boolean,
 ): Unit = BOOLEANCONFIGURATION(
     initialAttributes = attributesMapOf(
         "id", id,
         "displayName", displayName,
-        "icon", icon,
         "screenReaderText", screenReaderText,
+        "icon", icon,
         "defaultValue", defaultValue.toString().uppercase(),
     ),
     consumer = consumer

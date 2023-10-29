@@ -17,16 +17,16 @@ import louis2.wear.wff.XMLTag
 inline fun USERCONFIGURATIONS.listConfiguration(
     id: String,
     displayName: String,
-    icon: String? = null,
     screenReaderText: String? = null,
+    icon: String? = null,
     defaultValue: Int,
     crossinline block: LISTCONFIGURATION.() -> Unit
 ): Unit = LISTCONFIGURATION(
     initialAttributes = attributesMapOf(
         "id", id,
         "displayName", displayName,
-        "icon", icon,
         "screenReaderText", screenReaderText,
+        "icon", icon,
         "defaultValue", defaultValue.toString(),
     ),
     consumer = consumer
@@ -36,14 +36,14 @@ inline fun USERCONFIGURATIONS.listConfiguration(
 fun LISTCONFIGURATION.listOption(
     id: Int,
     displayName: String,
-    icon: String? = null,
     screenReaderText: String? = null,
+    icon: String? = null,
 ): Unit = LISTCONFIGURATION.LISTOPTION(
     initialAttributes = attributesMapOf(
         "id", id.toString(),
         "displayName", displayName,
-        "icon", icon,
-        "screenReaderText", screenReaderText
+        "screenReaderText", screenReaderText,
+        "icon", icon
     ),
     consumer = consumer
 ).visit {}
