@@ -3,10 +3,8 @@ package louis2.wear.wff.internal
 import louis2.wear.wff.Container
 import louis2.wear.wff.XMLTag
 
-internal fun <T> T.w(): Int where T : Container, T : XMLTag {
-    return attributes.getValue("width").toInt()
-}
+context (Container, XMLTag)
+internal fun w(): Int = attributes.getValue("width").toInt()
 
-internal fun <T> T.h(): Int where T : Container, T : XMLTag {
-    return attributes.getValue("height").toInt()
-}
+context (Container, XMLTag)
+internal fun h(): Int = attributes.getValue("height").toInt()
