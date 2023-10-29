@@ -6,18 +6,6 @@ import kotlinx.html.visit
 import louis2.wear.wff.WffTagMarker
 import louis2.wear.wff.XMLTag
 
-class BOOLEANCONFIGURATION(
-    initialAttributes: Map<String, String> = emptyMap(),
-    override val consumer: TagConsumer<*>
-) : XMLTag(
-    tagName = "BooleanConfiguration",
-    consumer = consumer,
-    initialAttributes = initialAttributes,
-    namespace = null,
-    inlineTag = false,
-    emptyTag = true
-)
-
 @WffTagMarker
 fun USERCONFIGURATIONS.booleanConfiguration(
     id: String,
@@ -35,3 +23,15 @@ fun USERCONFIGURATIONS.booleanConfiguration(
     ),
     consumer = consumer
 ).visit {}
+
+class BOOLEANCONFIGURATION(
+    initialAttributes: Map<String, String> = emptyMap(),
+    override val consumer: TagConsumer<*>
+) : XMLTag(
+    tagName = "BooleanConfiguration",
+    consumer = consumer,
+    initialAttributes = initialAttributes,
+    namespace = null,
+    inlineTag = false,
+    emptyTag = true
+)
