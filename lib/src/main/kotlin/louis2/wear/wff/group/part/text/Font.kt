@@ -5,7 +5,6 @@ import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
 import louis2.wear.wff.clock.TIMETEXT
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * Provides rendering instructions for a specific text element.

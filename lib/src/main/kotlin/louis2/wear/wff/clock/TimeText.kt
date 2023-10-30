@@ -4,7 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * A time text is a formatted string representing the current time.
@@ -26,7 +25,7 @@ inline fun DIGITALCLOCK.timeText(
     pivotY: Float = .5f,
     angle: Float = 0f,
     alpha: UByte = 0xFFu,
-    tintColor: UInt? = null,
+    tintColor: Color? = null,
     crossinline block: TIMETEXT.() -> Unit = {}
 ): Unit = TIMETEXT(
     initialAttributes = attributesMapOf(
@@ -41,7 +40,7 @@ inline fun DIGITALCLOCK.timeText(
         "pivotY", pivotY.takeUnless { angle == 0f }?.toString(),
         "angle", angle.takeUnless { it == 0f }?.toString(),
         "alpha", alpha.takeUnless { it == 0xFFu.toUByte() }?.toString(),
-        "tintColor", tintColor?.asArgbColor(),
+        "tintColor", tintColor?.xmlValue(),
     ),
     consumer = consumer
 ).visit(block)

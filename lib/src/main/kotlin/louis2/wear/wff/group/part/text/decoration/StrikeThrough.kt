@@ -1,10 +1,11 @@
 package louis2.wear.wff.group.part.text.decoration
 
 import kotlinx.html.TagConsumer
-import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
+import louis2.wear.wff.TextDecoration
+import louis2.wear.wff.TextDecorationGroup
+import louis2.wear.wff.WffTagMarker
+import louis2.wear.wff.XMLTag
 
 /**
  * Draws a horizontal line through a text element.

@@ -1,10 +1,9 @@
 package louis2.wear.wff.group.part.draw.gradient
 
-import louis2.wear.wff.internal.asArgbColor
+import louis2.wear.wff.Color
 
-@ExperimentalUnsignedTypes
 @PublishedApi
-internal fun FloatArray?.asGradientPositions(colors: UIntArray): String {
+internal fun FloatArray?.asGradientPositions(colors: List<Color>): String {
     if (this == null) return ""
     onEachIndexed { index, it ->
         require(it in 0f..1f) {
@@ -15,8 +14,7 @@ internal fun FloatArray?.asGradientPositions(colors: UIntArray): String {
     return joinToString(separator = " ")
 }
 
-@ExperimentalUnsignedTypes
 @PublishedApi
-internal fun UIntArray.asGradientColors(): String {
-    return joinToString(separator = " ") { it.asArgbColor() }
+internal fun List<Color>.asGradientColors(): String {
+    return joinToString(separator = " ") { it.xmlValue() }
 }

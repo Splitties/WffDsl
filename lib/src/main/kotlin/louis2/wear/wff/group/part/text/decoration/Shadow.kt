@@ -4,7 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * Draws a shadow near a text element.
@@ -27,14 +26,14 @@ import louis2.wear.wff.internal.asArgbColor
  */
 @WffTagMarker
 inline fun TextDecorationGroup.shadow(
-    color: UInt,
+    color: Color,
     offsetX: Float = 2f,
     offsetY: Float = 2f,
     radius: Float = 2f,
     crossinline block: SHADOW.() -> Unit = {}
 ): Unit = SHADOW(
     initialAttributes = attributesMapOf(
-        "color", color.asArgbColor(),
+        "color", color.xmlValue(),
         "offsetX", offsetX.takeUnless { it == 2f }?.toString(),
         "offsetY", offsetY.takeUnless { it == 2f }?.toString(),
         "radius", radius.takeUnless { it == 2f }?.toString(),

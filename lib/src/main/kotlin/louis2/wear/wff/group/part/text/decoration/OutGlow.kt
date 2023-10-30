@@ -4,7 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * Applies an outward glow to a text element.
@@ -19,12 +18,12 @@ import louis2.wear.wff.internal.asArgbColor
  */
 @WffTagMarker
 inline fun TextDecorationGroup.outGlow(
-    color: UInt,
+    color: Color,
     radius: Float = 8f,
     crossinline block: OUTGLOW.() -> Unit = {}
 ): Unit = OUTGLOW(
     initialAttributes = attributesMapOf(
-        "color", color.asArgbColor(),
+        "color", color.xmlValue(),
         "radius", radius.takeUnless { it == 8f }?.toString(),
     ),
     consumer = consumer

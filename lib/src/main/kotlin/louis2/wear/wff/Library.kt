@@ -90,7 +90,7 @@ internal fun <T> sampleWatchFace(
             )
         }
     }
-    scene(backgroundColor = 0xFF_000003u) {
+    scene(backgroundColor = Color.rgb(0x00_00_03)) {
         val supportedTypes = listOf(ComplicationType.SHORT_TEXT, ComplicationType.RANGED_VALUE, ComplicationType.MONOCHROMATIC_IMAGE)
         complicationSlot(
             slotId = 0,
@@ -131,7 +131,7 @@ internal fun <T> sampleWatchFace(
                                 centerY = this@arc.height / 2f,
                                 startAngle = 0f,
                                 endAngle = 360f,
-                                colors = uintArrayOf(0xFF_FFFFFFu, 0xFF_00BBFFu)
+                                colors = listOf(Color.rgb(0xFFFFFF), Color.rgb(0x00BBFF))
                             )
                         }
                     }

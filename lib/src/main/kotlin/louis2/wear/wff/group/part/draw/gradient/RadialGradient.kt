@@ -4,7 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * A gradient transitioning between two colors radiating from a central origin point.
@@ -21,7 +20,7 @@ inline fun SupportsGradients.radialGradient(
     centerX: Float,
     centerY: Float,
     radius: Float,
-    colors: UIntArray,
+    colors: List<Color>,
     positions: FloatArray? = null,
     crossinline block: RADIALGRADIENT.() -> Unit = {}
 ): Unit = RADIALGRADIENT(

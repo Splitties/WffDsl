@@ -3,11 +3,7 @@ package louis2.wear.wff.group.part.draw.gradient
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.SupportsGradients
-import louis2.wear.wff.Transformable
-import louis2.wear.wff.WffTagMarker
-import louis2.wear.wff.XMLTag
-import louis2.wear.wff.internal.asArgbColor
+import louis2.wear.wff.*
 
 /**
  * A gradient transitioning between two colors along a line.
@@ -25,7 +21,7 @@ inline fun SupportsGradients.linearGradient(
     startY: Float,
     endX: Float,
     endY: Float,
-    colors: UIntArray,
+    colors: List<Color>,
     positions: FloatArray? = null,
     crossinline block: LINEARGRADIENT.() -> Unit = {}
 ): Unit = LINEARGRADIENT(

@@ -5,7 +5,6 @@ package louis2.wear.wff
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * A Group is a container for other elements. Child elements are rendered relative to the position, size, angle, and color of the group.
@@ -27,7 +26,7 @@ inline fun SupportsGroup.group(
     scaleX: Float = 1f,
     scaleY: Float = 1f,
     renderMode: RenderMode = RenderMode.SOURCE,
-    tintColor: UInt? = null,
+    tintColor: Color? = null,
     crossinline block: GROUP.() -> Unit
 ): Unit = GROUP(
     initialAttributes = attributesMapOf(
@@ -44,7 +43,7 @@ inline fun SupportsGroup.group(
         "scaleX", scaleX.takeUnless { it == 1f }?.toString(),
         "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
         "renderMode", renderMode.xmlValue(),
-        "tintColor", tintColor?.asArgbColor(),
+        "tintColor", tintColor?.xmlValue(),
     ),
     consumer = consumer
 ).visit(block)

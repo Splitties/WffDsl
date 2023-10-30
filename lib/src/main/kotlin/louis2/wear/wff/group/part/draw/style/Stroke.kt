@@ -4,7 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * A stroke sets the visual style of a line or border.
@@ -36,14 +35,14 @@ inline fun StrokeAble.stroke(
  */
 @WffTagMarker
 fun StrokeAble.stroke(
-    color: UInt,
+    color: Color,
     thickness: Float,
     dashIntervals: FloatArray? = null,
     dashPhase: Float = 0f,
     cap: STROKE.Cap = STROKE.Cap.BUTT
 ): Unit = STROKE(
     initialAttributes = attributesMapOf(
-        "color", color.asArgbColor(),
+        "color", color.xmlValue(),
         "thickness", thickness.toString(),
         "dashIntervals", dashIntervals?.asDashIntervalsString(),
         "dashPhase", dashPhase.takeUnless { it == 0f }?.toString(),

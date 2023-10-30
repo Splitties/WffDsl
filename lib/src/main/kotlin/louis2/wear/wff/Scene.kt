@@ -11,10 +11,12 @@ import kotlinx.html.visit
  */
 @WffTagMarker
 inline fun WATCHFACE.scene(
-    backgroundColor: UInt = 0xFF_000000u,
+    backgroundColor: Color = Color.black,
     crossinline block: SCENE.() -> Unit
 ) : Unit = SCENE(
-    initialAttributes = attributesMapOf("backgroundColor", "#${backgroundColor.toString(radix = 16)}"),
+    initialAttributes = attributesMapOf(
+        "backgroundColor", backgroundColor.takeUnless { it == Color.black }?.xmlValue()
+    ),
     watchface = this,
     consumer = consumer
 ).visit(block)

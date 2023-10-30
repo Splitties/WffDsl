@@ -12,7 +12,7 @@ internal fun <T> simpleAnalog(): T = watchFace(width = 450, height = 450) {
     clockType(ClockType.ANALOG)
     metadata("TICK_PER_SECOND", "15")
     previewTime("10:08:32")
-    scene(backgroundColor = 0xFF_000000u) {
+    scene {
         analogClock {
             comment(" Interactive-mode hands ")
             secondHand(resource = "@drawable/second_hand", x = 224, y = 10, width = 2, height = 215, pivotY = 1f) {

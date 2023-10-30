@@ -4,7 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * Draws an outline around a text element.
@@ -19,12 +18,12 @@ import louis2.wear.wff.internal.asArgbColor
  */
 @WffTagMarker
 inline fun TextDecorationGroup.outline(
-    color: UInt,
+    color: Color,
     width: Float = 2f,
     crossinline block: OUTLINE.() -> Unit = {}
 ): Unit = OUTLINE(
     initialAttributes = attributesMapOf(
-        "color", color.asArgbColor(),
+        "color", color.xmlValue(),
         "width", width.takeUnless { it == 2f }?.toString(),
     ),
     consumer = consumer

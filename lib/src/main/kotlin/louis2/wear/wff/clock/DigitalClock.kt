@@ -4,9 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
-import louis2.wear.wff.h
-import louis2.wear.wff.w
 
 /**
  * A digital clock is a container for a formatted set of strings that represent the current hours, minutes, and seconds associated with a clock time.
@@ -28,7 +25,7 @@ inline fun SupportsClock.digitalClock(
     scaleX: Float = 1f,
     scaleY: Float = 1f,
     renderMode: RenderMode = RenderMode.SOURCE,
-    tintColor: UInt? = null,
+    tintColor: Color? = null,
     crossinline block: DIGITALCLOCK.() -> Unit
 ): Unit = DIGITALCLOCK(
     initialAttributes = attributesMapOf(
@@ -43,7 +40,7 @@ inline fun SupportsClock.digitalClock(
         "scaleX", scaleX.takeUnless { it == 1f }?.toString(),
         "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
         "renderMode", renderMode.xmlValue(),
-        "tintColor", tintColor?.asArgbColor(),
+        "tintColor", tintColor?.xmlValue(),
     ),
     consumer = consumer
 ).visit(block)

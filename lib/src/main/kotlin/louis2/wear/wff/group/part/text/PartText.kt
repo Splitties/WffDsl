@@ -4,7 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * Represents the part of a watch face that contains exactly one text layout element.
@@ -27,7 +26,7 @@ inline fun SupportsPart.partText(
     scaleX: Float = 1f,
     scaleY: Float = 1f,
     renderMode: RenderMode = RenderMode.SOURCE,
-    tintColor: UInt? = null,
+    tintColor: Color? = null,
     crossinline block: PARTTEXT.() -> Unit = {}
 ): Unit = PARTTEXT(
     initialAttributes = attributesMapOf(
@@ -43,7 +42,7 @@ inline fun SupportsPart.partText(
         "scaleX", scaleX.takeUnless { it == 1f }?.toString(),
         "scaleY", scaleY.takeUnless { it == 1f }?.toString(),
         "renderMode", renderMode.xmlValue(),
-        "tintColor", tintColor?.asArgbColor(),
+        "tintColor", tintColor?.xmlValue(),
     ),
     consumer = consumer
 ).visit(block)

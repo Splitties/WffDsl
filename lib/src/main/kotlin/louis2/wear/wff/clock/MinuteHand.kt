@@ -3,8 +3,10 @@ package louis2.wear.wff.clock
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
+import louis2.wear.wff.AnalogHand
+import louis2.wear.wff.Color
+import louis2.wear.wff.WffTagMarker
+import louis2.wear.wff.XMLTag
 
 /**
  * A minute hand is a clock hand that rotates around a watch face once every hour.
@@ -23,7 +25,7 @@ inline fun ANALOGCLOCK.minuteHand(
     pivotX: Float = .5f,
     pivotY: Float = .5f,
     alpha: UByte = 0xFFu,
-    tintColor: UInt? = null,
+    tintColor: Color? = null,
     crossinline block: MINUTEHAND.() -> Unit = {}
 ): Unit = MINUTEHAND(
     initialAttributes = attributesMapOf(
@@ -35,7 +37,7 @@ inline fun ANALOGCLOCK.minuteHand(
         "pivotX", pivotX.toString(),
         "pivotY", pivotY.toString(),
         "alpha", alpha.takeUnless { it == 0xFFu.toUByte() }?.toString(),
-        "tintColor", tintColor?.asArgbColor(),
+        "tintColor", tintColor?.xmlValue(),
     ),
     consumer = consumer
 ).visit(block)

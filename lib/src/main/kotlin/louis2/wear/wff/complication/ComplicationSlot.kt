@@ -30,7 +30,7 @@ inline fun SCENE.complicationSlot(
     alpha: UByte = 0xFFu,
     scaleX: Float = 1f,
     scaleY: Float = 1f,
-    tintColor: UInt? = null,
+    tintColor: Color? = null,
     displayName: String? = null,
     screenReaderText: String? = null,
     isCustomizable: Boolean = true,

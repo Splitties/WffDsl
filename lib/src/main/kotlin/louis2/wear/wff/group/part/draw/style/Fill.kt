@@ -4,7 +4,6 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.internal.asArgbColor
 
 /**
  * A fill sets the visual style of the inside of a shape.
@@ -26,10 +25,10 @@ inline fun FillAble.fill(
  */
 @WffTagMarker
 fun FillAble.fill(
-    color: UInt,
+    color: Color,
 ): Unit = FILL(
     initialAttributes = attributesMapOf(
-        "color", color.asArgbColor()
+        "color", color.xmlValue()
     ),
     consumer = consumer
 ).visit {}

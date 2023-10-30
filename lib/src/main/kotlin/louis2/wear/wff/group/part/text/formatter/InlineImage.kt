@@ -3,11 +3,7 @@ package louis2.wear.wff.group.part.text.formatter
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.TextFormatterGroup
-import louis2.wear.wff.SupportsTemplate
-import louis2.wear.wff.WffTagMarker
-import louis2.wear.wff.XMLTag
-import louis2.wear.wff.internal.asArgbColor
+import louis2.wear.wff.*
 
 /**
  * Represents an image that appears within a run of text. The image is treated as text, and not as an Image element.
@@ -27,7 +23,7 @@ fun TextFormatterGroup.inlineImage(
     width: Int,
     height: Int,
     source: String? = null,
-    color: UInt? = null,
+    color: Color = Color.white,
     overlapLeft: Float = 0f,
     overlapRight: Float = 0f,
 ): Unit = INLINEIMAGE(
@@ -36,7 +32,7 @@ fun TextFormatterGroup.inlineImage(
         "width", width.toString(),
         "height", height.toString(),
         "source", source,
-        "color", color?.asArgbColor(),
+        "color", color.takeUnless { it == Color.white }?.xmlValue(),
         "overlapLeft", overlapLeft.takeUnless { it == 0f }?.toString(),
         "overlapRight", overlapRight.takeUnless { it == 0f }?.toString(),
     ),

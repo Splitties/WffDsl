@@ -19,7 +19,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
     clockType(ClockType.DIGITAL)
     metadata("TICK_PER_SECOND", "15")
     previewTime("10:08:32")
-    scene(backgroundColor = 0xFF_000000u) {
+    scene {
         digitalClock {
             comment(" SYNC_TO_DEVICE specifies to respect the device 12/24h setting ")
             comment(" Interactive mode version")
