@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.internal.xmlValue
 
 /**
  * A gradient transitioning between two colors along a line.
@@ -30,7 +31,7 @@ inline fun SupportsGradients.linearGradient(
         "startY", startY.toString(),
         "endX", endX.toString(),
         "endY", endY.toString(),
-        "colors", colors.asGradientColors(),
+        "colors", colors.xmlValue(),
         "positions", positions.asGradientPositions(colors)
     ),
     consumer = consumer

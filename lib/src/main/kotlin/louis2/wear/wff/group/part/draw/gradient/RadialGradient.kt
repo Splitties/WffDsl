@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.internal.xmlValue
 
 /**
  * A gradient transitioning between two colors radiating from a central origin point.
@@ -28,7 +29,7 @@ inline fun SupportsGradients.radialGradient(
         "centerX", centerX.toString(),
         "centerY", centerY.toString(),
         "radius", radius.toString(),
-        "colors", colors.asGradientColors(),
+        "colors", colors.xmlValue(),
         "positions", positions.asGradientPositions(colors),
     ),
     consumer = consumer

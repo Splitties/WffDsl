@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.internal.xmlValue
 
 /**
  * A gradient transitioning between two colors between a start and end angle.
@@ -34,7 +35,7 @@ inline fun SupportsGradients.sweepGradient(
         "centerY", centerY.toString(),
         "startAngle", startAngle.toString(),
         "endAngle", endAngle.toString(),
-        "colors", colors.asGradientColors(),
+        "colors", colors.xmlValue(),
         "positions", positions.asGradientPositions(colors),
         "direction", direction.xmlValue()
     ),

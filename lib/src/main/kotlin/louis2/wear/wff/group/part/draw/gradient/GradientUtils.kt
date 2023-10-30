@@ -13,8 +13,3 @@ internal fun FloatArray?.asGradientPositions(colors: List<Color>): String {
     require(size == colors.size) { "colors and positions must have matching sizes" }
     return joinToString(separator = " ")
 }
-
-@PublishedApi
-internal fun List<Color>.asGradientColors(): String {
-    return joinToString(separator = " ") { it.xmlValue() }
-}
