@@ -3,12 +3,8 @@ package louis2.wear.wff.group.part.text
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
-import louis2.wear.wff.TextFormatterGroup
-import louis2.wear.wff.TextScope
-import louis2.wear.wff.WffTagMarker
-import louis2.wear.wff.XMLTag
+import louis2.wear.wff.*
 import louis2.wear.wff.clock.TIMETEXT
-import louis2.wear.wff.internal.asArgbColor
 import louis2.wear.wff.BITMAPFONTS.BITMAPFONT as BitmapFont
 
 /**
@@ -26,14 +22,14 @@ import louis2.wear.wff.BITMAPFONTS.BITMAPFONT as BitmapFont
 inline fun TextScope.bitmapFont(
     family: String,
     size: Float,
-    color: UInt? = null,
+    color: Color = Color.white,
     crossinline block: BITMAPFONT.() -> Unit
 ): Unit = BITMAPFONT(
     emptyTag = false,
     initialAttributes = attributesMapOf(
         "family", family,
         "size", size.toString(),
-        "color", color?.asArgbColor(),
+        "color", color.takeUnless { it == Color.white }?.xmlValue(),
     ),
     consumer = consumer
 ).visit(block)
@@ -49,13 +45,13 @@ inline fun TextScope.bitmapFont(
 fun TIMETEXT.bitmapFont(
     family: String,
     size: Float,
-    color: UInt? = null,
+    color: Color = Color.white,
 ): Unit = BITMAPFONT(
     emptyTag = true,
     initialAttributes = attributesMapOf(
         "family", family,
         "size", size.toString(),
-        "color", color?.asArgbColor(),
+        "color", color.takeUnless { it == Color.white }?.xmlValue(),
     ),
     consumer = consumer
 ).visit {}

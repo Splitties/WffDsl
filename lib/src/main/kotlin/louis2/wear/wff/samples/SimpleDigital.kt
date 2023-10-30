@@ -33,7 +33,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
                 ambientVariant("alpha", 0)
                 font(
                     size = 128f,
-                    color = 0xFF_FFFFFFu
+                    color = Color.white
                 )
             }
             comment(" Ambient mode version - thinner weight ")
@@ -48,7 +48,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
                 font(
                     size = 128f,
                     weight = THIN,
-                    color = 0xFF_FFFFFFu
+                    color = Color.white
                 )
             }
         }
@@ -58,7 +58,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
                 text {
                     font(
                         size = 36f,
-                        color = 0xFF_FFFFFFu
+                        color = Color.white
                     ) {
                         template(stringResourceName = "greeting")
                     }

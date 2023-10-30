@@ -18,7 +18,7 @@ import louis2.wear.wff.internal.asArgbColor
 inline fun TextScope.font(
     family: String = "SYNC_TO_DEVICE",
     size: Float,
-    color: UInt? = null,
+    color: Color = Color.white,
     slant: FONT.Slant = FONT.Slant.NORMAL,
     width: FONT.Width = FONT.Width.NORMAL,
     weight: FONT.Weight = FONT.Weight.NORMAL,
@@ -31,7 +31,7 @@ inline fun TextScope.font(
         "slant", slant.xmlValue(),
         "width", width.xmlValue(),
         "weight", weight.xmlValue(),
-        "color", color?.asArgbColor(),
+        "color", color.takeUnless { it == Color.white }?.xmlValue(),
     ),
     consumer = consumer
 ).visit(block)
@@ -47,7 +47,7 @@ inline fun TextScope.font(
 fun TIMETEXT.font(
     family: String = "SYNC_TO_DEVICE",
     size: Float,
-    color: UInt? = null,
+    color: Color = Color.white,
     slant: FONT.Slant = FONT.Slant.NORMAL,
     width: FONT.Width = FONT.Width.NORMAL,
     weight: FONT.Weight = FONT.Weight.NORMAL,
@@ -59,7 +59,7 @@ fun TIMETEXT.font(
         "slant", slant.xmlValue(),
         "width", width.xmlValue(),
         "weight", weight.xmlValue(),
-        "color", color?.asArgbColor(),
+        "color", color.takeUnless { it == Color.white }?.xmlValue(),
     ),
     consumer = consumer
 ).visit {}
