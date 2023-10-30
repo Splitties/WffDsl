@@ -24,10 +24,7 @@ import louis2.wear.wff.group.part.text.font
 import louis2.wear.wff.group.part.text.formatter.template
 import louis2.wear.wff.group.part.text.partText
 import louis2.wear.wff.group.part.text.text
-import louis2.wear.wff.userConfiguration.booleanConfiguration
-import louis2.wear.wff.userConfiguration.listConfiguration
-import louis2.wear.wff.userConfiguration.listOption
-import louis2.wear.wff.userConfiguration.userConfigurations
+import louis2.wear.wff.userConfiguration.*
 import kotlin.math.PI
 
 internal class Library {
@@ -89,8 +86,36 @@ internal fun <T> sampleWatchFace(
                 displayName = "Third option"
             )
         }
+        colorConfiguration(
+            id = "bg",
+            displayName = "Some color choices",
+            defaultValue = "red&yellow"
+        ) {
+            colorOption(
+                id = "dark_blue",
+                color = Color.rgb(0x00_00_03)
+            )
+            colorOption(
+                id = "black",
+                color = Color.black
+            )
+        }
+        colorConfiguration(
+            id = "some_color_set",
+            displayName = "Some color choices",
+            defaultValue = "red&yellow"
+        ) {
+            colorOption(
+                id = "red&yellow",
+                colors = listOf(Color.rgb(0xFF0000), Color.rgb(0xFFFF00))
+            )
+            colorOption(
+                id = "blue&yellow",
+                colors = listOf(Color.rgb(0x0000FF), Color.rgb(0xFFFF00))
+            )
+        }
     }
-    scene(backgroundColor = Color.rgb(0x00_00_03)) {
+    scene(backgroundColor = Color.configurable(id = "bg", index = 0)) {
         val supportedTypes = listOf(ComplicationType.SHORT_TEXT, ComplicationType.RANGED_VALUE, ComplicationType.MONOCHROMATIC_IMAGE)
         complicationSlot(
             slotId = 0,
