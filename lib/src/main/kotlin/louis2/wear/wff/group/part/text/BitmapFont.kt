@@ -16,7 +16,7 @@ import louis2.wear.wff.BITMAPFONTS.BITMAPFONT as BitmapFont
  *
  * Introduced in Wear OS 4.
  *
- * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/font)
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/bitmap-font)
  *
  * @param family A string representing the name of the bitmap character set.
  * This name should match the name given to a standalone [BitmapFont] element
