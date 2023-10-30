@@ -19,6 +19,8 @@ import louis2.wear.wff.group.part.draw.partDraw
 import louis2.wear.wff.group.part.draw.shape.arc
 import louis2.wear.wff.group.part.draw.style.stroke
 import louis2.wear.wff.group.part.image.image
+import louis2.wear.wff.group.part.image.imageFilter.hsbFilter
+import louis2.wear.wff.group.part.image.imageFilter.imageFilters
 import louis2.wear.wff.group.part.image.partImage
 import louis2.wear.wff.group.part.text.font
 import louis2.wear.wff.group.part.text.formatter.template
@@ -133,7 +135,10 @@ internal fun <T> sampleWatchFace(
                 }
             }
             complication(ComplicationType.RANGED_VALUE) {
-                partImage { image(resource = COMPLICATION.MONOCHROMATIC_IMAGE) }
+                partImage {
+                    image(resource = COMPLICATION.MONOCHROMATIC_IMAGE)
+                    imageFilters { hsbFilter(hueRotate = 120f) }
+                }
                 partText { text { font(size = 30f) { template(text = COMPLICATION.TEXT) } } }
                 partDraw {
                     arc(
@@ -163,7 +168,7 @@ internal fun <T> sampleWatchFace(
                 }
             }
         }
-        condition { default { condition {  } } }
+        condition { default { condition { } } }
         booleanConfiguration(id = "something") {
             booleanOption(value = true) {
                 group {
