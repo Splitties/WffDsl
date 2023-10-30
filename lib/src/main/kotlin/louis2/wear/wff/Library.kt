@@ -154,6 +154,10 @@ internal fun <T> sampleWatchFace(
             }
         }
         group(id = "g1") {
+            partText {
+                launch(target = LAUNCH.ALARM)
+                text { font(size = 20f) { template(text = "See alarms") } }
+            }
             condition {
                 expressions {
                     expression("alwaysTrue", "true")
