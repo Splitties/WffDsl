@@ -32,7 +32,7 @@ fun COMPLICATIONSLOT.boundingBox(
         "y", y.toString(),
         "width", width.toString(),
         "height", height.toString(),
-        "outlinePadding", outlinePadding.takeUnless { it == 0f }.toString()
+        "outlinePadding", outlinePadding.takeUnless { it == 0f }?.toString()
     ),
     consumer = consumer,
 ).visit {}

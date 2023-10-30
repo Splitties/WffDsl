@@ -33,8 +33,8 @@ fun COMPLICATIONSLOT.boundingRoundBox(
         "y", y.toString(),
         "width", width.toString(),
         "height", height.toString(),
-        "cornerRadius", cornerRadius.takeUnless { it == 0f }.toString(),
-        "outlinePadding", outlinePadding.takeUnless { it == 0f }.toString()
+        "cornerRadius", cornerRadius.takeUnless { it == 0f }?.toString(),
+        "outlinePadding", outlinePadding.takeUnless { it == 0f }?.toString()
     ),
     consumer = consumer,
 ).visit {}

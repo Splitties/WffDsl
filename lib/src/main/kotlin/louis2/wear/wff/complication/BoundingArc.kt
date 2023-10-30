@@ -44,7 +44,7 @@ fun COMPLICATIONSLOT.boundingArc(
         "endAngle", endAngle.toString(),
         "isRoundEdge", isRoundEdge.takeIf { it }.toString().uppercase(),
         "direction", direction.xmlValue(),
-        "outlinePadding", outlinePadding.takeUnless { it == 0f }.toString()
+        "outlinePadding", outlinePadding.takeUnless { it == 0f }?.toString()
     ),
     consumer = consumer,
 ).visit {}
