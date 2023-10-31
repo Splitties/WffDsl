@@ -24,6 +24,8 @@ data object ArithmeticExpressionScope {
     val Float.l get() = Exp.Float { this.toString() }
     val Double.l get() = Exp.Float { this.toString() }
 
+    fun Exp.Int.asFloat() = Exp.Float { toString() }
+
     fun round(input: Exp.Float) = Exp.Int { "round($input)" }
     fun floor(input: Exp.Float) = Exp.Float { "floor($input)" }
     fun ceil(input: Exp.Float) = Exp.Float { "ceil($input)" }
@@ -53,6 +55,40 @@ data object ArithmeticExpressionScope {
 
     fun rand(from: Exp.Float, to: Exp.Float) = Exp.Float { "rand($from, $to)" }
     fun rand(from: Exp.Int, to: Exp.Int) = Exp.Int { "rand($from, $to)" }
+
+    fun log(input: Exp.Float) = Exp.Float { "log($input)" }
+    fun log2(input: Exp.Float) = Exp.Float { "log2($input)" }
+    fun log10(input: Exp.Float) = Exp.Float { "log10($input)" }
+
+    fun sqrt(input: Exp.Float) = Exp.Float { "sqrt($input)" }
+    fun sqrt(input: Exp.Int) = Exp.Float { "sqrt($input)" }
+    fun cbrt(input: Exp.Float) = Exp.Float { "cbrt($input)" }
+    fun cbrt(input: Exp.Int) = Exp.Float { "cbrt($input)" }
+
+    fun exp(input: Exp.Float) = Exp.Float { "exp($input)" }
+    fun exp(input: Exp.Int) = Exp.Float { "exp($input)" }
+    fun expm1(input: Exp.Float) = Exp.Float { "expm1($input)" }
+    fun expm1(input: Exp.Int) = Exp.Float { "expm1($input)" }
+
+    fun deg(input: Exp.Float) = Exp.Float { "deg($input)" }
+    fun rad(input: Exp.Float) = Exp.Float { "rad($input)" }
+    fun rad(input: Exp.Int) = Exp.Float { "rad($input)" }
+
+    // ^ 1/3 (number literal + expression)
+    fun Float.pow(x: Exp.Float) = Exp.Float { "pow($this, $x)" }
+    fun Int.pow(x: Exp.Float) = Exp.Float { "pow($this, $x)" }
+    fun Float.pow(x: Exp.Int) = Exp.Float { "pow($this, $x)" }
+    fun Int.pow(x: Exp.Int) = Exp.Float { "pow($this, $x)" }
+    // ^ 2/3 (expression + number literal)
+    fun Exp.Float.pow(x: Float) = Exp.Float { "pow($this, $x)" }
+    fun Exp.Int.pow(x: Float) = Exp.Float { "pow($this, $x)" }
+    fun Exp.Float.pow(x: Int) = Exp.Float { "pow($this, $x)" }
+    fun Exp.Int.pow(x: Int) = Exp.Float { "pow($this, $x)" }
+    // ^ 3/3 (expression + expression)
+    fun Exp.Float.pow(x: Exp.Float) = Exp.Float { "pow($this, $x)" }
+    fun Exp.Int.pow(x: Exp.Float) = Exp.Float { "pow($this, $x)" }
+    fun Exp.Float.pow(x: Exp.Int) = Exp.Float { "pow($this, $x)" }
+    fun Exp.Int.pow(x: Exp.Int) = Exp.Float { "pow($this, $x)" }
 
     // + 1/3 (number literal + expression)
     operator fun Float.plus(other: Exp.Float) = Exp.Float { "$this + $other" }
