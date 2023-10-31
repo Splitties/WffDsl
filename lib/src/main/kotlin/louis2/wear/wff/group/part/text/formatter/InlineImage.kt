@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.common.attributes.ArithmeticExpression
 
 /**
  * Represents an image that appears within a run of text. The image is treated as text, and not as an Image element.
@@ -22,7 +23,7 @@ fun TextFormatterGroup.inlineImage(
     resource: String,
     width: Int,
     height: Int,
-    source: String? = null,
+    source: ArithmeticExpression.String? = null,
     color: Color = Color.white,
     overlapLeft: Float = 0f,
     overlapRight: Float = 0f,
@@ -31,7 +32,7 @@ fun TextFormatterGroup.inlineImage(
         "resource", resource,
         "width", width.toString(),
         "height", height.toString(),
-        "source", source,
+        "source", source?.toString(),
         "color", color.takeUnless { it == Color.white }?.xmlValue(),
         "overlapLeft", overlapLeft.takeUnless { it == 0f }?.toString(),
         "overlapRight", overlapRight.takeUnless { it == 0f }?.toString(),

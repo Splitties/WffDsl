@@ -3,12 +3,36 @@
  */
 package louis2.wear.wff
 
+import louis2.wear.wff.common.attributes.ArithmeticExpression
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class LibraryTest {
     @Test fun someLibraryMethodReturnsTrue() {
         val classUnderTest = Library()
         assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'")
+    }
+
+    @Test
+    fun testArithmeticExpressions() {
+        val oneInt = ArithmeticExpression.Int { "1" }
+        val oneFloat = ArithmeticExpression.Float { "1.0" }
+        ArithmeticExpression { oneInt + oneInt } shouldPrint "1 + 1"
+        ArithmeticExpression { 5.l + 7.l } shouldPrint "5 + 7"
+        ArithmeticExpression { round(5.5f.l) + 7 } shouldPrint "round(5.5) + 7"
+        ArithmeticExpression { round(5.5f.l) + 7f } shouldPrint "round(5.5) + 7.0"
+        ArithmeticExpression { 5f.l + round(7f.l) } shouldPrint "5.0 + round(7.0)"
+        ArithmeticExpression { 5f + round(7f.l) } shouldPrint "5.0 + round(7.0)"
+        ArithmeticExpression { 5 + round(7f.l) } shouldPrint "5 + round(7.0)"
+        ArithmeticExpression { 1 `|` 0.l } shouldPrint "1 | 0"
+        ArithmeticExpression { 1.l `==` 0.l } shouldPrint "1 == 0"
+        ArithmeticExpression { p(1.l `==` 0.l) `||` p(2.l `==` 3.l) } shouldPrint "(1 == 0) || (2 == 3)"
+        ArithmeticExpression { 1.l lt 0 } shouldPrint "1 < 0"
+        ArithmeticExpression { 1.l gte 0 } shouldPrint "1 >= 0"
+    }
+
+    private infix fun ArithmeticExpression.shouldPrint(expected: String) {
+        assertEquals(expected = expected, actual = toString())
     }
 }
