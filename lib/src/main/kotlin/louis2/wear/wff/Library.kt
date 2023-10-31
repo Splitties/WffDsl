@@ -189,9 +189,7 @@ internal fun <T> sampleWatchFace(
                 text { font(size = 20f) { template(text = "See alarms") } }
             }
             condition {
-                expressions {
-                    expression("alwaysTrue", "true")
-                }
+                expressions { expression("alwaysTrue") { 0 `==` 0.l } }
                 compare("alwaysTrue") {
                     group { }
                 }

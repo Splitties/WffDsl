@@ -4,6 +4,8 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.common.attributes.ArithmeticExpression
+import louis2.wear.wff.common.attributes.ArithmeticExpressionScope
 
 /**
  * Provides comparison logic for conditionally enabling the appearance, animation, and event handling of child elements.
@@ -25,11 +27,17 @@ inline fun CONDITION.expressions(
 @WffTagMarker
 fun CONDITION.EXPRESSIONS.expression(
     name: String,
-    arithmeticExpression: String
+    arithmeticExpression: ArithmeticExpressionScope.() -> ArithmeticExpression.Boolean
+) = expression(name, ArithmeticExpression(arithmeticExpression))
+
+@WffTagMarker
+fun CONDITION.EXPRESSIONS.expression(
+    name: String,
+    arithmeticExpression: ArithmeticExpression.Boolean
 ): Unit = CONDITION.EXPRESSION(
     initialAttributes = attributesMapOf("name", name),
     consumer = consumer
-).visit { +arithmeticExpression }
+).visit { +arithmeticExpression.toString() }
 
 
 @WffTagMarker
