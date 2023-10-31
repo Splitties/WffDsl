@@ -49,8 +49,32 @@ data object ArithmeticExpressionScope {
 
     fun clamp(
         value: Exp.Float,
+        min: Float,
+        max: Float
+    ) = Exp.Float { "clamp($value, $min, $max)" }
+
+    fun clamp(
+        value: Exp.Float,
+        min: Int,
+        max: Int
+    ) = Exp.Float { "clamp($value, $min, $max)" }
+
+    fun clamp(
+        value: Exp.Int,
+        min: Int,
+        max: Int
+    ) = Exp.Int { "clamp($value, $min, $max)" }
+
+    fun clamp(
+        value: Exp.Float,
         min: Exp.Float,
         max: Exp.Float
+    ) = Exp.Float { "clamp($value, $min, $max)" }
+
+    fun clamp(
+        value: Exp.Float,
+        min: Exp.Int,
+        max: Exp.Int
     ) = Exp.Float { "clamp($value, $min, $max)" }
 
     fun clamp(
