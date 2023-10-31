@@ -9,6 +9,10 @@ sealed interface ArithmeticExpression {
         inline operator fun <T : ArithmeticExpression> invoke(
             block: ArithmeticExpressionScope.() -> T
         ): T = ArithmeticExpressionScope.block()
+
+        operator fun invoke(constant: kotlin.Int): Int = Int { "$constant" }
+        operator fun invoke(constant: kotlin.Float): Float = Float { "$constant" }
+        operator fun invoke(constant: kotlin.String): String = String { "\"$constant\"" }
     }
 
     override fun toString(): kotlin.String
@@ -23,9 +27,11 @@ data object ArithmeticExpressionScope {
     val Int.l get() = Exp.Int { this.toString() }
     val Float.l get() = Exp.Float { this.toString() }
     val Double.l get() = Exp.Float { this.toString() }
+    val String.l get() = Exp.String { "\"$this\"" }
 
     fun Exp.Int.asFloat() = Exp.Float { toString() }
 
+    fun Exp.Float.roundToInt() = Exp.Int { "round($this)" }
     fun round(input: Exp.Float) = Exp.Int { "round($input)" }
     fun floor(input: Exp.Float) = Exp.Float { "floor($input)" }
     fun ceil(input: Exp.Float) = Exp.Float { "ceil($input)" }
@@ -70,9 +76,42 @@ data object ArithmeticExpressionScope {
     fun expm1(input: Exp.Float) = Exp.Float { "expm1($input)" }
     fun expm1(input: Exp.Int) = Exp.Float { "expm1($input)" }
 
-    fun deg(input: Exp.Float) = Exp.Float { "deg($input)" }
-    fun rad(input: Exp.Float) = Exp.Float { "rad($input)" }
-    fun rad(input: Exp.Int) = Exp.Float { "rad($input)" }
+    fun Exp.Float.toDegrees() = Exp.Float { "deg($this)" }
+    fun Exp.Float.toRadians() = Exp.Float { "rad($this)" }
+    fun Exp.Int.toRadians() = Exp.Float { "rad($this)" }
+
+    fun Exp.Float.format(format: String): ArithmeticExpression.String {
+        checkNumberFormat(format)
+        return Exp.String { "numberFormat(\"$format\", $this)" }
+    }
+
+    fun Exp.Int.format(format: String): ArithmeticExpression.String {
+        checkNumberFormat(format)
+        return Exp.String { "numberFormat(\"$format\", $this)" }
+    }
+
+    private fun checkNumberFormat(format: String) {
+        format.forEachIndexed { index, c ->
+            require(c in "#,.") { "Unexpected character in number format at $index: $c" }
+        }
+    }
+    fun Exp.Float.format(format: Exp.String) = Exp.String { "numberFormat($format, $this)" }
+    fun Exp.Int.format(format: Exp.String) = Exp.String { "numberFormat($format, $this)" }
+
+    fun icuText(dateFormat: String) = Exp.String { "icuText(\"$dateFormat\")" }
+    fun icuText(dateFormat: Exp.String) = Exp.String { "icuText($dateFormat)" }
+    fun icuBestText(dateFormat: String) = Exp.String { "icuBestText(\"$dateFormat\")" }
+    fun icuBestText(dateFormat: Exp.String) = Exp.String { "icuBestText($dateFormat)" }
+
+    fun Exp.String.subText(startIndex: Exp.Int, endIndex: Exp.Int) = Exp.String {
+        "subText($this, $startIndex, $endIndex)"
+    }
+
+    fun Exp.String.subText(startIndex: Int, endIndex: Int) = Exp.String {
+        "subText($this, $startIndex, $endIndex)"
+    }
+
+    val Exp.String.length get() = Exp.Int { "textLength($this)" }
 
     // ^ 1/3 (number literal + expression)
     fun Float.pow(x: Exp.Float) = Exp.Float { "pow($this, $x)" }
