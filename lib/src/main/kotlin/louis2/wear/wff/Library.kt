@@ -91,11 +91,11 @@ internal fun <T> sampleWatchFace(
         colorConfiguration(
             id = "bg",
             displayName = "Some color choices",
-            defaultValue = "red&yellow"
+            defaultValue = "dark_blue"
         ) {
             colorOption(
                 id = "dark_blue",
-                color = Color.rgb(0x00_00_03)
+                color = Color.rgb(0x00_00_50)
             )
             colorOption(
                 id = "black",
@@ -117,7 +117,7 @@ internal fun <T> sampleWatchFace(
             )
         }
     }
-    scene(backgroundColor = Color.configurable(id = "bg", index = 0)) {
+    scene(backgroundColor = Color.configurable(id = "bg")) {
         val supportedTypes = listOf(ComplicationType.SHORT_TEXT, ComplicationType.RANGED_VALUE, ComplicationType.MONOCHROMATIC_IMAGE)
         complicationSlot(
             slotId = 0,
@@ -222,8 +222,6 @@ internal fun <T> sampleWatchFace(
                 }
             }
         }
-        //TODO: Add ListConfiguration
-        //TODO: Add ComplicationSlot
     }
 }
 

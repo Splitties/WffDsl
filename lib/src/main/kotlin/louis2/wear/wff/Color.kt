@@ -4,7 +4,7 @@ sealed class Color private constructor() {
     companion object {
         fun argb(bits: UInt): Color = Argb(bits)
         fun rgb(bits: Int): Color = Rgb(bits)
-        fun configurable(id: String, index: Int): Color = Configurable(id = id, index = index)
+        fun configurable(id: String, index: Int? = null): Color = Configurable(id = id, index = index)
 
         val white = rgb(0xFF_FF_FF)
         val black = rgb(0x0)
@@ -29,8 +29,11 @@ sealed class Color private constructor() {
 
     private class Configurable(
         private val id: String,
-        private val index: Int
+        private val index: Int?
     ) : Color() {
-        override fun xmlValue(): String = "[CONFIGURATION.$id.$index]"
+        override fun xmlValue() = when (index) {
+            null -> "[CONFIGURATION.$id]"
+            else -> "[CONFIGURATION.$id.$index]"
+        }
     }
 }
