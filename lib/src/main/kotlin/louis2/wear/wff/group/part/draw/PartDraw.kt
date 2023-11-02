@@ -53,7 +53,7 @@ class PARTDRAW(
     initialAttributes: Map<String, String>,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
-    tagName = "PartText",
+    tagName = "PartDraw",
     consumer = consumer,
     initialAttributes = initialAttributes,
     namespace = null,
