@@ -49,5 +49,5 @@ class INLINEIMAGE(
     initialAttributes = initialAttributes,
     namespace = null,
     inlineTag = false,
-    emptyTag = false
-), SupportsTemplate
+    emptyTag = true
+)
