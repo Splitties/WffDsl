@@ -9,11 +9,11 @@ import louis2.wear.wff.WffTagMarker
 import louis2.wear.wff.XMLTag
 
 /**
- * A minute hand is a clock hand that rotates around a watch face once every hour.
+ * A second hand is a clock hand that rotates around a watch face once every minute.
  *
  * Introduced in Wear OS 4.
  *
- * [AndroidX doc](https://developer.android.com/training/wearables/wff/clock/minute-hand)
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/clock/second-hand)
  */
 @WffTagMarker
 inline fun ANALOGCLOCK.secondHand(
