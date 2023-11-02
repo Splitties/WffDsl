@@ -21,7 +21,7 @@ sealed class Color private constructor() {
             val r: String = bits.getByte(position = 2).toString(radix = 16).padStart(length = 2, padChar = '0')
             val g: String = bits.getByte(position = 1).toString(radix = 16).padStart(length = 2, padChar = '0')
             val b: String = bits.getByte(position = 0).toString(radix = 16).padStart(length = 2, padChar = '0')
-            return "#ff$r$g$b"
+            return "#$r$g$b"
         }
 
         fun Int.getByte(position: Int): UByte = (this shr position * 8).toUByte()
