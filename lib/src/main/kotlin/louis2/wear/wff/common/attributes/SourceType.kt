@@ -319,5 +319,14 @@ object SourceType {
         /** A floating-point value that indicates the temperature of the Wear OS device's battery, in degrees Fahrenheit. This is a conversion from degrees Celsius. */
         val BATTERY_TEMPERATURE_FAHRENHEIT = Exp.Float { "[BATTERY_TEMPERATURE_FAHRENHEIT]" }
     }
-    //TODO: Add Notifications
+
+    /**
+     * ## Notifications
+     *
+     * The Watch Face Format supports data source related to the device's notifications.
+     */
+    object Notifications {
+        /** A string that represents the number of notifications delivered to this Wear OS device that the user hasn't yet read. */
+        val UNREAD_NOTIFICATION_COUNT = Exp.String { "[UNREAD_NOTIFICATION_COUNT]" }
+    }
 }
