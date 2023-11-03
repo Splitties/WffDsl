@@ -3,6 +3,13 @@ package louis2.wear.wff.common.attributes
 import louis2.wear.wff.common.attributes.ArithmeticExpression
 import louis2.wear.wff.common.attributes.ArithmeticExpression as Exp
 
+/**
+ * A collection of arithmetic functions and operations, which other Watch Face Format elements use to resolve real-time attribute values and gyroscopic effects.
+ *
+ * Introduced in Wear OS 4.
+ *
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/attributes/arithmetic-expression)
+ */
 sealed interface ArithmeticExpression {
 
     companion object {
