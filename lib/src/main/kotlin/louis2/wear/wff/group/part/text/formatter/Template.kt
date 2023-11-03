@@ -6,6 +6,7 @@ import kotlinx.html.visit
 import louis2.wear.wff.SupportsTemplate
 import louis2.wear.wff.WffTagMarker
 import louis2.wear.wff.XMLTag
+import louis2.wear.wff.common.attributes.ArithmeticExpression
 
 /**
  * Allows watch face developers to specify a string format, such as %s %d. The string format is very similar to printf() in the C programming language or String.format() in the Java programming language.
@@ -67,9 +68,9 @@ inline fun SupportsTemplate.template(
 
 @WffTagMarker
 fun TEMPLATE.parameter(
-    expression: String
+    expression: ArithmeticExpression.String
 ): Unit = TEMPLATE.PARAMETER(
-    initialAttributes = attributesMapOf("expression", expression),
+    initialAttributes = attributesMapOf("expression", expression.toString()),
     consumer = consumer
 ).visit {}
 
