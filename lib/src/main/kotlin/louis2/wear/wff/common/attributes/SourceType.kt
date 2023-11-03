@@ -298,6 +298,26 @@ object SourceType {
         val ACCELEROMETER_ANGLE_XY = Exp.Float { "[ACCELEROMETER_ANGLE_XY]" }
     }
 
-    //TODO: Add Battery
+    /**
+     * ## Device battery
+     *
+     * The Watch Face Format supports data sources related to the device's current battery status.
+     */
+    object Battery {
+        /** An integer that indicates the Wear OS device's current battery charge, expressed as a percentage. A value of `100` indicates that the battery is full; a value of `0` indicates that the battery is critically low. */
+        val BATTERY_PERCENT = Exp.Int { "[BATTERY_PERCENT]" }
+
+        /** A boolean that indicates whether the Wear OS device's battery is charging. If the battery is done charging and full, this value is `true`. */
+        val BATTERY_CHARGING_STATUS = Exp.Boolean { "[BATTERY_CHARGING_STATUS]" }
+
+        /** A boolean that indicates whether the Wear OS device's battery is at 20% or lower and is discharging. If the battery is charging, this value is `false`. */
+        val BATTERY_IS_LOW = Exp.Boolean { "[BATTERY_IS_LOW]" }
+
+        /** A floating-point value that indicates the temperature of the Wear OS device's battery, in degrees Celsius. The battery's raw temperature value, in tenths of a degree Celsius, is divided by 10 to get this value. */
+        val BATTERY_TEMPERATURE_CELSIUS = Exp.Float { "[BATTERY_TEMPERATURE_CELSIUS]" }
+
+        /** A floating-point value that indicates the temperature of the Wear OS device's battery, in degrees Fahrenheit. This is a conversion from degrees Celsius. */
+        val BATTERY_TEMPERATURE_FAHRENHEIT = Exp.Float { "[BATTERY_TEMPERATURE_FAHRENHEIT]" }
+    }
     //TODO: Add Notifications
 }
