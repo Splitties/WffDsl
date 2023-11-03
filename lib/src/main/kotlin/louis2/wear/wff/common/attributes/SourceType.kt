@@ -234,7 +234,7 @@ object SourceType {
     /**
      * ## Language
      *
-     * The Watch Face Format supports the following data sources related to the user's language:
+     * The Watch Face Format supports data sources related to the user's language.
      */
     object Language {
         /** A string that represents the Wear OS device's current locale, expressed as a 2-character [ISO 639-1 language code](https://en.wikipedia.org/wiki/ISO_639-1), an underscore, and a 2-character [ISO 3166-1 region code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). The United States variant of English is represented as `en_US`. */
