@@ -89,19 +89,19 @@ object SourceType {
          * The 12-hour component of the current time, represented as a value between 1 and 12 inclusive.
          * If the current HOUR_OF_DAY is 0, such as in 0:12 (12:12 AM), this value is converted to 12.
          */
-        val HOUR_0_12 = Exp.Int { "[HOUR_0_12]" }
+        val HOUR_1_12 = Exp.Int { "[HOUR_1_12]" }
 
         /**
          * A string that represents the 12-hour component of the current time -- from 01 to 12 inclusive --
          * using the Wear OS device's current time zone. If this value is less than 10, it includes a leading zero.
          */
-        val HOUR_0_12_Z = Exp.String { "[HOUR_0_12_Z]" }
+        val HOUR_1_12_Z = Exp.String { "[HOUR_1_12_Z]" }
 
         /**
          * A floating-point value the combines the CLOCK_HOUR_OF_AMPM and minute fields of a ZonedDateTime object that
          * represents the current time. This value is always between 1.0 and 12+59/60, inclusive.
          */
-        val HOUR_0_12_MINUTE = Exp.Float { "[HOUR_0_12_MINUTE]" }
+        val HOUR_1_12_MINUTE = Exp.Float { "[HOUR_1_12_MINUTE]" }
 
         /**
          * The 24-hour component of the current time, represented as a value between 0 and 23 inclusive.
