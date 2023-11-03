@@ -334,6 +334,67 @@ data object ArithmeticExpressionScope {
     infix fun Exp.Float.gte(other: Exp.Int) = Exp.Boolean { "$this >= $other" }
     infix fun Exp.Int.gte(other: Exp.Int) = Exp.Boolean { "$this >= $other" }
 
+    // c ? a : b 1/3 (expression + literal + literal)
+    fun ternary(condition: Exp.Boolean, ifTrue: Float, ifFalse: Float) = Exp.Float {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Int, ifFalse: Float) = Exp.Float {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Float, ifFalse: Int) = Exp.Float {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Int, ifFalse: Int) = Exp.Int {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: String, ifFalse: String) = Exp.String {
+        "$condition ? \"$ifTrue\" : \"$ifFalse\""
+    }
+    // c ? a : b 2/3 (expression + literal + expression)
+    fun ternary(condition: Exp.Boolean, ifTrue: Float, ifFalse: Exp.Float) = Exp.Float {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Int, ifFalse: Exp.Float) = Exp.Float {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Float, ifFalse: Exp.Int) = Exp.Float {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Int, ifFalse: Exp.Int) = Exp.Int {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: String, ifFalse: Exp.String) = Exp.String {
+        "$condition ? \"$ifTrue\" : $ifFalse"
+    }
+    // c ? a : b 3/3 (expression + expression + literal)
+    fun ternary(condition: Exp.Boolean, ifTrue: Exp.Float, ifFalse: Float) = Exp.Float {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Exp.Int, ifFalse: Float) = Exp.Float {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Exp.Float, ifFalse: Int) = Exp.Float {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Exp.Int, ifFalse: Int) = Exp.Int {
+        "$condition ? $ifTrue : $ifFalse"
+    }
+
+    fun ternary(condition: Exp.Boolean, ifTrue: Exp.String, ifFalse: String) = Exp.String {
+        "$condition ? $ifTrue : \"$ifFalse\""
+    }
+    // c ? a : b 4/3 (expression + expression + expression)
     fun ternary(condition: Exp.Boolean, ifTrue: Exp.Float, ifFalse: Exp.Float) = Exp.Float {
         "$condition ? $ifTrue : $ifFalse"
     }

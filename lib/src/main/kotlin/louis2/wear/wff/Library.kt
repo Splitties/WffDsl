@@ -10,6 +10,7 @@ import kotlinx.html.stream.createHTML
 import louis2.wear.wff.clock.*
 import louis2.wear.wff.common.*
 import louis2.wear.wff.common.attributes.ArithmeticExpression
+import louis2.wear.wff.common.transform.animation
 import louis2.wear.wff.common.transform.transform
 import louis2.wear.wff.common.variant.ambientVariant
 import louis2.wear.wff.complication.*
@@ -129,7 +130,9 @@ internal fun <T> sampleWatchFace(
             defaultProviderPolicy(defaultSystemProvider = SystemProvider.WATCH_BATTERY, ComplicationType.RANGED_VALUE)
             complication(ComplicationType.SHORT_TEXT) {
                 partText {
-                    transform(attrs.x, { ternary(0.l `==` 0, 0.l, 1.l) })
+                    transform(attrs.x, { ternary(0.l `==` 0, 1, 2) }) {
+                        animation(duration = 0.2f)
+                    }
                     transform(attrs.y, ArithmeticExpression { ternary(0.l `==` 0, 0.l, 1.l) })
                     text {
                         font(size = 30f) {
