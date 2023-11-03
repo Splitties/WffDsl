@@ -200,7 +200,7 @@ object SourceType {
      */
     object MoonPhase {
         /** An integer value indicating the number of days that have started since the most recent new moon. This value is always between `0` and `28`, inclusive. */
-        val MOON_PHASE_POSITION = Exp.String { "[MOON_PHASE_POSITION]" }
+        val MOON_PHASE_POSITION = Exp.Int { "[MOON_PHASE_POSITION]" }
 
         /**
          * An integer that encodes the current moon phase. Possible values include the following:
@@ -214,7 +214,7 @@ object SourceType {
          * *   `6` for a last-quarter moon
          * *   `7` for a morning crescent moon
          */
-        val MOON_PHASE_TYPE = Exp.String { "[MOON_PHASE_TYPE]" }
+        val MOON_PHASE_TYPE = Exp.Int { "[MOON_PHASE_TYPE]" }
 
         /**
          * A string that represents the current moon phase. Possible values include the following:
