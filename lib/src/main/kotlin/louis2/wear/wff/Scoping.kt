@@ -40,7 +40,9 @@ interface TextDecorationGroup : Tag
 
 interface SupportsTemplate : Tag
 
-interface Transformable : Tag
+interface Transformable : Tag {
+    val attrs: AttrsHost
+}
 
 interface SupportsLaunch : Tag
 

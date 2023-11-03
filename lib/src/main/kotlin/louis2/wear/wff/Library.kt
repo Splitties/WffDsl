@@ -129,6 +129,8 @@ internal fun <T> sampleWatchFace(
             defaultProviderPolicy(defaultSystemProvider = SystemProvider.WATCH_BATTERY, ComplicationType.RANGED_VALUE)
             complication(ComplicationType.SHORT_TEXT) {
                 partText {
+                    transform(attrs.x, { ternary(0.l `==` 0, 0.l, 1.l) })
+                    transform(attrs.y, ArithmeticExpression { ternary(0.l `==` 0, 0.l, 1.l) })
                     text {
                         font(size = 30f) {
                             template(text = "Salut")
@@ -151,6 +153,7 @@ internal fun <T> sampleWatchFace(
                         startAngle = 0f,
                         endAngle = 0f
                     ) {
+                        transform(attrs.startAngle, expression = { ternary(0.l `==` 0, 0f.l, 1.l) })
                         val circumference = this.width * PI
                         val dashesCount = 12
                         val dashMaxSpace = (circumference / dashesCount).toFloat()
