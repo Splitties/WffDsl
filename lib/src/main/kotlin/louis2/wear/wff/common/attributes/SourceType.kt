@@ -193,7 +193,43 @@ object SourceType {
         val AMPM_STRING = Exp.String { "[AMPM_STRING]" }
     }
 
-    //TODO: Add MoonPhase
+    /**
+     * ## Moon phase
+     *
+     * The Watch Face Format supports data sources related to the moon phase.
+     */
+    object MoonPhase {
+        /** An integer value indicating the number of days that have started since the most recent new moon. This value is always between `0` and `28`, inclusive. */
+        val MOON_PHASE_POSITION = Exp.String { "[MOON_PHASE_POSITION]" }
+
+        /**
+         * An integer that encodes the current moon phase. Possible values include the following:
+         *
+         * *   `0` for the most recent new moon
+         * *   `1` for an evening crescent moon
+         * *   `2` for a first-quarter moon
+         * *   `3` for a waxing gibbous moon
+         * *   `4` for a full moon
+         * *   `5` for a waning gibbous moon
+         * *   `6` for a last-quarter moon
+         * *   `7` for a morning crescent moon
+         */
+        val MOON_PHASE_TYPE = Exp.String { "[MOON_PHASE_TYPE]" }
+
+        /**
+         * A string that represents the current moon phase. Possible values include the following:
+         *
+         * *   **New Moon**, when less than 0.5 day has elapsed, or more than 27.5 days have elapsed, since the most recent new moon.
+         * *   **Evening Crescent**, when at least 0.5 day but less than 6.5 days have elapsed since the most recent new moon.
+         * *   **First Quarter**, when at least 6.5 days but less than 7.5 days have elapsed since the most recent new moon.
+         * *   **Waxing Gibbous**, when at least 7.5 days but less than 13.5 days have elapsed since the most recent new moon.
+         * *   **Full Moon**, when at least 13.5 days but less than 14.5 days have elapsed since the most recent new moon.
+         * *   **Waning Gibbous**, when at least 14.5 days but less than 20.5 days have elapsed since the most recent new moon.
+         * *   **Last Quarter**, when at least 20.5 days but less than 21.5 days have elapsed since the most recent new moon.
+         * *   **Morning Crescent**, when at least 21.5 days but less than 27.5 days have elapsed since the most recent new moon.
+         */
+        val MOON_PHASE_TYPE_STRING = Exp.String { "[MOON_PHASE_TYPE_STRING]" }
+    }
     //TODO: Add Language
     //TODO: Add HealthData
 
