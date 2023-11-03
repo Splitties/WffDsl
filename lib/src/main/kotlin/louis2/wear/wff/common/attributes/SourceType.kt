@@ -240,7 +240,28 @@ object SourceType {
         /** A string that represents the Wear OS device's current locale, expressed as a 2-character [ISO 639-1 language code](https://en.wikipedia.org/wiki/ISO_639-1), an underscore, and a 2-character [ISO 3166-1 region code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). The United States variant of English is represented as `en_US`. */
         val LANGUAGE_LOCALE_NAME = Exp.String { "[LANGUAGE_LOCALE_NAME]" }
     }
-    //TODO: Add HealthData
+
+    /**
+     * ## Health data
+     *
+     * The Watch Face Format supports data sources related to the user's health data.
+     */
+    object HealthData {
+        /** The number of steps that the user has taken so far today, according to the Wear OS device sensors. */
+        val STEP_COUNT = Exp.Int { "[STEP_COUNT]" }
+
+        /** The number of steps that the user has selected as their daily step goal. This value is never less than `1000`. */
+        val STEP_GOAL = Exp.Int { "[STEP_GOAL]" }
+
+        /** An integer indicating the progress that the user has made toward their step goal today, expressed as a rounded percentage. This value is always between `0` and `100`, inclusive. */
+        val STEP_PERCENT = Exp.Int { "[STEP_PERCENT]" }
+
+        /** The user's current heart rate, according to the Wear OS device sensors. This value is always between `0` and `240`, inclusive. */
+        val HEART_RATE = Exp.Int { "[HEART_RATE]" }
+
+        /** A string that represents the user's current heart rate, according to the Wear OS device sensors. This value is padded with zeros on the left as needed to make the value at least 2 characters long. So if the user's heart rate is measured as 65, this value is `65`. If the user's heart rate is measured as 0, this value is `00`. */
+        val HEART_RATE_Z = Exp.String { "[HEART_RATE_Z]" }
+    }
 
     object Sensors {
         val ACCELEROMETER_IS_SUPPORTED = Exp.Boolean { "[ACCELEROMETER_IS_SUPPORTED]" }
