@@ -2,6 +2,13 @@ package louis2.wear.wff.common.attributes
 
 import louis2.wear.wff.common.attributes.ArithmeticExpression as Exp
 
+/**
+ * The value of a data source, which updates a real-time value that appears on the watch face.
+ *
+ * Introduced in Wear OS 4.
+ *
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/attributes/source-type)
+ */
 object SourceType {
     object Time {
         /**
