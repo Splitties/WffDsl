@@ -139,7 +139,39 @@ object SourceType {
          */
         val HOUR_1_24_MINUTE = Exp.Float { "[HOUR_1_24_MINUTE]" }
 
-        //TODO: Add remaining ones
+        val DAY = Exp.Int { "[DAY]" }
+        val DAY_Z = Exp.String { "[DAY_Z]" }
+        val DAY_HOUR = Exp.Float { "[DAY_HOUR]" }
+        val DAY_0_30 = Exp.Int { "[DAY_0_30]" }
+        val DAY_0_30_HOUR = Exp.Float { "[DAY_0_30_HOUR]" }
+        val DAY_OF_YEAR = Exp.Int { "[DAY_OF_YEAR]" }
+        val DAY_OF_WEEK = Exp.Int { "[DAY_OF_WEEK]" }
+        val DAY_OF_WEEK_F = Exp.String { "[DAY_OF_WEEK_F]" }
+        val DAY_OF_WEEK_S = Exp.String { "[DAY_OF_WEEK_S]" }
+        val MONTH = Exp.Int { "[MONTH]" }
+        val MONTH_Z = Exp.String { "[MONTH_Z]" }
+        val MONTH_F = Exp.String { "[MONTH_F]" }
+        val MONTH_S = Exp.String { "[MONTH_S]" }
+        val DAYS_IN_MONTH = Exp.Int { "[DAYS_IN_MONTH]" }
+        val MONTH_DAY = Exp.Float { "[MONTH_DAY]" }
+        val MONTH_0_11 = Exp.Int { "[MONTH_0_11]" }
+        val MONTH_0_11_DAY = Exp.Float { "[MONTH_0_11_DAY]" }
+        val YEAR = Exp.Int { "[YEAR]" }
+        val YEAR_S = Exp.String { "[YEAR_S]" }
+        val YEAR_MONTH = Exp.Float { "[YEAR_MONTH]" }
+        val YEAR_MONTH_DAY = Exp.Float { "[YEAR_MONTH_DAY]" }
+        val WEEK_IN_MONTH = Exp.Int { "[WEEK_IN_MONTH]" }
+        val WEEK_IN_YEAR = Exp.Int { "[WEEK_IN_YEAR]" }
+        val IS_24_HOUR_MODE = Exp.Boolean { "[IS_24_HOUR_MODE]" }
+        val IS_DAYLIGHT_SAVING_TIME = Exp.Boolean { "[IS_DAYLIGHT_SAVING_TIME]" }
+        val TIMEZONE = Exp.String { "[TIMEZONE]" }
+        val TIMEZONE_ABB = Exp.String { "[TIMEZONE_ABB]" }
+        val TIMEZONE_ID = Exp.String { "[TIMEZONE_ID]" }
+        val TIMEZONE_OFFSET = Exp.String { "[TIMEZONE_OFFSET]" }
+        val TIMEZONE_OFFSET_DST = Exp.String { "[TIMEZONE_OFFSET_DST]" }
+        val AMPM_STATE = Exp.Int { "[AMPM_STATE]" }
+        val AMPM_POSITION = Exp.Int { "[AMPM_POSITION]" }
+        val AMPM_STRING = Exp.String { "[AMPM_STRING]" }
     }
 
     //TODO: Add MoonPhase
