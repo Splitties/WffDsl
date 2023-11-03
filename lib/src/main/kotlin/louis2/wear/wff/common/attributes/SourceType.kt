@@ -230,7 +230,16 @@ object SourceType {
          */
         val MOON_PHASE_TYPE_STRING = Exp.String { "[MOON_PHASE_TYPE_STRING]" }
     }
-    //TODO: Add Language
+
+    /**
+     * ## Language
+     *
+     * The Watch Face Format supports the following data sources related to the user's language:
+     */
+    object Language {
+        /** A string that represents the Wear OS device's current locale, expressed as a 2-character [ISO 639-1 language code](https://en.wikipedia.org/wiki/ISO_639-1), an underscore, and a 2-character [ISO 3166-1 region code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). The United States variant of English is represented as `en_US`. */
+        val LANGUAGE_LOCALE_NAME = Exp.String { "[LANGUAGE_LOCALE_NAME]" }
+    }
     //TODO: Add HealthData
 
     object Sensors {
