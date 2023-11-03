@@ -263,10 +263,39 @@ object SourceType {
         val HEART_RATE_Z = Exp.String { "[HEART_RATE_Z]" }
     }
 
+    /**
+     * ## Device sensors
+     *
+     * The Watch Face Format supports data sources related to the device's sensors.
+     */
     object Sensors {
+        /** Boolean value indicating whether the watch face can obtain accelerometer data from the current Wear OS device's sensors. */
         val ACCELEROMETER_IS_SUPPORTED = Exp.Boolean { "[ACCELEROMETER_IS_SUPPORTED]" }
 
-        //TODO: Add remaining ones
+        /** A floating-point value that indicates the current linear acceleration along the x-axis, according to the Wear OS device's accelerometer. Positive values indicate that, when the watch face is pointing at the sky or ceiling, the Wear OS device is accelerating to the right. */
+        val ACCELEROMETER_X = Exp.Float { "[ACCELEROMETER_X]" }
+
+        /** A floating-point value that indicates the current linear acceleration along the y-axis, according to the Wear OS device's accelerometer. Positive values indicate that, when the watch face is pointing at the sky or ceiling, the Wear OS device is accelerating in the 12 o'clock (top) direction along the watch face. */
+        val ACCELEROMETER_Y = Exp.Float { "[ACCELEROMETER_Y]" }
+
+        /**
+         * A floating-point value that indicates the current linear acceleration along the z-axis, according to the Wear OS device's accelerometer. Positive values indicate that, when the watch face is pointing at the sky or ceiling, the Wear OS device is accelerating toward the sky or ceiling.
+         *
+         * **NOTE:** When the device is at rest, this value is approximately `-9.8` to take gravity into account.
+         */
+        val ACCELEROMETER_Z = Exp.Float { "[ACCELEROMETER_Z]" }
+
+        /** A floating-point value that indicates the current angular acceleration, in degrees, relative to the x-axis. This value is always in the range [[−90.0, 90.0]]. */
+        val ACCELEROMETER_ANGLE_X = Exp.Float { "[ACCELEROMETER_ANGLE_X]" }
+
+        /** A floating-point value that indicates the current angular acceleration, in degrees, relative to the y-axis. This value is always in the range [[−90.0,90.0]]. */
+        val ACCELEROMETER_ANGLE_Y = Exp.Float { "[ACCELEROMETER_ANGLE_Y]" }
+
+        /** A floating-point value that indicates the current angular acceleration, in degrees, relative to the z-axis. This value is always in the range [[−90.0,90.0]]. */
+        val ACCELEROMETER_ANGLE_Z = Exp.Float { "[ACCELEROMETER_ANGLE_Z]" }
+
+        /** A floating-point value that is the sum of `ACCELEROMETER_ANGLE_X` and `ACCELEROMETER_ANGLE_Y`. */
+        val ACCELEROMETER_ANGLE_XY = Exp.Float { "[ACCELEROMETER_ANGLE_XY]" }
     }
 
     //TODO: Add Battery
