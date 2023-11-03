@@ -15,6 +15,20 @@ import louis2.wear.wff.common.attributes.ArithmeticExpression
  */
 @WffTagMarker
 fun SupportsVariants.ambientVariant(
+    target: AttrRef<ArithmeticExpression.Float>,
+    value: Float
+): Unit = variant(
+    mode = "AMBIENT",
+    target = target,
+    value = ArithmeticExpression(value)
+)
+
+/**
+ * @param target The attribute whose value should change when the specified Wear OS device mode takes effect.
+ * @param value The value that the attribute should have when the specified Wear OS device mode takes effect.
+ */
+@WffTagMarker
+fun SupportsVariants.ambientVariant(
     target: AttrRef<ArithmeticExpression.Int>,
     value: Int
 ): Unit = variant(
