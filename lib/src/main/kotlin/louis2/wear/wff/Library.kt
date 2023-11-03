@@ -9,9 +9,10 @@ import kotlinx.html.*
 import kotlinx.html.stream.createHTML
 import louis2.wear.wff.clock.*
 import louis2.wear.wff.common.*
+import louis2.wear.wff.common.attributes.ArithmeticExpression
+import louis2.wear.wff.common.transform.transform
 import louis2.wear.wff.common.variant.ambientVariant
 import louis2.wear.wff.complication.*
-import louis2.wear.wff.samples.simpleDigital
 import louis2.wear.wff.group.configuration.booleanConfiguration
 import louis2.wear.wff.group.configuration.booleanOption
 import louis2.wear.wff.group.part.draw.gradient.sweepGradient
@@ -26,6 +27,7 @@ import louis2.wear.wff.group.part.text.font
 import louis2.wear.wff.group.part.text.formatter.template
 import louis2.wear.wff.group.part.text.partText
 import louis2.wear.wff.group.part.text.text
+import louis2.wear.wff.samples.simpleDigital
 import louis2.wear.wff.userConfiguration.*
 import kotlin.math.PI
 
@@ -190,31 +192,28 @@ internal fun <T> sampleWatchFace(
             }
             condition {
                 expressions { expression("alwaysTrue") { 0 `==` 0.l } }
+                expressions { expression("alwaysTrue", ArithmeticExpression { 0 `==` 0.l }) }
                 compare("alwaysTrue") {
                     group { }
                 }
             }
             group(id = "g2") {}
             analogClock {
-                ambientVariant(
-                    target = "tintColor",
-                    value = "#" + "f".repeat(8)
-                )
                 hourHand(resource = "hands/hour.png") {
                     ambientVariant(
-                        target = "resource",
+                        target = attrs.resource,
                         value = "hands/hour-ambient.png"
                     )
                 }
                 minuteHand(resource = "hands/minute.png") {
                     ambientVariant(
-                        target = "resource",
+                        target = attrs.resource,
                         value = "hands/minute-ambient.png"
                     )
                 }
                 secondHand(resource = "hands/second.png") {
                     ambientVariant(
-                        target = "resource",
+                        target = attrs.resource,
                         value = "hands/second-ambient.png"
                     )
                     sweep(frequency = 15)

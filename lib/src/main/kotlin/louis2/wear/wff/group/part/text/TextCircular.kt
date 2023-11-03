@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.attr.AttrsHost
 
 /**
  * Specifies a circular or curved text configuration.
@@ -54,4 +55,15 @@ class TEXTCIRCULAR(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), TextScope, Transformable
+), TextScope, Transformable {
+    override val attrs = Attrs()
+
+    class Attrs internal constructor(): AttrsHost() {
+        val centerX by float()
+        val centerY by float()
+        val width by float()
+        val height by float()
+        val startAngle by float()
+        val endAngle by float()
+    }
+}

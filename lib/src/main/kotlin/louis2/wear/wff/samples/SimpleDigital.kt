@@ -30,7 +30,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
                 y = 175,
                 height = 100
             ) {
-                ambientVariant("alpha", 0)
+                ambientVariant(attrs.alpha, 0)
                 font(
                     size = 128f,
                     color = Color.white
@@ -44,7 +44,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
                 height = 100,
                 alpha = 0u
             ) {
-                ambientVariant("alpha", 0xFFu)
+                ambientVariant(attrs.alpha, 0xFF)
                 font(
                     size = 128f,
                     weight = THIN,
@@ -54,7 +54,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
         }
         group(name = "hello_world") {
             partText(y = 285, height = 50) {
-                ambientVariant("alpha", 0u)
+                ambientVariant(attrs.alpha, 0)
                 text {
                     font(
                         size = 36f,

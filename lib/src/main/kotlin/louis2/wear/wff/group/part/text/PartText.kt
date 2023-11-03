@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.attr.ContainerAttrs
 
 /**
  * Represents the part of a watch face that contains exactly one text layout element.
@@ -60,4 +61,6 @@ class PARTTEXT(
 ), Part, Container {
     override val width: Int get() = w()
     override val height: Int get() = h()
+
+    override val attrs = ContainerAttrs()
 }

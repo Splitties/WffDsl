@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.attr.ContainerAttrs
 
 /**
  * Represents the part of a watch face that contains one or more images.
@@ -57,4 +58,6 @@ class PARTIMAGE(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), Part, SupportsImage
+), Part, SupportsImage {
+    override val attrs = ContainerAttrs()
+}

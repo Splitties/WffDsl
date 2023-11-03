@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.attr.ContainerAttrs
 
 /**
  * A Complication Slot is an area of the watch face that a Complication can be added by the user.
@@ -69,4 +70,6 @@ class COMPLICATIONSLOT(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), Container by parentContainer, SupportsScreenReader, SupportsVariants
+), Container by parentContainer, SupportsScreenReader, SupportsVariants {
+    override val attrs = ContainerAttrs()
+}

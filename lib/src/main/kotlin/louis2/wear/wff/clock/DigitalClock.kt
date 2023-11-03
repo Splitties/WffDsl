@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.attr.ContainerAttrs
 
 /**
  * A digital clock is a container for a formatted set of strings that represent the current hours, minutes, and seconds associated with a clock time.
@@ -58,4 +59,5 @@ class DIGITALCLOCK(
 ), SupportsLocalization, SupportsVariants, Container {
     override val width: Int get() = w()
     override val height: Int get() = h()
+    override val attrs = ContainerAttrs()
 }

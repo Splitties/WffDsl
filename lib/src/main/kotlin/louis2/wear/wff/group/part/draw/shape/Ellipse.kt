@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.attr.AttrsHost
 import louis2.wear.wff.group.part.draw.PARTDRAW
 
 /**
@@ -38,4 +39,13 @@ class ELLIPSE(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), StrokeAble, FillAble, Transformable
+), StrokeAble, FillAble, Transformable {
+    override val attrs = Attrs()
+
+    class Attrs internal constructor(): AttrsHost() {
+        val x by float()
+        val y by float()
+        val width by float()
+        val height by float()
+    }
+}

@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.attr.AttrsHost
 import louis2.wear.wff.group.part.draw.PARTDRAW
 
 /**
@@ -38,4 +39,13 @@ class LINE(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), StrokeAble, Transformable
+), StrokeAble, Transformable {
+    override val attrs = Attrs()
+
+    class Attrs internal constructor(): AttrsHost() {
+        val startX by float()
+        val startY by float()
+        val endX by float()
+        val endY by float()
+    }
+}

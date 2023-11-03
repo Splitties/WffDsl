@@ -7,6 +7,7 @@ import louis2.wear.wff.AnalogHand
 import louis2.wear.wff.Color
 import louis2.wear.wff.WffTagMarker
 import louis2.wear.wff.XMLTag
+import louis2.wear.wff.attr.AnalogHandAttrs
 
 /**
  * A second hand is a clock hand that rotates around a watch face once every minute.
@@ -52,4 +53,6 @@ class SECONDHAND(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), AnalogHand
+), AnalogHand {
+    override val attrs = AnalogHandAttrs()
+}

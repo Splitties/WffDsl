@@ -5,6 +5,7 @@ package louis2.wear.wff
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
+import louis2.wear.wff.attr.ContainerAttrs
 
 /**
  * A Group is a container for other elements. Child elements are rendered relative to the position, size, angle, and color of the group.
@@ -61,4 +62,5 @@ class GROUP(
 ), SupportsGroup, SupportsConditions, SupportsClock, SupportsPart, SupportsLocalization, SupportsVariants, SupportsBooleanConfiguration, SupportsListConfiguration {
     override val width: Int get() = w()
     override val height: Int get() = h()
+    override val attrs = ContainerAttrs()
 }

@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.attr.AttrsHost
 
 /**
  * A time text is a formatted string representing the current time.
@@ -63,5 +64,18 @@ class TIMETEXT(
             _12 -> "12"
             _24 -> "24"
         }
+    }
+
+    override val attrs = Attrs()
+
+    class Attrs internal constructor(): AttrsHost() {
+        val x by int()
+        val y by int()
+        val width by int()
+        val height by int()
+        val pivotX by float()
+        val pivotY by float()
+        val angle by float()
+        val alpha by int()
     }
 }

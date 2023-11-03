@@ -3,9 +3,11 @@ package louis2.wear.wff.common.variant
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
+import louis2.wear.wff.attr.AttrRef
 import louis2.wear.wff.SupportsVariants
 import louis2.wear.wff.WffTagMarker
 import louis2.wear.wff.XMLTag
+import louis2.wear.wff.common.attributes.ArithmeticExpression
 
 /**
  * @param target The attribute whose value should change when the specified Wear OS device mode takes effect.
@@ -13,26 +15,12 @@ import louis2.wear.wff.XMLTag
  */
 @WffTagMarker
 fun SupportsVariants.ambientVariant(
-    target: String,
-    value: String
-): Unit = variant(
-    mode = "AMBIENT",
-    target = target,
-    value = value
-)
-
-/**
- * @param target The attribute whose value should change when the specified Wear OS device mode takes effect.
- * @param value The value that the attribute should have when the specified Wear OS device mode takes effect.
- */
-@WffTagMarker
-fun SupportsVariants.ambientVariant(
-    target: String,
+    target: AttrRef<ArithmeticExpression.Int>,
     value: Int
 ): Unit = variant(
     mode = "AMBIENT",
     target = target,
-    value = value.toString()
+    value = ArithmeticExpression(value)
 )
 
 /**
@@ -41,12 +29,26 @@ fun SupportsVariants.ambientVariant(
  */
 @WffTagMarker
 fun SupportsVariants.ambientVariant(
-    target: String,
-    value: UByte
+    target: AttrRef<ArithmeticExpression.String>,
+    value: String
 ): Unit = variant(
     mode = "AMBIENT",
     target = target,
-    value = value.toString()
+    value = ArithmeticExpression(value)
+)
+
+/**
+ * @param target The attribute whose value should change when the specified Wear OS device mode takes effect.
+ * @param value The value that the attribute should have when the specified Wear OS device mode takes effect.
+ */
+@WffTagMarker
+fun <T : ArithmeticExpression> SupportsVariants.ambientVariant(
+    target: AttrRef<T>,
+    value: T
+): Unit = variant(
+    mode = "AMBIENT",
+    target = target,
+    value = value
 )
 
 /**
@@ -57,15 +59,15 @@ fun SupportsVariants.ambientVariant(
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/variant/variant)
  */
 @WffTagMarker
-fun SupportsVariants.variant(
+fun <T : ArithmeticExpression> SupportsVariants.variant(
     mode: String,
-    target: String,
-    value: String
+    target: AttrRef<T>,
+    value: T
 ): Unit = VARIANT(
     initialAttributes = attributesMapOf(
         "mode", mode,
-        "target", target,
-        "value", value,
+        "target", target.name,
+        "value", value.toString(),
     ),
     consumer = consumer
 ).visit {}

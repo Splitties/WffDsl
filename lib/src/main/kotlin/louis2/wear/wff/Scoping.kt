@@ -1,6 +1,7 @@
 package louis2.wear.wff
 
 import kotlinx.html.Tag
+import louis2.wear.wff.attr.AttrsHost
 
 interface Container {
     val width: Int
@@ -17,7 +18,9 @@ interface SupportsPart : Tag, Container
 
 interface SupportsClock : Tag, Container
 
-interface SupportsVariants : Tag
+interface SupportsVariants : Tag {
+    val attrs: AttrsHost
+}
 
 interface SupportsBooleanConfiguration : Tag, Container
 

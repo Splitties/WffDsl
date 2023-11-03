@@ -4,6 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
+import louis2.wear.wff.attr.AttrsHost
 
 /**
  * A stroke sets the visual style of a line or border.
@@ -71,6 +72,12 @@ class STROKE(
             BUTT -> null
             else -> name
         }
+    }
+    override val attrs = Attrs()
+
+    class Attrs internal constructor(): AttrsHost() {
+        val thickness by float()
+        val dashPhase by float()
     }
 }
 

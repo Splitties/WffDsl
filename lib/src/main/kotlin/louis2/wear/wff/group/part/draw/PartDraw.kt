@@ -4,8 +4,7 @@ import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import louis2.wear.wff.*
-import louis2.wear.wff.h
-import louis2.wear.wff.w
+import louis2.wear.wff.attr.ContainerAttrs
 
 /**
  * A PartDraw contains a vector drawing primitives that appears on the watch face.
@@ -62,4 +61,5 @@ class PARTDRAW(
 ), Part, Container {
     override val width: Int get() = w()
     override val height: Int get() = h()
+    override val attrs = ContainerAttrs()
 }
