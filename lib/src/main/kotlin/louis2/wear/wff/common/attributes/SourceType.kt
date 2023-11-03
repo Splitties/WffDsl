@@ -139,38 +139,109 @@ object SourceType {
          */
         val HOUR_1_24_MINUTE = Exp.Float { "[HOUR_1_24_MINUTE]" }
 
+        /** An integer value that represents the day field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object for the current date. This value is always between `1` and `31`, inclusive. */
         val DAY = Exp.Int { "[DAY]" }
+
+        /** A string value that represents the day field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object for the current date, with leading zeros to make the value 2 characters long. This value is always between `01` and `31`, inclusive. */
         val DAY_Z = Exp.String { "[DAY_Z]" }
+
+        /** A floating-point value that combines the day-of-month and hour fields of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object that represents the current date and time. This value is always between `1.0` and `31+23/24`, inclusive. */
         val DAY_HOUR = Exp.Float { "[DAY_HOUR]" }
+
+        /** A modified version of the [`getDayOfMonth()`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html#getDayOfMonth--) value of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object that represents the current date, subtracted by 1. This value is always between `0` and `30`, inclusive. */
         val DAY_0_30 = Exp.Int { "[DAY_0_30]" }
+
+        /** A floating-point value that combines a modified day-of-month field and hour field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object that represents the current date and time. This value is always between `0.0` and `30+23/24`, inclusive. */
         val DAY_0_30_HOUR = Exp.Float { "[DAY_0_30_HOUR]" }
+
+        /** The number of days that have started since the calendar year changed. This value is always between `1` and `366` inclusive, and has a maximum value of `365` during non-leap years. */
         val DAY_OF_YEAR = Exp.Int { "[DAY_OF_YEAR]" }
+
+        /** A modified version of the `getDayOfWeek()` value from a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object that represents the current date. The Watch Face Format assigns a value of `1` to represent Sunday and a value of `7` to represent Saturday. */
         val DAY_OF_WEEK = Exp.Int { "[DAY_OF_WEEK]" }
+
+        /** The current day of the week, represented as a full-length string. Examples include `Sunday` and `Monday`. */
         val DAY_OF_WEEK_F = Exp.String { "[DAY_OF_WEEK_F]" }
+
+        /** The current day of the week, represented as a shortened string. Examples include `Sun` and `Mon`. */
         val DAY_OF_WEEK_S = Exp.String { "[DAY_OF_WEEK_S]" }
+
+        /** An integer value that represents the month field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object for the current date. This value is always between `1` and `12`, inclusive. */
         val MONTH = Exp.Int { "[MONTH]" }
+
+        /** A string value that represents the month field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object for the current date, with leading zeros to make the value 2 characters long. This value is always between `01` and `12`, inclusive. */
         val MONTH_Z = Exp.String { "[MONTH_Z]" }
+
+        /** The current month of the year, represented as a full-length string. Examples include `January` and `December`. */
         val MONTH_F = Exp.String { "[MONTH_F]" }
+
+        /** The current month of the year, represented as a shortened string. Examples include `Jan` and `Dec`. */
         val MONTH_S = Exp.String { "[MONTH_S]" }
+
+        /** The number of days in the current month. This value is either `28` or `29` during February, `30` during April, June, September, and November, and `31` during all other months of the Gregorian calendar. */
         val DAYS_IN_MONTH = Exp.Int { "[DAYS_IN_MONTH]" }
+
+        /** A floating-point value that combines the month-of-year field and modified day-of-month field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object that represents the current date. This value is always between `1.0` and `12+29/30`, inclusive. */
         val MONTH_DAY = Exp.Float { "[MONTH_DAY]" }
+
+        /** A modified version of the `getMonthValue()` value from a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object that represents the current date. This value assigns a value of `0` to January and a value of `11` to December. */
         val MONTH_0_11 = Exp.Int { "[MONTH_0_11]" }
+
+        /** A floating-point value that combines a modified month-of-year field and modified day-of-month field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object that represents the current date. This value is always between `0.0` and `11+29/30`, inclusive. */
         val MONTH_0_11_DAY = Exp.Float { "[MONTH_0_11_DAY]" }
+
+        /** An integer value that represents the year field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object for the current date. This value is clamped to always be between `1902` and `2100`, inclusive. */
         val YEAR = Exp.Int { "[YEAR]" }
+
+        /** A 2-digit integer that represents the last 2 digits of the current year. For example, the value for 2023 is `23`. */
         val YEAR_S = Exp.String { "[YEAR_S]" }
+
+        /** A floating-point value that combines the year field and modified day-of-month field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object that represents the current date. January 2023 is represented as `2023.0`, and December 2023 is represented as `2023+11/12`. */
         val YEAR_MONTH = Exp.Float { "[YEAR_MONTH]" }
+
+        /** A floating-point value that combines the year field, a modified month-of-year field, and a modified day-of-month field of a [`ZonedDateTime`](https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html) object that represents the current date. January 1, 2023 is represented as `2023.0`, and December 31, 2023 is represented as `2023+(11+29/30)/12≈2023.9972`. */
         val YEAR_MONTH_DAY = Exp.Float { "[YEAR_MONTH_DAY]" }
+
+        /** An integer that represents the value of the [`ALIGNED_WEEK_OF_MONTH`](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/ChronoField.html#ALIGNED_WEEK_OF_MONTH) of a `ChronoField` object that represents the current date. This value is always between `0` and `5`, inclusive. */
         val WEEK_IN_MONTH = Exp.Int { "[WEEK_IN_MONTH]" }
+
+        /** An integer that represents the value of the [`ALIGNED_WEEK_OF_YEAR`](https://docs.oracle.com/javase/8/docs/api/java/time/temporal/ChronoField.html#ALIGNED_WEEK_OF_YEAR) of a `ChronoField` object that represents the current date. This value is always between `1` and `53`, inclusive. */
         val WEEK_IN_YEAR = Exp.Int { "[WEEK_IN_YEAR]" }
+
+        /** A boolean value that is equivalent to the current return value of [`is24HourFormat()`](https://developer.android.com/reference/android/text/format/DateFormat#is24HourFormat(android.content.Context)), based on the user's chosen locale and preferences. */
         val IS_24_HOUR_MODE = Exp.Boolean { "[IS_24_HOUR_MODE]" }
+
+        /** A boolean value that is equivalent to calling [`useDaylightTime()`](https://developer.android.com/reference/android/icu/util/TimeZone#useDaylightTime()) on the `TimeZone` object for the current locale. Indicates whether the currently-set time zone observes daylight saving time. */
         val IS_DAYLIGHT_SAVING_TIME = Exp.Boolean { "[IS_DAYLIGHT_SAVING_TIME]" }
+
+        /** A string that is equivalent to calling [`getDisplayName()`](https://developer.android.com/reference/android/icu/util/TimeZone#getDisplayName()) on the `TimeZone` object for the current locale. Returns the full time zone name, such as "Eastern Standard Time" for New York City's time zone during the winter. */
         val TIMEZONE = Exp.String { "[TIMEZONE]" }
+
+        /** A string that is equivalent to calling an overloaded version of [`getDisplayName()`](https://developer.android.com/reference/android/icu/util/TimeZone#getDisplayName(boolean,%20int)) on the `TimeZone` object for the current locale, where the given style is `SHORT`. Returns an abbreviated time zone name, such as "EST" for New York City's time zone during the winter. */
         val TIMEZONE_ABB = Exp.String { "[TIMEZONE_ABB]" }
+
+        /** A string that is equivalent to calling [`getId()`](https://developer.android.com/reference/android/icu/util/TimeZone#getID()) on the `TimeZone` object for the current locale. Returns an [IANA time zone ID value](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), such as `America/New_York` for New York City's time zone. */
         val TIMEZONE_ID = Exp.String { "[TIMEZONE_ID]" }
+
+        /** A string that is equivalent to calling [`getRawOffset()`](https://developer.android.com/reference/android/icu/util/TimeZone#getRawOffset()) on the `TimeZone` object for the current locale. This value is always between `-12` and `+14`, inclusive. Returns the value that should be added to UTC to get the standard time for the current time zone (not corrected for daylight saving time). */
         val TIMEZONE_OFFSET = Exp.String { "[TIMEZONE_OFFSET]" }
+
+        /** A string that is equivalent to passing the current date into [`getOffset()`](https://developer.android.com/reference/android/icu/util/TimeZone#getOffset(long)) on the `TimeZone` object for the current locale. This value is always between `-12` and `+14`, inclusive. Returns the value that should be added to UTC to get the current local time, with daylight saving time taken into account if necessary. */
         val TIMEZONE_OFFSET_DST = Exp.String { "[TIMEZONE_OFFSET_DST]" }
+
+        /** An integer that indicates whether the current time is before noon, or is noon or later. Possible values include `0` for AM and `1` for PM. */
         val AMPM_STATE = Exp.Int { "[AMPM_STATE]" }
+
+        /**
+         * An integer that indicates where the AM or PM indicator should appear within a time string. Contains one of the following values:
+         *
+         * *   `0` means that AM or PM should appear at the beginning of the string, such as `AM 12:03`.
+         * *   `1` means that AM or PM should appear at the end of the string, such as `12:03 AM`.
+         * *   `-1` means that it's unknown where AM or PM should appear in the string.
+         */
         val AMPM_POSITION = Exp.Int { "[AMPM_POSITION]" }
+
+        /** A 2-character string that indicates the AM or PM status of the current time. The value is either "AM" or "PM". */
         val AMPM_STRING = Exp.String { "[AMPM_STRING]" }
     }
 
