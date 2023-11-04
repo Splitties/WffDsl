@@ -10,7 +10,9 @@ import kotlinx.html.stream.createHTML
 import louis2.wear.wff.clock.*
 import louis2.wear.wff.common.*
 import louis2.wear.wff.common.attributes.ArithmeticExpression
+import louis2.wear.wff.common.attributes.SourceType
 import louis2.wear.wff.common.transform.animation
+import louis2.wear.wff.common.transform.gyro
 import louis2.wear.wff.common.transform.transform
 import louis2.wear.wff.common.variant.ambientVariant
 import louis2.wear.wff.complication.*
@@ -135,6 +137,10 @@ internal fun <T> sampleWatchFace(
                         animation(duration = 0.2f)
                     }
                     transform(attrs.y, ArithmeticExpression { ternary(0.l `==` 0, 0.l, 1.l) })
+                    gyro(scaleX = ArithmeticExpression {
+                        (5f / 90) * clamp(SourceType.Sensors.ACCELEROMETER_ANGLE_X, 0, 90) +
+                                (5f / 90) * clamp(SourceType.Sensors.ACCELEROMETER_ANGLE_X, -90, 0)
+                    })
                     text {
                         font(size = 30f) {
                             template(text = "Salut")
