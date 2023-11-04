@@ -16,6 +16,7 @@ import louis2.wear.wff.common.variant.ambientVariant
 import louis2.wear.wff.complication.*
 import louis2.wear.wff.group.configuration.booleanConfiguration
 import louis2.wear.wff.group.configuration.booleanOption
+import louis2.wear.wff.group.part.animatedImage.*
 import louis2.wear.wff.group.part.draw.gradient.sweepGradient
 import louis2.wear.wff.group.part.draw.partDraw
 import louis2.wear.wff.group.part.draw.shape.arc
@@ -192,6 +193,19 @@ internal fun <T> sampleWatchFace(
             }
         }
         group(id = "g1") {
+            partAnimatedImage {
+                animatedImages {
+                    animatedImage(resource = "@drawable/whatever", ANIMATEDIMAGE.Format.AGIF)
+                    sequenceImages {  }
+                }
+            }
+            partAnimatedImage {
+                sequenceImages {
+                    image("@drawable/_1")
+                    image("@drawable/_2")
+                    image("@drawable/_3")
+                }
+            }
             partText {
                 launch(target = LAUNCH.ALARM)
                 text { font(size = 20f) { template(text = "See alarms") } }

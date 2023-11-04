@@ -58,3 +58,4 @@ interface FillAble : Tag
 interface SupportsGradients : Tag
 
 interface SupportsImage : Tag
+interface SupportsAnimatedImage : Tag
