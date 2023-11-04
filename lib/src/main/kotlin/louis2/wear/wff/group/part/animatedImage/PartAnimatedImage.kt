@@ -9,6 +9,10 @@ import louis2.wear.wff.attr.ContainerAttrs
 /**
  * A `PartAnimatedImage` contains an animated element that appears on the watch face. The `PartAnimatedImage` determines where on the watch face the animated element appears, and the [inner elements](https://developer.android.com/training/wearables/wff/group/part/animated-image/part-animated-image#inner-elements) determine the specific animated resource which plays.
  *
+ * **Caution:** If you don't specify a `Thumbnail` in this `PartAnimatedImage` element,
+ * the watch face instead loads the first frame of a sibling `AnimatedImage` element,
+ * represented by that element's `thumbnail` attribute. This can be very slow.
+ *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/animated-image/part-animated-image)
  */
 @WffTagMarker

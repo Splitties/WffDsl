@@ -194,12 +194,14 @@ internal fun <T> sampleWatchFace(
         }
         group(id = "g1") {
             partAnimatedImage {
+                thumbnail("@drawable/whatever_thumb")
                 animatedImages {
                     animatedImage(resource = "@drawable/whatever", ANIMATEDIMAGE.Format.AGIF)
                     sequenceImages {  }
                 }
             }
             partAnimatedImage {
+                thumbnail("@drawable/_x_preview")
                 sequenceImages {
                     image("@drawable/_1")
                     image("@drawable/_2")
