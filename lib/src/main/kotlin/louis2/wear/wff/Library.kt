@@ -195,6 +195,7 @@ internal fun <T> sampleWatchFace(
         group(id = "g1") {
             partAnimatedImage {
                 thumbnail("@drawable/whatever_thumb")
+                screenReader("@string/whatever")
                 animatedImages {
                     animatedImage(resource = "@drawable/whatever", ANIMATEDIMAGE.Format.AGIF)
                     sequenceImages {  }
@@ -202,6 +203,9 @@ internal fun <T> sampleWatchFace(
             }
             partAnimatedImage {
                 thumbnail("@drawable/_x_preview")
+                screenReader("@string/x") {
+                    parameter(ArithmeticExpression("test value"))
+                }
                 sequenceImages {
                     image("@drawable/_1")
                     image("@drawable/_2")
