@@ -59,7 +59,7 @@ class GROUP(
     namespace = null,
     inlineTag = false,
     emptyTag = false
-), SupportsGroup, SupportsConditions, SupportsClock, SupportsPart, SupportsLocalization, SupportsVariants, SupportsBooleanConfiguration, SupportsListConfiguration {
+), SupportsGroup, SupportsConditions, SupportsClock, SupportsPart, SupportsGyro, Transformable, SupportsLaunch, SupportsLocalization, SupportsVariants, SupportsBooleanConfiguration, SupportsListConfiguration {
     override val width: Int get() = w()
     override val height: Int get() = h()
     override val attrs = ContainerAttrs()
