@@ -13,13 +13,8 @@ publishing {
     publications.create<MavenPublication>(name = "maven") {
         group = "com.louiscad.wff"
         artifactId = "core"
-        version = "0.1.0"
         from(components["java"])
     }
-}
-
-repositories {
-    mavenCentral()
 }
 
 dependencies {
