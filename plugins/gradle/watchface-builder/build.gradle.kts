@@ -12,7 +12,7 @@ gradlePlugin {
             id = "com.louiscad.wff.watchface-builder"
             displayName = "TK"
             description = "TK"
-            implementationClass = "com.louiscad.wff.WatchfaceBuilderPlugin"
+            implementationClass = "splitties.wff.WatchfaceBuilderPlugin"
         }
     }
 }
