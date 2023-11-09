@@ -11,7 +11,6 @@ java {
 
 publishing {
     publications.create<MavenPublication>(name = "maven") {
-        group = "com.louiscad.wff"
         artifactId = "core"
         from(components["java"])
     }

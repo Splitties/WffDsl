@@ -9,7 +9,7 @@ plugins {
 gradlePlugin {
     plugins {
         create(project.name) {
-            id = "com.louiscad.wff.watchface-app"
+            id = "org.splitties.wff.watchface-app"
             displayName = "TK"
             description = "TK"
             implementationClass = "splitties.wff.WatchfaceAppPlugin"

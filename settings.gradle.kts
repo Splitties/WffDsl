@@ -22,6 +22,7 @@ dependencyResolutionManagement {
 
 gradle.beforeProject {
     version = "0.1.0"
+    group = "org.splitties.wff"
 }
 
 rootProject.name = "WatchFaceDsl"
