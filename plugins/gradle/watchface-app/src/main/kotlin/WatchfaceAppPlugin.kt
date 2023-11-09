@@ -1,4 +1,4 @@
-package com.louiscad.wff
+package splitties.wff
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension

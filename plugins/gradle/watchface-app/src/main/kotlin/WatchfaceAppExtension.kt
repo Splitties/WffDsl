@@ -1,4 +1,4 @@
-package com.louiscad.wff
+package splitties.wff
 
 import org.gradle.api.provider.Property
 
