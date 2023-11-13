@@ -1,3 +1,6 @@
+import org.splitties.gradle.VersionFileWriter
+import org.splitties.gradle.putVersionInCode
+
 plugins {
     id("com.gradle.plugin-publish") version "0.20.0"
     `java-gradle-plugin`
@@ -51,3 +54,19 @@ fun Project.propertyOrEnv(key: String): String = propertyOrEnvOrNull(key)
 fun Project.propertyOrEnvOrNull(key: String): String? {
     return findProperty(key) as String? ?: System.getenv(key)
 }
+
+sourceSets {
+    main {
+        kotlin.srcDir("build/gen")
+    }
+}
+
+putVersionInCode(
+    outputDirectory = layout.dir(provider { file("build/gen") }),
+    writer = VersionFileWriter.Kotlin(
+        fileName = "Version.kt",
+        `package` = "splitties.wff",
+        propertyName = "thisProjectVersion",
+        const = true
+    )
+)

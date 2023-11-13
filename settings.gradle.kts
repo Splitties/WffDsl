@@ -9,6 +9,7 @@ pluginManagement {
 plugins {
     // Apply the foojay-resolver plugin to allow automatic download of JDKs
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
+    id("org.splitties.version-sync") version "0.2.6"
 }
 
 @Suppress("UnstableApiUsage")
@@ -21,7 +22,6 @@ dependencyResolutionManagement {
 }
 
 gradle.beforeProject {
-    version = "0.1.0"
     group = "org.splitties.wff"
 }
 

@@ -30,7 +30,7 @@ class WatchfaceBuilderPlugin : Plugin<Project> {
         }
 
         dependencies {
-            "implementation"("org.splitties.wff:core:0.1.0") //TODO: Sync with plugin version.
+            "implementation"("org.splitties.wff:core:$thisProjectVersion")
         }
     }
 }
