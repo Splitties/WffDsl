@@ -28,6 +28,8 @@ gradle.beforeProject {
 
 rootProject.name = "WatchFaceDsl"
 
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+
 include {
     "core"()
     "plugins" {
