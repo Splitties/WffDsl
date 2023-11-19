@@ -1,0 +1,111 @@
+# This file was generated using Kotlin DSL (.github/workflows/publish-all.main.kts).
+# If you want to modify the workflow, please change the Kotlin file and regenerate this YAML file.
+# Generated with https://github.com/typesafegithub/github-workflows-kt
+
+name: 'Publish all'
+on:
+  workflow_dispatch: {}
+  pull_request:
+    types:
+    - 'opened'
+    branches:
+    - 'release'
+    paths:
+    - 'version.txt'
+jobs:
+  check_yaml_consistency:
+    name: 'Check YAML consistency'
+    runs-on: 'ubuntu-latest'
+    steps:
+    - id: 'step-0'
+      name: 'Check out'
+      uses: 'actions/checkout@v4'
+    - id: 'step-1'
+      name: 'Execute script'
+      run: 'rm ''.github/workflows/publish-all.yaml'' && ''.github/workflows/publish-all.main.kts'''
+    - id: 'step-2'
+      name: 'Consistency check'
+      run: 'git diff --exit-code ''.github/workflows/publish-all.yaml'''
+  create-staging-repository:
+    name: 'Create staging repository'
+    runs-on: 'ubuntu-latest'
+    needs:
+    - 'check_yaml_consistency'
+    outputs:
+      repositoryId: '${{ steps.step-0.outputs.repository_id }}'
+    steps:
+    - id: 'step-0'
+      uses: 'nexus-actions/create-nexus-staging-repo@v1'
+      with:
+        username: '${{ secrets.SONATYPE_USERNAME }}'
+        password: '${{ secrets.SONATYPE_PASSWORD }}'
+        staging_profile_id: '${{ secrets.SONATYPE_PROFILE_ID }}'
+        description: '${{ github.repository }}/${{ github.workflow }}#${{ github.run_number }}'
+  build-and-upload-to-maven-central:
+    name: 'Build and upload artifacts to Maven Central staging repository'
+    runs-on: 'ubuntu-latest'
+    needs:
+    - 'create-staging-repository'
+    - 'check_yaml_consistency'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v4'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    - id: 'step-2'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'publishMavenPublicationToMavenCentralStagingRepository'
+      env:
+        sonatype_staging_repo_id: '${{ needs.create-staging-repository.outputs.repositoryId }}'
+        sonatype_username: '${{ secrets.SONATYPE_USERNAME }}'
+        sonatype_password: '${{ secrets.SONATYPE_PASSWORD }}'
+        GPG_key_id: '${{ secrets.GPG_KEY_ID }}'
+        GPG_private_key: '${{ secrets.GPG_PRIVATE_KEY }}'
+        GPG_private_password: '${{ secrets.GPG_PRIVATE_PASSWORD }}'
+  finalize-maven-central-publication:
+    runs-on: 'ubuntu-latest'
+    needs:
+    - 'create-staging-repository'
+    - 'build-and-upload-to-maven-central'
+    - 'check_yaml_consistency'
+    if: '${{ always() && needs.create-staging-repository.result == ''success'' }}'
+    steps:
+    - id: 'step-0'
+      name: 'Discard staging repository'
+      uses: 'nexus-actions/drop-nexus-staging-repo@v1'
+      with:
+        username: '${{ secrets.SONATYPE_USERNAME }}'
+        password: '${{ secrets.SONATYPE_PASSWORD }}'
+        staging_repository_id: '${{ needs.create-staging-repository.outputs.repositoryId }}'
+      if: '${{ needs.build-and-upload-to-maven-central.result != ''success'' }}'
+    - id: 'step-1'
+      name: 'Release'
+      uses: 'nexus-actions/release-nexus-staging-repo@v1'
+      with:
+        username: '${{ secrets.SONATYPE_USERNAME }}'
+        password: '${{ secrets.SONATYPE_PASSWORD }}'
+        staging_repository_id: '${{ needs.create-staging-repository.outputs.repositoryId }}'
+      if: '${{ needs.build-and-upload-to-maven-central.result == ''success'' }}'
+  gradle-plugins-publishing:
+    runs-on: 'ubuntu-latest'
+    needs:
+    - 'build-and-upload-to-maven-central'
+    - 'finalize-maven-central-publication'
+    - 'check_yaml_consistency'
+    if: '${{ needs.build-and-upload-to-maven-central.result == ''success'' }}'
+    steps:
+    - id: 'step-0'
+      uses: 'actions/checkout@v4'
+    - id: 'step-1'
+      uses: 'actions/setup-java@v3'
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    - id: 'step-2'
+      uses: 'gradle/gradle-build-action@v2'
+      with:
+        arguments: 'publishPlugins -Pgradle.publish.key=${{ secrets.gradle_publish_key }} -Pgradle.publish.secret=${{ secrets.gradle_publish_secret }}'
