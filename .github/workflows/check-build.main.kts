@@ -16,6 +16,9 @@ import io.github.typesafegithub.workflows.yaml.writeToFile
 
 // GitHub Action runners preinstalled software: https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#preinstalled-software
 
+val gradle_publish_key by Contexts.secrets
+val gradle_publish_secret by Contexts.secrets
+
 val GPG_KEY_ID by Contexts.secrets
 val GPG_PRIVATE_KEY by Contexts.secrets
 val GPG_PRIVATE_PASSWORD by Contexts.secrets
@@ -32,6 +35,14 @@ workflow(
     ) {
         checkout()
         setupJava()
+        run(command = """echo "0.0.0" >> version.txt""")
+        gradle(
+            task = "publishPlugins --validate-only",
+            properties = mapOf(
+                "gradle.publish.key" to expr { gradle_publish_key },
+                "gradle.publish.secret" to expr { gradle_publish_secret }
+            )
+        )
         gradle(
             task = "build",
             env = linkedMapOf(
