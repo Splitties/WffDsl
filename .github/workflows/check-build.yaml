@@ -24,6 +24,10 @@ jobs:
     runs-on: 'ubuntu-latest'
     needs:
     - 'check_yaml_consistency'
+    env:
+      GPG_key_id: '${{ secrets.GPG_KEY_ID }}'
+      GPG_private_key: '${{ secrets.GPG_PRIVATE_KEY }}'
+      GPG_private_password: '${{ secrets.GPG_PRIVATE_PASSWORD }}'
     steps:
     - id: 'step-0'
       uses: 'actions/checkout@v4'
@@ -42,7 +46,3 @@ jobs:
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'build'
-      env:
-        GPG_key_id: '${{ secrets.GPG_KEY_ID }}'
-        GPG_private_key: '${{ secrets.GPG_PRIVATE_KEY }}'
-        GPG_private_password: '${{ secrets.GPG_PRIVATE_PASSWORD }}'

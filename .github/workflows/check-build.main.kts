@@ -31,7 +31,12 @@ workflow(
     job(
         id = "check-build",
         name = "Check build",
-        runsOn = RunnerType.UbuntuLatest
+        runsOn = RunnerType.UbuntuLatest,
+        env = linkedMapOf(
+            "GPG_key_id" to expr { GPG_KEY_ID },
+            "GPG_private_key" to expr { GPG_PRIVATE_KEY },
+            "GPG_private_password" to expr { GPG_PRIVATE_PASSWORD }
+        )
     ) {
         checkout()
         setupJava()
@@ -43,14 +48,7 @@ workflow(
                 "gradle.publish.secret" to expr { gradle_publish_secret }
             )
         )
-        gradle(
-            task = "build",
-            env = linkedMapOf(
-                "GPG_key_id" to expr { GPG_KEY_ID },
-                "GPG_private_key" to expr { GPG_PRIVATE_KEY },
-                "GPG_private_password" to expr { GPG_PRIVATE_PASSWORD }
-            )
-        )
+        gradle(task = "build")
     }
 }.writeToFile()
 
