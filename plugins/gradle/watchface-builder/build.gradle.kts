@@ -12,7 +12,7 @@ gradlePlugin {
             id = "org.splitties.wff.watchface-builder"
             displayName = id // Not displayed on Gradle Plugins Portal anyway.
             description = "Provides a Kotlin DSL to output XML based Watch Face Format introduced in Wear OS 4. See the documentation before using."
-            tags = listOf("wear-os", "kotlin", "kotlin-dsl")
+            tags = listOf("wear-os", "kotlin", "kotlin-dsl", "android")
             implementationClass = "splitties.wff.WatchfaceBuilderPlugin"
         }
     }
