@@ -2,10 +2,7 @@ import org.splitties.gradle.VersionFileWriter
 import org.splitties.gradle.putVersionInCode
 
 plugins {
-    id("com.gradle.plugin-publish") version "0.20.0"
-    `java-gradle-plugin`
-    `maven-publish`
-    signing
+    id("gradle-plugin")
     `kotlin-dsl`
 }
 
@@ -13,26 +10,12 @@ gradlePlugin {
     plugins {
         create(project.name) {
             id = "org.splitties.wff.watchface-builder"
-            displayName = "TK"
-            description = "TK"
+            displayName = id // Not displayed on Gradle Plugins Portal anyway.
+            description = "Provides a Kotlin DSL to output XML based Watch Face Format introduced in Wear OS 4. See the documentation before using."
+            tags = listOf("wear-os", "kotlin", "kotlin-dsl")
             implementationClass = "splitties.wff.WatchfaceBuilderPlugin"
         }
     }
-}
-
-pluginBundle {
-    website = ""
-    vcsUrl = ""
-    tags = listOf("wear-os", "kotlin", "kotlin-dsl")
-}
-
-signing {
-    useInMemoryPgpKeys(
-        propertyOrEnvOrNull("GPG_key_id"),
-        propertyOrEnvOrNull("GPG_private_key") ?: return@signing,
-        propertyOrEnv("GPG_private_password")
-    )
-    sign(publishing.publications)
 }
 
 dependencies {
@@ -44,22 +27,7 @@ kotlin {
     jvmToolchain(17)
 }
 
-java {
-    withSourcesJar()
-}
-
-fun Project.propertyOrEnv(key: String): String = propertyOrEnvOrNull(key)
-    ?: error("Didn't find any value for the key \"$key\" in Project properties or environment variables.")
-
-fun Project.propertyOrEnvOrNull(key: String): String? {
-    return findProperty(key) as String? ?: System.getenv(key)
-}
-
-sourceSets {
-    main {
-        kotlin.srcDir("build/gen")
-    }
-}
+sourceSets { main { kotlin.srcDir("build/gen") } }
 
 putVersionInCode(
     outputDirectory = layout.dir(provider { file("build/gen") }),
