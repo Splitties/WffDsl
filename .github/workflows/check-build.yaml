@@ -37,12 +37,14 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - id: 'step-2'
-      run: 'echo "0.0.0" >> version.txt'
+      run: 'rm version.txt'
     - id: 'step-3'
+      run: 'echo "0.0.0" >> version.txt'
+    - id: 'step-4'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'publishPlugins --validate-only -Pgradle.publish.key=${{ secrets.gradle_publish_key }} -Pgradle.publish.secret=${{ secrets.gradle_publish_secret }}'
-    - id: 'step-4'
+    - id: 'step-5'
       uses: 'gradle/gradle-build-action@v2'
       with:
         arguments: 'build'

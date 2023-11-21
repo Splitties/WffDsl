@@ -40,6 +40,7 @@ workflow(
     ) {
         checkout()
         setupJava()
+        run(command = """rm version.txt""")
         run(command = """echo "0.0.0" >> version.txt""")
         gradle(
             task = "publishPlugins --validate-only",
