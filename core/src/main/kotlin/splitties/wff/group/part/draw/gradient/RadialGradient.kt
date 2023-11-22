@@ -16,7 +16,6 @@ import splitties.wff.internal.xmlValue
  *
  * The RadialGradient element can contain between 0 and 4 `Transform` elements.
  */
-@ExperimentalUnsignedTypes
 @WffTagMarker
 inline fun SupportsGradients.radialGradient(
     centerX: Float,

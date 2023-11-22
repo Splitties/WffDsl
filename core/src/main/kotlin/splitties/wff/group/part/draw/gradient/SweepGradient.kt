@@ -19,7 +19,6 @@ import splitties.wff.internal.xmlValue
  * @param startAngle The angle (in degrees) to start the gradient.
  * @param endAngle The angle (in degrees) to end the gradient.
  */
-@ExperimentalUnsignedTypes
 @WffTagMarker
 inline fun SupportsGradients.sweepGradient(
     centerX: Float,
