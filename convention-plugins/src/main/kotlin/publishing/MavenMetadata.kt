@@ -5,6 +5,7 @@ import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.TaskContainer
 import org.gradle.api.tasks.TaskProvider
 import org.gradle.api.tasks.bundling.Jar
+import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.register
 
@@ -19,7 +20,7 @@ internal fun TaskContainer.emptyJavadocJar(): TaskProvider<Jar> {
     return try {
         named(name = taskName)
     } catch (e: UnknownTaskException) {
-        register(name = taskName) { archiveClassifier by "javadoc" }
+        register(name = taskName) { archiveClassifier = "javadoc" }
     }
 }
 
@@ -29,30 +30,30 @@ internal fun MavenPublication.setupPom(
     libraryDesc: String = Publishing.libraryDesc
 ) = pom {
     if (name.isPresent.not()) {
-        name by artifactId
+        name = artifactId
     }
-    description by libraryDesc
-    url by siteUrl
+    description = libraryDesc
+    url = siteUrl
     licenses {
         license {
-            name by "The Apache Software License, Version 2.0"
-            url by "https://www.apache.org/licenses/LICENSE-2.0.txt"
+            name = "The Apache Software License, Version 2.0"
+            url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
         }
     }
     developers {
         developer {
-            id by "louiscad"
-            name by "Louis CAD"
-            email by "louis.cognault@gmail.com"
+            id = "louiscad"
+            name = "Louis CAD"
+            email = "louis.cognault@gmail.com"
         }
     }
     scm {
-        connection by gitUrl
-        developerConnection by gitUrl
-        url by siteUrl
+        connection = gitUrl
+        developerConnection = gitUrl
+        url = siteUrl
     }
     if (gitUrl.startsWith("https://github.com")) issueManagement {
-        system by "GitHub"
-        url by gitUrl.replace(".git", "/issues")
+        system = "GitHub"
+        url = gitUrl.replace(".git", "/issues")
     }
 }
