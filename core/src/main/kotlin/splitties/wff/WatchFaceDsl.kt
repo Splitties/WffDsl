@@ -5,6 +5,6 @@ import kotlinx.html.stream.createHTML
 
 class WatchFaceDsl<T>(val consumer: TagConsumer<T>) {
     companion object {
-        operator fun invoke() = WatchFaceDsl(createHTML(xhtmlCompatible = true))
+        internal operator fun invoke() = WatchFaceDsl(createHTML(xhtmlCompatible = true))
     }
 }

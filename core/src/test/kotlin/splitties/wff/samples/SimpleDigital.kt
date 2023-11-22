@@ -26,7 +26,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
             timeText(
                 format = "hh:mm",
                 hourFormat = SYNC_TO_DEVICE,
-                align = splitties.wff.Alignment.CENTER,
+                align = Alignment.CENTER,
                 y = 175,
                 height = 100
             ) {
@@ -39,7 +39,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
             comment(" Ambient mode version - thinner weight ")
             timeText(
                 format = "hh:mm",
-                align = splitties.wff.Alignment.CENTER,
+                align = Alignment.CENTER,
                 y = 175,
                 height = 100,
                 alpha = 0u
