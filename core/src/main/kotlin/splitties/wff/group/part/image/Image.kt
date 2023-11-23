@@ -15,9 +15,7 @@ import splitties.wff.XMLTag
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/image/image)
  */
 @WffTagMarker
-fun SupportsImage.image(
-    resource: String,
-): Unit = IMAGE(
+fun SupportsImage.image(resource: String): Unit = IMAGE(
     initialAttributes = attributesMapOf(
         "resource", resource,
     ),
@@ -33,5 +31,5 @@ class IMAGE(
     initialAttributes = initialAttributes,
     namespace = null,
     inlineTag = false,
-    emptyTag = false
+    emptyTag = true
 )
