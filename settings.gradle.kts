@@ -30,7 +30,6 @@ include {
     "core"()
     "plugins" {
         "gradle" {
-            "watchface-builder"()
             "watchface-app"()
         }
     }
