@@ -15,28 +15,6 @@ import splitties.wff.common.attributes.ArithmeticExpression
  *
  * Introduced in Wear OS 4.
  *
- * @param stringResourceName "`@string/`" will be prepended to the text.
- *
- * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/formatter/template)
- */
-@Suppress("conflicting_overloads")
-@WffTagMarker
-@JvmName("templateWithStringResourceName")
-inline fun SupportsTemplate.template(
-    stringResourceName: String,
-    crossinline block: TEMPLATE.() -> Unit = {}
-): Unit = template {
-    +"@string/$stringResourceName"
-    block()
-}
-
-/**
- * Allows watch face developers to specify a string format, such as %s %d. The string format is very similar to printf() in the C programming language or String.format() in the Java programming language.
- *
- * Additionally, Template allows the developer to use Android string resources, including the ones declared in res/values/strings.xml.
- *
- * Introduced in Wear OS 4.
- *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/group/part/text/formatter/template)
  */
 @Suppress("conflicting_overloads")
