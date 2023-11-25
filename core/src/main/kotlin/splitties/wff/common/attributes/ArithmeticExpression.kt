@@ -195,6 +195,9 @@ data object ArithmeticExpressionScope {
     operator fun Exp.Float.minus(other: Exp.Int) = Exp.Float { "$this - $other" }
     operator fun Exp.Int.minus(other: Exp.Int) = Exp.Int { "$this - $other" }
 
+    operator fun Exp.Float.unaryMinus() = Exp.Float { "-$this" }
+    operator fun Exp.Int.unaryMinus() = Exp.Int { "-$this" }
+
     // * 1/3 (number literal + expression)
     operator fun Float.times(other: Exp.Float) = Exp.Float { "$this * $other" }
     operator fun Int.times(other: Exp.Float) = Exp.Float { "$this * $other" }
