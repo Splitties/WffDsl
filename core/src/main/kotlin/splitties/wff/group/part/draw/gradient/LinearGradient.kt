@@ -22,7 +22,7 @@ inline fun SupportsGradients.linearGradient(
     startY: Float,
     endX: Float,
     endY: Float,
-    colors: List<Color>,
+    colors: List<Color.Static>,
     positions: FloatArray? = null,
     crossinline block: LINEARGRADIENT.() -> Unit = {}
 ): Unit = LINEARGRADIENT(

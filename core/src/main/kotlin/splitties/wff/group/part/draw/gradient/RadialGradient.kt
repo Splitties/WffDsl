@@ -21,7 +21,7 @@ inline fun SupportsGradients.radialGradient(
     centerX: Float,
     centerY: Float,
     radius: Float,
-    colors: List<Color>,
+    colors: List<Color.Static>,
     positions: FloatArray? = null,
     crossinline block: RADIALGRADIENT.() -> Unit = {}
 ): Unit = RADIALGRADIENT(

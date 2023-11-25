@@ -3,7 +3,7 @@ package splitties.wff.group.part.draw.gradient
 import splitties.wff.Color
 
 @PublishedApi
-internal fun FloatArray?.asGradientPositions(colors: List<Color>): String {
+internal fun FloatArray?.asGradientPositions(colors: List<Color.Static>): String {
     if (this == null) return List(colors.size) {
         it / colors.lastIndex.toFloat()
     }.joinToString(separator = " ")

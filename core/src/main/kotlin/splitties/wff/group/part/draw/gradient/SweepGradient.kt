@@ -24,7 +24,7 @@ fun SupportsGradients.sweepGradient(
     centerY: Float,
     startAngle: Float,
     endAngle: Float,
-    colors: List<Color>,
+    colors: List<Color.Static>,
     positions: FloatArray? = null,
     direction: Direction = Direction.CLOCKWISE,
     block: (SWEEPGRADIENT.() -> Unit)? = null
