@@ -32,7 +32,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
             ) {
                 ambientVariant(attrs.alpha, 0)
                 font(
-                    size = 128f,
+                    size = 128,
                     color = Color.white
                 )
             }
@@ -46,7 +46,7 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
             ) {
                 ambientVariant(attrs.alpha, 0xFF)
                 font(
-                    size = 128f,
+                    size = 128,
                     weight = THIN,
                     color = Color.white
                 )
@@ -57,10 +57,10 @@ internal fun <T> simpleDigital(): T = watchFace(width = 450, height = 450) {
                 ambientVariant(attrs.alpha, 0)
                 text {
                     font(
-                        size = 36f,
+                        size = 36,
                         color = Color.white
                     ) {
-                        template(stringResourceName = "greeting")
+                        template("greeting")
                     }
                 }
             }

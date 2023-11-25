@@ -128,7 +128,7 @@ internal fun <T> sampleWatchFace(
                                 (5f / 90) * clamp(SourceType.Sensors.ACCELEROMETER_ANGLE_X, -90, 0)
                     })
                     text {
-                        font(size = 30f) {
+                        font(size = 30) {
                             template(text = "Salut")
                         }
                     }
@@ -139,7 +139,7 @@ internal fun <T> sampleWatchFace(
                     image(resource = COMPLICATION.MONOCHROMATIC_IMAGE)
                     imageFilters { hsbFilter(hueRotate = 120f) }
                 }
-                partText { text { font(size = 30f) { template(text = COMPLICATION.TEXT) } } }
+                partText { text { font(size = 30) { template(text = COMPLICATION.TEXT) } } }
                 partDraw {
                     arc(
                         centerX = centerX,
@@ -206,7 +206,7 @@ internal fun <T> sampleWatchFace(
             }
             partText {
                 launch(target = LAUNCH.ALARM)
-                text { font(size = 20f) { template(text = "See alarms") } }
+                text { font(size = 20) { template(text = "See alarms") } }
             }
             condition {
                 expressions { expression("alwaysTrue") { 0 `==` 0.l } }
