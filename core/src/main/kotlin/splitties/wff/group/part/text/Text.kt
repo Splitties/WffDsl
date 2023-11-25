@@ -18,13 +18,13 @@ import splitties.wff.*
  */
 @WffTagMarker
 inline fun PARTTEXT.text(
-    align: splitties.wff.Alignment = splitties.wff.Alignment.CENTER,
+    align: Alignment = Alignment.CENTER,
     ellipsis: Boolean = false,
     maxLines: Int? = null,
     crossinline block: TEXT.() -> Unit
 ): Unit = TEXT(
     initialAttributes = attributesMapOf(
-        "align", align.xmlValue(splitties.wff.Alignment.CENTER),
+        "align", align.xmlValue(Alignment.CENTER),
         "ellipsis", ellipsis.takeIf { it }?.toString()?.uppercase(),
         "maxLines", maxLines?.toString()
     ),

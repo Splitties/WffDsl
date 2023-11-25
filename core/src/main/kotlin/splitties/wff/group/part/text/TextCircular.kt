@@ -27,7 +27,7 @@ inline fun PARTTEXT.textCircular(
     startAngle: Float,
     endAngle: Float,
     direction: Direction = Direction.CLOCKWISE,
-    align: splitties.wff.Alignment = splitties.wff.Alignment.CENTER,
+    align: Alignment = Alignment.CENTER,
     ellipsis: Boolean = false,
     crossinline block: TEXTCIRCULAR.() -> Unit = {}
 ): Unit = TEXTCIRCULAR(
@@ -39,7 +39,7 @@ inline fun PARTTEXT.textCircular(
         "startAngle", startAngle.toString(),
         "endAngle", endAngle.toString(),
         "direction", direction.xmlValue(),
-        "align", align.xmlValue(splitties.wff.Alignment.CENTER),
+        "align", align.xmlValue(Alignment.CENTER),
         "ellipsis", ellipsis.takeIf { it }?.toString()?.uppercase(),
     ),
     consumer = consumer

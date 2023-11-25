@@ -17,7 +17,7 @@ import splitties.wff.attr.AttrsHost
 inline fun DIGITALCLOCK.timeText(
     format: String,
     hourFormat: TIMETEXT.HourFormat = TIMETEXT.HourFormat.SYNC_TO_DEVICE,
-    align: splitties.wff.Alignment = splitties.wff.Alignment.START,
+    align: Alignment = Alignment.START,
     x: Int = 0,
     y: Int = 0,
     width: Int = this.width,
@@ -32,7 +32,7 @@ inline fun DIGITALCLOCK.timeText(
     initialAttributes = attributesMapOf(
         "format", format,
         "hourFormat", hourFormat.xmlValue(),
-        "align", align.xmlValue(splitties.wff.Alignment.START),
+        "align", align.xmlValue(Alignment.START),
         "x", x.toString(),
         "y", y.toString(),
         "width", width.toString(),
