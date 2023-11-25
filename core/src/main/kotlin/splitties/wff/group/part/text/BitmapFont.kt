@@ -21,7 +21,7 @@ import splitties.wff.BITMAPFONTS.BITMAPFONT as BitmapFont
 @WffTagMarker
 inline fun TextScope.bitmapFont(
     family: String,
-    size: Float,
+    size: Int,
     color: Color = Color.white,
     crossinline block: BITMAPFONT.() -> Unit
 ): Unit = BITMAPFONT(
@@ -44,7 +44,7 @@ inline fun TextScope.bitmapFont(
 @WffTagMarker
 fun TIMETEXT.bitmapFont(
     family: String,
-    size: Float,
+    size: Int,
     color: Color = Color.white,
 ): Unit = BITMAPFONT(
     emptyTag = true,

@@ -20,8 +20,8 @@ import splitties.wff.attr.AttrsHost
  */
 @WffTagMarker
 inline fun PARTTEXT.textCircular(
-    centerX: Float,
-    centerY: Float,
+    centerX: Int,
+    centerY: Int,
     width: Float,
     height: Float,
     startAngle: Float,
@@ -59,8 +59,8 @@ class TEXTCIRCULAR(
     override val attrs = Attrs()
 
     class Attrs internal constructor(): AttrsHost() {
-        val centerX by float()
-        val centerY by float()
+        val centerX by int()
+        val centerY by int()
         val width by float()
         val height by float()
         val startAngle by float()

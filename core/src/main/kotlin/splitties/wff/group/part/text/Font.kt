@@ -16,7 +16,7 @@ import splitties.wff.clock.TIMETEXT
 @WffTagMarker
 inline fun TextScope.font(
     family: String = "SYNC_TO_DEVICE",
-    size: Float,
+    size: Int,
     color: Color = Color.white,
     slant: FONT.Slant = FONT.Slant.NORMAL,
     width: FONT.Width = FONT.Width.NORMAL,
@@ -45,7 +45,7 @@ inline fun TextScope.font(
 @WffTagMarker
 fun TIMETEXT.font(
     family: String = "SYNC_TO_DEVICE",
-    size: Float,
+    size: Int,
     color: Color = Color.white,
     slant: FONT.Slant = FONT.Slant.NORMAL,
     width: FONT.Width = FONT.Width.NORMAL,
