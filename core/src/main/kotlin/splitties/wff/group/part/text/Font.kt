@@ -64,8 +64,8 @@ fun TIMETEXT.font(
 ).visit {}
 
 class FONT(
-    emptyTag: Boolean,
     initialAttributes: Map<String, String>,
+    emptyTag: Boolean,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
     tagName = "Font",

@@ -57,8 +57,8 @@ fun TIMETEXT.bitmapFont(
 ).visit {}
 
 class BITMAPFONT(
-    emptyTag: Boolean,
     initialAttributes: Map<String, String>,
+    emptyTag: Boolean,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
     tagName = "BitmapFont",
