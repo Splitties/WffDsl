@@ -37,6 +37,9 @@ data object ArithmeticExpressionScope {
     val String.l get() = Exp.String { "\"$this\"" }
 
     fun Exp.Int.asFloat() = Exp.Float { toString() }
+    fun Exp.Int.asString() = Exp.String { toString() }
+    fun Exp.Float.asString() = Exp.String { toString() }
+    fun Exp.Boolean.asString() = Exp.String { toString() }
 
     fun Exp.Float.roundToInt() = Exp.Int { "round($this)" }
     fun round(input: Exp.Float) = Exp.Int { "round($input)" }
