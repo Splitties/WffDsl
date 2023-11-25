@@ -21,14 +21,37 @@ import splitties.wff.common.attributes.ArithmeticExpressionScope
 inline fun <T : ArithmeticExpression> Transformable.transform(
     target: AttrRef<T>,
     expression: ArithmeticExpressionScope.() -> T,
-    mode: TRANSFORM.Mode = TRANSFORM.Mode.TO,
-    crossinline block: TRANSFORM.() -> Unit = {}
+    mode: TRANSFORM.Mode = TRANSFORM.Mode.TO
 ): Unit = TRANSFORM(
     initialAttributes = attributesMapOf(
         "target", target.name,
         "value", ArithmeticExpression(expression).toString(),
         "mode", mode.xmlValue()
     ),
+    emptyTag = true,
+    consumer = consumer
+).visit {}
+
+/**
+ * Contains information about a geometric transformation.
+ *
+ * Introduced in Wear OS 4.
+ *
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/transform/transform)
+ */
+@WffTagMarker
+inline fun <T : ArithmeticExpression> Transformable.transform(
+    target: AttrRef<T>,
+    expression: ArithmeticExpressionScope.() -> T,
+    mode: TRANSFORM.Mode = TRANSFORM.Mode.TO,
+    crossinline block: TRANSFORM.() -> Unit
+): Unit = TRANSFORM(
+    initialAttributes = attributesMapOf(
+        "target", target.name,
+        "value", ArithmeticExpression(expression).toString(),
+        "mode", mode.xmlValue()
+    ),
+    emptyTag = false,
     consumer = consumer
 ).visit(block)
 
@@ -43,19 +66,64 @@ inline fun <T : ArithmeticExpression> Transformable.transform(
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/transform/transform)
  */
 @WffTagMarker
-inline fun Transformable.transform(
+fun Transformable.transform(
     target: AttrRef<ArithmeticExpression.Int>,
     value: ArithmeticExpression.Int,
-    mode: TRANSFORM.Mode = TRANSFORM.Mode.TO,
-    crossinline block: TRANSFORM.() -> Unit = {}
+    mode: TRANSFORM.Mode = TRANSFORM.Mode.TO
 ): Unit = TRANSFORM(
     initialAttributes = attributesMapOf(
         "target", target.name,
         "value", value.toString(),
         "mode", mode.xmlValue()
     ),
+    emptyTag = true,
+    consumer = consumer
+).visit {}
+
+/**
+ * Contains information about a geometric transformation.
+ *
+ * Introduced in Wear OS 4.
+ *
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/transform/transform)
+ */
+@WffTagMarker
+inline fun Transformable.transform(
+    target: AttrRef<ArithmeticExpression.Int>,
+    value: ArithmeticExpression.Int,
+    mode: TRANSFORM.Mode = TRANSFORM.Mode.TO,
+    crossinline block: TRANSFORM.() -> Unit
+): Unit = TRANSFORM(
+    initialAttributes = attributesMapOf(
+        "target", target.name,
+        "value", value.toString(),
+        "mode", mode.xmlValue()
+    ),
+    emptyTag = false,
     consumer = consumer
 ).visit(block)
+
+/**
+ * Contains information about a geometric transformation.
+ *
+ * Introduced in Wear OS 4.
+ *
+ * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/transform/transform)
+ */
+@WffTagMarker
+fun Transformable.transform(
+    target: AttrRef<ArithmeticExpression.Float>,
+    value: ArithmeticExpression.Float,
+    mode: TRANSFORM.Mode = TRANSFORM.Mode.TO
+): Unit = TRANSFORM(
+    initialAttributes = attributesMapOf(
+        "target", target.name,
+        "value", value.toString(),
+        "mode", mode.xmlValue()
+    ),
+    emptyTag = true,
+    consumer = consumer
+).visit {}
 
 /**
  * Contains information about a geometric transformation.
@@ -69,25 +137,27 @@ inline fun Transformable.transform(
     target: AttrRef<ArithmeticExpression.Float>,
     value: ArithmeticExpression.Float,
     mode: TRANSFORM.Mode = TRANSFORM.Mode.TO,
-    crossinline block: TRANSFORM.() -> Unit = {}
+    crossinline block: TRANSFORM.() -> Unit
 ): Unit = TRANSFORM(
     initialAttributes = attributesMapOf(
         "target", target.name,
         "value", value.toString(),
         "mode", mode.xmlValue()
     ),
+    emptyTag = false,
     consumer = consumer
 ).visit(block)
 
 class TRANSFORM(
     initialAttributes: Map<String, String>,
+    emptyTag: Boolean,
     override val consumer: TagConsumer<*>,
 ) : XMLTag(
     tagName = "Transform",
     consumer = consumer,
     initialAttributes = initialAttributes,
     inlineTag = false,
-    emptyTag = false
+    emptyTag = emptyTag
 ) {
     enum class Mode {
         TO, BY;
