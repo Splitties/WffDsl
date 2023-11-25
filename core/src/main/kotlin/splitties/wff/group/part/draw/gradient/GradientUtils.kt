@@ -5,7 +5,7 @@ import splitties.wff.Color
 @PublishedApi
 internal fun FloatArray?.asGradientPositions(colors: List<Color>): String {
     if (this == null) return List(colors.size) {
-        it / colors.lastIndex
+        it / colors.lastIndex.toFloat()
     }.joinToString(separator = " ")
     onEachIndexed { index, it ->
         require(it in 0f..1f) {
