@@ -8,10 +8,12 @@ import org.gradle.api.Project
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.file.SourceDirectorySet
 import org.gradle.api.plugins.ApplicationPlugin
+import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.JavaExec
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.SourceSet
 import org.gradle.api.tasks.SourceSetContainer
+import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.*
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
@@ -41,14 +43,16 @@ class WatchfaceAppPlugin : Plugin<Project> {
         androidComponents {
             onVariants { variant ->
                 val task = tasks.register<ResCreatorTask>(
-                    name = "generateWatchFaceXml${variant.name}"
+                    name = "generateWatchFaceXml${variant.name.replaceFirstChar { it.uppercaseChar() }}"
                 ) {
+                    val builderOutputDir = layout.buildDirectory.dir("splitties/wff-dsl/builder-output")
+                    val rawDir = builderOutputDir.get().dir("raw")
                     val builderProject = extension.builderProject(project)
                     dependsOn(builderProject.tasks.named<JavaExec>("run") {
                         mainClass.set(extension.targetFile.map { it.removeSuffix(".kt") + "Kt" })
-                        val rawDir = outputDirectory.dir("raw").get()
                         setArgs(listOf(rawDir))
                     })
+                    inputDirectory.set(builderOutputDir)
                 }
                 variant.sources.res?.addGeneratedSourceDirectory(
                     task, ResCreatorTask::outputDirectory
@@ -62,7 +66,7 @@ class WatchfaceAppPlugin : Plugin<Project> {
 
     private fun Project.setupBuilderProject(extension: WatchfaceAppExtension) {
         val builderProject = extension.builderProject(project)
-        builderProject.layout.buildDirectory.set(projectDir.resolve("build/builder/"))
+        builderProject.layout.buildDirectory.set(projectDir.resolve("build/splitties/wff-dsl/builder/"))
         builderProject.run {
             plugins.apply("org.jetbrains.kotlin.jvm")
             plugins.apply(ApplicationPlugin::class)
@@ -119,8 +123,20 @@ class WatchfaceAppPlugin : Plugin<Project> {
     //endregion
 
     internal abstract class ResCreatorTask : DefaultTask() {
+
+        @get:InputDirectory
+        abstract val inputDirectory: DirectoryProperty
+
         @get:OutputDirectory
         abstract val outputDirectory: DirectoryProperty
+
+        @TaskAction
+        fun copyFile() {
+            inputDirectory.get().asFile.copyRecursively(
+                target = outputDirectory.get().asFile,
+                overwrite = true
+            )
+        }
     }
 }
 
