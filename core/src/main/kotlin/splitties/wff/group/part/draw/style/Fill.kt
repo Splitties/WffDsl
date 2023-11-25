@@ -15,6 +15,7 @@ inline fun FillAble.fill(
     crossinline block: FILL.() -> Unit
 ): Unit = FILL(
     initialAttributes = emptyMap(),
+    emptyTag = false,
     consumer = consumer
 ).visit(block)
 
@@ -30,11 +31,13 @@ fun FillAble.fill(
     initialAttributes = attributesMapOf(
         "color", color.xmlValue()
     ),
+    emptyTag = true,
     consumer = consumer
 ).visit {}
 
 class FILL(
     initialAttributes: Map<String, String>,
+    emptyTag: Boolean,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
     tagName = "Fill",
@@ -42,5 +45,5 @@ class FILL(
     initialAttributes = initialAttributes,
     namespace = null,
     inlineTag = false,
-    emptyTag = false
+    emptyTag = emptyTag
 ), SupportsGradients
