@@ -29,7 +29,7 @@ inline fun PARTTEXT.textCircular(
     direction: Direction = Direction.CLOCKWISE,
     align: Alignment = Alignment.CENTER,
     ellipsis: Boolean = false,
-    crossinline block: TEXTCIRCULAR.() -> Unit = {}
+    crossinline block: TEXTCIRCULAR.() -> Unit
 ): Unit = TEXTCIRCULAR(
     initialAttributes = attributesMapOf(
         "centerX", centerX.toString(),
