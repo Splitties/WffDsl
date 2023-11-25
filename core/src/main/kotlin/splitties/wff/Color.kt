@@ -2,8 +2,8 @@ package splitties.wff
 
 sealed class Color private constructor() {
     companion object {
-        fun argb(bits: UInt): Color = Argb(bits)
-        fun rgb(bits: Int): Color = Rgb(bits)
+        fun argb(bits: UInt): Argb = Argb(bits)
+        fun rgb(bits: Int): Rgb = Rgb(bits)
         fun configurable(id: String, index: Int? = null): Color = Configurable(id = id, index = index)
 
         val white = rgb(0xFF_FF_FF)
@@ -12,11 +12,14 @@ sealed class Color private constructor() {
 
     abstract fun xmlValue(): String
 
-    private class Argb(private val bits: UInt) : Color() {
+    class Argb internal constructor(private val bits: UInt) : Color() {
+        fun withAlpha(alpha: UByte): Argb = Argb(alpha.toUInt() shl 24 or (bits and 0xFFFFFFu))
         override fun xmlValue(): String = "#${bits.toString(radix = 16)}"
     }
 
-    private class Rgb(private val bits: Int) : Color() {
+    class Rgb internal constructor(private val bits: Int) : Color() {
+        fun withAlpha(alpha: UByte): Argb = Argb(alpha.toUInt() shl 24 or (bits.toUInt() and 0xFFFFFFu))
+
         override fun xmlValue(): String {
             val r: String = bits.getByte(position = 2).toString(radix = 16).padStart(length = 2, padChar = '0')
             val g: String = bits.getByte(position = 1).toString(radix = 16).padStart(length = 2, padChar = '0')
@@ -24,7 +27,7 @@ sealed class Color private constructor() {
             return "#$r$g$b"
         }
 
-        fun Int.getByte(position: Int): UByte = (this shr position * 8).toUByte()
+        private fun Int.getByte(position: Int): UByte = (this shr position * 8).toUByte()
     }
 
     private class Configurable(
