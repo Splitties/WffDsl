@@ -1,5 +1,6 @@
 package splitties.wff
 
+import org.gradle.api.provider.ListProperty
 import org.gradle.api.provider.Property
 
 interface WatchfaceAppExtension {
@@ -17,4 +18,6 @@ interface WatchfaceAppExtension {
      * Defaults to "`builder`".
      */
     val builderProjectName: Property<String>
+
+    val libraries: ListProperty<String>
 }
