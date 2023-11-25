@@ -25,7 +25,7 @@ inline fun FillAble.fill(
  */
 @WffTagMarker
 fun FillAble.fill(
-    color: Color,
+    color: Color = Color.white,
 ): Unit = FILL(
     initialAttributes = attributesMapOf(
         "color", color.xmlValue()

@@ -36,7 +36,7 @@ inline fun StrokeAble.stroke(
  */
 @WffTagMarker
 fun StrokeAble.stroke(
-    color: Color,
+    color: Color = Color.white,
     thickness: Float,
     dashIntervals: FloatArray? = null,
     dashPhase: Float = 0f,
