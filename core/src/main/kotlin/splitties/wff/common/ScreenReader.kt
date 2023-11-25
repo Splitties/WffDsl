@@ -7,6 +7,7 @@ import splitties.wff.SupportsScreenReader
 import splitties.wff.WffTagMarker
 import splitties.wff.XMLTag
 import splitties.wff.common.attributes.ArithmeticExpression
+import splitties.wff.internal.visit
 
 /**
  * Provides support for the TalkBack screen reader, which users can activate to navigate a watch face using touch and voice input.
@@ -20,28 +21,10 @@ import splitties.wff.common.attributes.ArithmeticExpression
 @WffTagMarker
 fun SupportsScreenReader.screenReader(
     stringId: String,
+    block: (SCREENREADER.() -> Unit)? = null
 ): Unit = SCREENREADER(
     initialAttributes = attributesMapOf("stringId", stringId),
-    emptyTag = true,
-    consumer = consumer
-).visit {}
-
-/**
- * Provides support for the TalkBack screen reader, which users can activate to navigate a watch face using touch and voice input.
- *
- * Every group- or part-based element supports the `ScreenReader` element.
- *
- * Introduced in Wear OS 4.
- *
- * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/screen-reader)
- */
-@WffTagMarker
-inline fun SupportsScreenReader.screenReader(
-    stringId: String,
-    crossinline block: SCREENREADER.() -> Unit
-): Unit = SCREENREADER(
-    initialAttributes = attributesMapOf("stringId", stringId),
-    emptyTag = false,
+    emptyTag = block == null,
     consumer = consumer
 ).visit(block)
 

@@ -1,10 +1,9 @@
 package splitties.wff.group.part.draw.gradient
 
-import kotlinx.html.TagConsumer
-import kotlinx.html.attributesMapOf
-import kotlinx.html.visit
+import kotlinx.html.*
 import splitties.wff.*
 import splitties.wff.attr.AttrsHost
+import splitties.wff.internal.visit
 import splitties.wff.internal.xmlValue
 
 /**
@@ -20,7 +19,7 @@ import splitties.wff.internal.xmlValue
  * @param endAngle The angle (in degrees) to end the gradient.
  */
 @WffTagMarker
-inline fun SupportsGradients.sweepGradient(
+fun SupportsGradients.sweepGradient(
     centerX: Float,
     centerY: Float,
     startAngle: Float,
@@ -28,7 +27,7 @@ inline fun SupportsGradients.sweepGradient(
     colors: List<Color>,
     positions: FloatArray? = null,
     direction: Direction = Direction.CLOCKWISE,
-    crossinline block: SWEEPGRADIENT.() -> Unit = {}
+    block: (SWEEPGRADIENT.() -> Unit)? = null
 ): Unit = SWEEPGRADIENT(
     initialAttributes = attributesMapOf(
         "centerX", centerX.toString(),
@@ -39,11 +38,13 @@ inline fun SupportsGradients.sweepGradient(
         "positions", positions.asGradientPositions(colors),
         "direction", direction.xmlValue()
     ),
+    emptyTag = block == null,
     consumer = consumer
 ).visit(block)
 
 class SWEEPGRADIENT(
     initialAttributes: Map<String, String>,
+    emptyTag: Boolean,
     override val consumer: TagConsumer<*>
 ) : XMLTag(
     tagName = "SweepGradient",
@@ -51,7 +52,7 @@ class SWEEPGRADIENT(
     initialAttributes = initialAttributes,
     namespace = null,
     inlineTag = false,
-    emptyTag = false
+    emptyTag = emptyTag
 ), Transformable {
     override val attrs = Attrs()
 
