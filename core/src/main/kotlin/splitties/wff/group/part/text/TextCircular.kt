@@ -20,10 +20,10 @@ import splitties.wff.attr.AttrsHost
  */
 @WffTagMarker
 inline fun PARTTEXT.textCircular(
-    centerX: Int,
-    centerY: Int,
-    width: Float,
-    height: Float,
+    centerX: Int = this.centerX.toInt(),
+    centerY: Int = this.centerY.toInt(),
+    width: Float = this.width.toFloat(),
+    height: Float = this.height.toFloat(),
     startAngle: Float,
     endAngle: Float,
     direction: Direction = Direction.CLOCKWISE,
