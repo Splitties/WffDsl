@@ -48,13 +48,16 @@ class WatchfaceAppPlugin : Plugin<Project> {
                 val task = tasks.register<ResCreatorTask>(
                     name = "generateWatchFaceXml${variant.name.replaceFirstChar { it.uppercaseChar() }}"
                 ) {
+                    val skipBuilder = extension.skipBuilder.convention(false).get()
                     val builderOutputDir = layout.buildDirectory.dir("splitties/wff-dsl/builder-output")
                     val rawDir = builderOutputDir.get().dir("raw")
                     val builderProject = extension.builderProject(project)
-                    dependsOn(builderProject.tasks.named<JavaExec>("run") {
-                        mainClass.set(extension.targetFile.map { it.removeSuffix(".kt") + "Kt" })
-                        setArgs(listOf(rawDir))
-                    })
+                    if (skipBuilder.not()) {
+                        dependsOn(builderProject.tasks.named<JavaExec>("run") {
+                            mainClass.set(extension.targetFile.map { it.removeSuffix(".kt") + "Kt" })
+                            setArgs(listOf(rawDir))
+                        })
+                    }
                     inputDirectory.set(builderOutputDir)
                 }
                 variant.sources.res?.addGeneratedSourceDirectory(
