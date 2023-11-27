@@ -65,18 +65,18 @@ internal fun <T> sampleWatchFace(
         listConfiguration(
             id = "list.stuff",
             displayName = "Stuff",
-            defaultValue = 0
+            defaultValue = "0"
         ) {
             listOption(
-                id = 0,
+                id = "0",
                 displayName = "First option"
             )
             listOption(
-                id = 1,
+                id = "1",
                 displayName = "Second option"
             )
             listOption(
-                id = 2,
+                id = "2",
                 displayName = "Third option"
             )
         }
