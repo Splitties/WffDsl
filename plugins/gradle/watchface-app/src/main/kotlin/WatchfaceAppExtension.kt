@@ -29,5 +29,7 @@ interface WatchfaceAppExtension {
      */
     val builderProjectName: Property<String>
 
+    val doNotUseExtensions: Property<Boolean>
+
     val libraries: ListProperty<String>
 }

@@ -98,6 +98,11 @@ class WatchfaceAppPlugin : Plugin<Project> {
 
             dependencies {
                 "implementation"("org.splitties.wff:core:$thisProjectVersion")
+                val doNotUseExtensions by extension.doNotUseExtensions.convention(false)
+                val useExtensions = doNotUseExtensions.not()
+                if (useExtensions) {
+                    "implementation"("org.splitties.wff:extensions:$thisProjectVersion")
+                }
                 libraries.forEach { "implementation"(it) }
             }
         }

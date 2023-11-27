@@ -15,11 +15,16 @@ sealed interface ArithmeticExpression {
     companion object {
         inline operator fun <T : ArithmeticExpression> invoke(
             block: ArithmeticExpressionScope.() -> T
-        ): T = ArithmeticExpressionScope.block()
+        ): T = ArithmeticExpressionScope().block()
 
         operator fun invoke(constant: kotlin.Int): Int = Int { "$constant" }
         operator fun invoke(constant: kotlin.Float): Float = Float { "$constant" }
         operator fun invoke(constant: kotlin.String): String = String { "\"$constant\"" }
+
+        val float: (kotlin.String) -> Float get() = { Float { it } }
+        val int: (kotlin.String) -> Int get() = { Int { it } }
+        val string: (kotlin.String) -> String get() = { String { it } }
+        val boolean: (kotlin.String) -> Boolean get() = { Boolean { it } }
     }
 
     override fun toString(): kotlin.String
@@ -29,7 +34,11 @@ sealed interface ArithmeticExpression {
     fun interface String : ArithmeticExpression
 }
 
-data object ArithmeticExpressionScope {
+class ArithmeticExpressionScope private constructor() {
+    companion object {
+        operator fun invoke() = instance
+        private val instance = ArithmeticExpressionScope()
+    }
     // "l" stands for "literal" as in "number literal".
     val Int.l get() = Exp.Int { this.toString() }
     val Float.l get() = Exp.Float { this.toString() }
@@ -114,12 +123,12 @@ data object ArithmeticExpressionScope {
     fun Exp.Float.toRadians() = Exp.Float { "rad($this)" }
     fun Exp.Int.toRadians() = Exp.Float { "rad($this)" }
 
-    fun Exp.Float.format(format: String): ArithmeticExpression.String {
+    fun Exp.Float.format(format: String): Exp.String {
         checkNumberFormat(format)
         return Exp.String { "numberFormat(\"$format\", $this)" }
     }
 
-    fun Exp.Int.format(format: String): ArithmeticExpression.String {
+    fun Exp.Int.format(format: String): Exp.String {
         checkNumberFormat(format)
         return Exp.String { "numberFormat(\"$format\", $this)" }
     }
