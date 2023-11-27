@@ -19,7 +19,7 @@ inline fun USERCONFIGURATIONS.listConfiguration(
     displayName: String,
     screenReaderText: String? = null,
     icon: String? = null,
-    defaultValue: Int,
+    defaultValue: String,
     crossinline block: LISTCONFIGURATION.() -> Unit
 ): Unit = LISTCONFIGURATION(
     initialAttributes = attributesMapOf(
@@ -27,20 +27,20 @@ inline fun USERCONFIGURATIONS.listConfiguration(
         "displayName", displayName,
         "screenReaderText", screenReaderText,
         "icon", icon,
-        "defaultValue", defaultValue.toString(),
+        "defaultValue", defaultValue,
     ),
     consumer = consumer
 ).visit(block)
 
 @WffTagMarker
 fun LISTCONFIGURATION.listOption(
-    id: Int,
+    id: String,
     displayName: String,
     screenReaderText: String? = null,
     icon: String? = null,
 ): Unit = LISTCONFIGURATION.LISTOPTION(
     initialAttributes = attributesMapOf(
-        "id", id.toString(),
+        "id", id,
         "displayName", displayName,
         "screenReaderText", screenReaderText,
         "icon", icon

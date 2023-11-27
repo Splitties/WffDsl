@@ -24,10 +24,10 @@ inline fun SupportsListConfiguration.listConfiguration(
 
 @WffTagMarker
 inline fun LISTCONFIGURATION.listOption(
-    id: Int,
+    id: String,
     crossinline block: LISTCONFIGURATION.LISTOPTION.() -> Unit
 ): Unit = LISTCONFIGURATION.LISTOPTION(
-    initialAttributes = attributesMapOf("id", id.toString()),
+    initialAttributes = attributesMapOf("id", id),
     parentContainer = this,
     consumer = consumer
 ).visit(block)
