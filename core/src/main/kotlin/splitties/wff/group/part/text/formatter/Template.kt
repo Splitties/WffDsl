@@ -7,6 +7,7 @@ import splitties.wff.SupportsTemplate
 import splitties.wff.WffTagMarker
 import splitties.wff.XMLTag
 import splitties.wff.common.attributes.ArithmeticExpression
+import splitties.wff.common.attributes.ArithmeticExpressionScope
 
 /**
  * Allows watch face developers to specify a string format, such as %s %d. The string format is very similar to printf() in the C programming language or String.format() in the Java programming language.
@@ -46,9 +47,17 @@ inline fun SupportsTemplate.template(
 
 @WffTagMarker
 fun TEMPLATE.parameter(
-    expression: ArithmeticExpression.String
+    expression: ArithmeticExpression
 ): Unit = TEMPLATE.PARAMETER(
     initialAttributes = attributesMapOf("expression", expression.toString()),
+    consumer = consumer
+).visit {}
+
+@WffTagMarker
+fun <T : ArithmeticExpression> TEMPLATE.parameter(
+    expression: ArithmeticExpressionScope.() -> T
+): Unit = TEMPLATE.PARAMETER(
+    initialAttributes = attributesMapOf("expression", ArithmeticExpressionScope().expression().toString()),
     consumer = consumer
 ).visit {}
 
