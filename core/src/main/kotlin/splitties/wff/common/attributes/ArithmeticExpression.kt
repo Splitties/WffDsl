@@ -10,7 +10,7 @@ import splitties.wff.common.attributes.ArithmeticExpression as Exp
  *
  * [AndroidX doc](https://developer.android.com/training/wearables/wff/common/attributes/arithmetic-expression)
  */
-sealed interface ArithmeticExpression {
+sealed class ArithmeticExpression(private val value: kotlin.String) {
 
     companion object {
         inline operator fun <T : ArithmeticExpression> invoke(
@@ -27,12 +27,12 @@ sealed interface ArithmeticExpression {
         val boolean: (kotlin.String) -> Boolean get() = { Boolean { it } }
     }
 
-    override fun toString(): kotlin.String
-    fun interface Float : ArithmeticExpression
-    fun interface Int : ArithmeticExpression
-    fun interface Boolean : ArithmeticExpression
-    fun interface String : ArithmeticExpression
-    fun interface Color : ArithmeticExpression
+    override fun toString(): kotlin.String = value
+    class Float(block: () -> kotlin.String) : ArithmeticExpression(block())
+    class Int(block: () -> kotlin.String) : ArithmeticExpression(block())
+    class Boolean(block: () -> kotlin.String) : ArithmeticExpression(block())
+    class String(block: () -> kotlin.String) : ArithmeticExpression(block())
+    class Color(block: () -> kotlin.String) : ArithmeticExpression(block())
 }
 
 class ArithmeticExpressionScope private constructor() {
