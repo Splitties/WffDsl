@@ -32,6 +32,7 @@ sealed interface ArithmeticExpression {
     fun interface Int : ArithmeticExpression
     fun interface Boolean : ArithmeticExpression
     fun interface String : ArithmeticExpression
+    fun interface Color : ArithmeticExpression
 }
 
 class ArithmeticExpressionScope private constructor() {
@@ -262,6 +263,7 @@ class ArithmeticExpressionScope private constructor() {
     fun Exp.Int.inv() = Exp.Int { "~$this" }
 
     operator fun Exp.Int.not() = Exp.Boolean { "!$this" }
+    operator fun Exp.Boolean.not() = Exp.Boolean { "!$this" }
 
     @Suppress("DANGEROUS_CHARACTERS")
     infix fun Int.`|`(other: Exp.Int) = Exp.Int { "$this | $other" }
