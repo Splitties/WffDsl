@@ -20,7 +20,7 @@ import kotlin.experimental.ExperimentalTypeInference
 class EnumConfiguration<T> @PublishedApi internal constructor(
     private val id: String,
     private val entries: EnumEntries<T>
-) where T : Enum<T>, T : EnumConfiguration.Entry {
+) : AbstractConfiguration() where T : Enum<T>, T : EnumConfiguration.Entry {
 
     init {
         val checkedEntries = ArrayList<String>(entries.size)
@@ -142,9 +142,8 @@ class EnumConfiguration<T> @PublishedApi internal constructor(
         displayName: String,
         screenReaderText: String? = null,
         icon: String? = null,
-        defaultValue: T
-    ) {
-        require(registered.not()) { "Already registered!" }
+        defaultValue: T = entries.first()
+    ) = registration {
         listConfiguration(
             id = id,
             displayName = displayName,
@@ -161,12 +160,5 @@ class EnumConfiguration<T> @PublishedApi internal constructor(
                 )
             }
         }
-        registered = true
     }
-
-    fun checkRegistered() {
-        check(registered) { "Not registered! Call register in the userConfigurations block." }
-    }
-
-    private var registered: Boolean = false
 }
