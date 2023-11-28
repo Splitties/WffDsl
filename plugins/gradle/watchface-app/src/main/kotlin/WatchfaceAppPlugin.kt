@@ -71,6 +71,9 @@ class WatchfaceAppPlugin : Plugin<Project> {
     }
 
     private fun Project.setupBuilderProject(extension: WatchfaceAppExtension) {
+        val doNotUseExtensions by extension.doNotUseExtensions.convention(false)
+        val useExtensions = doNotUseExtensions.not()
+
         val paths = extension.libraries.convention(objects.listProperty())
         val libraries = paths.get().map { path ->
             project(path) {
@@ -79,7 +82,12 @@ class WatchfaceAppPlugin : Plugin<Project> {
                     main { kotlin.srcDir(projectDir.resolve("src")) }
                 }
                 kotlin { compilerOptions.freeCompilerArgs.add("-Xcontext-receivers") }
-                dependencies { "implementation"("org.splitties.wff:core:$thisProjectVersion") }
+                dependencies {
+                    "implementation"("org.splitties.wff:core:$thisProjectVersion")
+                    if (useExtensions) {
+                        "implementation"("org.splitties.wff:extensions:$thisProjectVersion")
+                    }
+                }
             }
         }
         val builderProject = extension.builderProject(project)
@@ -98,8 +106,6 @@ class WatchfaceAppPlugin : Plugin<Project> {
 
             dependencies {
                 "implementation"("org.splitties.wff:core:$thisProjectVersion")
-                val doNotUseExtensions by extension.doNotUseExtensions.convention(false)
-                val useExtensions = doNotUseExtensions.not()
                 if (useExtensions) {
                     "implementation"("org.splitties.wff:extensions:$thisProjectVersion")
                 }
