@@ -17,8 +17,8 @@ import splitties.wff.group.part.draw.PARTDRAW
  */
 @WffTagMarker
 inline fun PARTDRAW.arc(
-    centerX: Float,
-    centerY: Float,
+    centerX: Float = this.centerX,
+    centerY: Float = this.centerY,
     width: Float,
     height: Float,
     startAngle: Float,

@@ -14,10 +14,10 @@ import splitties.wff.group.part.draw.PARTDRAW
  */
 @WffTagMarker
 inline fun PARTDRAW.rectangle(
-    x: Float,
-    y: Float,
-    width: Float,
-    height: Float,
+    x: Float = 0f,
+    y: Float = 0f,
+    width: Float = this.width.toFloat(),
+    height: Float = this.height.toFloat(),
     crossinline block: RECTANGLE.() -> Unit
 ): Unit = RECTANGLE(
     initialAttributes = attributesMapOf(
