@@ -1,5 +1,6 @@
 package splitties.wff.extensions
 
+import splitties.wff.CompareScope
 import splitties.wff.SupportsConditions
 import splitties.wff.SupportsListConfiguration
 import splitties.wff.common.*
@@ -51,7 +52,7 @@ class EnumConfiguration<T> @PublishedApi internal constructor(
     }
 
     context (SupportsConditions)
-    fun withValue(block: CONDITION.COMPARE.(T) -> Unit) {
+    fun withValue(block: CompareScope.(T) -> Unit) {
         checkRegistered()
         condition {
             expressions {
@@ -81,12 +82,12 @@ class EnumConfiguration<T> @PublishedApi internal constructor(
         }
     }
 
-    context (SupportsListConfiguration)
-    fun ifSetTo(value: T, block: LISTCONFIGURATION.LISTOPTION.(T) -> Unit) {
-        listConfiguration(id) {
-            listOption(id = value.stableKey) {
-                block(value)
-            }
+    context (SupportsConditions)
+    fun ifSetTo(value: T, block: CompareScope.() -> Unit) {
+        checkRegistered()
+        condition {
+            expressions { expression("0", isSetTo(value)) }
+            compare("0") { block() }
         }
     }
 
