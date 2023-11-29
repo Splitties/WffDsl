@@ -5,6 +5,7 @@ import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
 import splitties.wff.*
 import splitties.wff.group.part.text.formatter.parameter
+import splitties.wff.common.attributes.ArithmeticExpression as Exp
 
 /**
  * A Complication element defines how a particular Complication Type is displayed on the watch face.
@@ -43,9 +44,9 @@ class COMPLICATION(
 
     companion object {
         /** For use in Template's [parameter] */
-        const val TEXT = "[COMPLICATION.TEXT]"
+        val TEXT = Exp.String { "[COMPLICATION.TEXT]" }
         /** For use in Template's [parameter] */
-        const val TITLE = "[COMPLICATION.TITLE]"
+        val TITLE = Exp.String { "[COMPLICATION.TITLE]" }
 
         /** For use in Image's resource */
         const val MONOCHROMATIC_IMAGE = "[COMPLICATION.MONOCHROMATIC_IMAGE]"
@@ -55,10 +56,10 @@ class COMPLICATION(
         const val SMALL_IMAGE = "[COMPLICATION.SMALL_IMAGE]"
 
         /** For use in arithmetic expressions */
-        const val RANGED_VALUE_VALUE = "[COMPLICATION.RANGED_VALUE_VALUE]"
+        val RANGED_VALUE_VALUE = Exp.Float { "[COMPLICATION.RANGED_VALUE_VALUE]" }
         /** For use in arithmetic expressions */
-        const val RANGED_VALUE_MIN = "[COMPLICATION.RANGED_VALUE_MIN]"
+        val RANGED_VALUE_MIN = Exp.Float { "[COMPLICATION.RANGED_VALUE_MIN]" }
         /** For use in arithmetic expressions */
-        const val RANGED_VALUE_MAX = "[COMPLICATION.RANGED_VALUE_MAX]"
+        val RANGED_VALUE_MAX = Exp.Float { "[COMPLICATION.RANGED_VALUE_MAX]" }
     }
 }
