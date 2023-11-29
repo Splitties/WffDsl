@@ -21,6 +21,7 @@ import splitties.wff.group.part.image.imageFilter.hsbFilter
 import splitties.wff.group.part.image.imageFilter.imageFilters
 import splitties.wff.group.part.image.partImage
 import splitties.wff.group.part.text.font
+import splitties.wff.group.part.text.formatter.parameter
 import splitties.wff.group.part.text.formatter.template
 import splitties.wff.group.part.text.partText
 import splitties.wff.group.part.text.text
@@ -139,7 +140,7 @@ internal fun <T> sampleWatchFace(
                     image(resource = COMPLICATION.MONOCHROMATIC_IMAGE)
                     imageFilters { hsbFilter(hueRotate = 120f) }
                 }
-                partText { text { font(size = 30) { template(text = COMPLICATION.TEXT) } } }
+                partText { text { font(size = 30) { template("%s") { parameter(COMPLICATION.TEXT) } } } }
                 partDraw {
                     arc(
                         centerX = centerX,
