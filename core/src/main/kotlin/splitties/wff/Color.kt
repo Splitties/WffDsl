@@ -20,7 +20,7 @@ sealed class Color private constructor() {
 
     class Argb internal constructor(private val bits: UInt) : Static() {
         override fun uintBits() = bits
-        override fun xmlValue(): String = "#${bits.toString(radix = 16)}"
+        override fun xmlValue() = "#${bits.toString(radix = 16).padStart(length = 8, padChar = '0')}"
     }
 
     class Rgb internal constructor(private val bits: Int) : Static() {
