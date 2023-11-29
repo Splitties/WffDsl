@@ -73,6 +73,18 @@ fun rotateCoordinates(
     return rotatedX to rotatedY
 }
 
+fun Container.rotateCoordinates(
+    x: Exp.Float,
+    y: Exp.Float,
+    angleInDegrees: Exp.Float,
+): Pair<Exp.Float, Exp.Float> = rotateCoordinates(
+    cx = Exp(centerX),
+    cy = Exp(centerY),
+    x = x,
+    y = y,
+    angleInDegrees = angleInDegrees
+)
+
 fun rotateCoordinates(
     cx: Exp.Float,
     cy: Exp.Float,
