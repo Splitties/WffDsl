@@ -19,8 +19,8 @@ import splitties.wff.group.part.draw.PARTDRAW
 inline fun PARTDRAW.arc(
     centerX: Float = this.centerX,
     centerY: Float = this.centerY,
-    width: Float,
-    height: Float,
+    width: Float = this.width.toFloat(),
+    height: Float = this.height.toFloat(),
     startAngle: Float,
     endAngle: Float,
     direction: Direction = Direction.CLOCKWISE,
