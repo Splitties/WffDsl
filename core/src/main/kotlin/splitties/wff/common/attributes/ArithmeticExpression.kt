@@ -436,29 +436,39 @@ class ArithmeticExpressionScope private constructor() {
     infix fun Float.`==`(other: Exp.Float) = Exp.Boolean { "$this == $other" }
     infix fun Int.`==`(other: Exp.Float) = Exp.Boolean { "$this == $other" }
     infix fun Int.`==`(other: Exp.Int) = Exp.Boolean { "$this == $other" }
+    infix fun String.`==`(other: Exp.String) = Exp.Boolean { "\"$this\" == $other" }
+    infix fun Nothing?.`==`(other: Exp.String) = Exp.Boolean { "null == $other" }
     // == 2/3 (expression + number literal)
     infix fun Exp.Float.`==`(other: Float) = Exp.Boolean { "$this == $other" }
     infix fun Exp.Float.`==`(other: Int) = Exp.Boolean { "$this == $other" }
     infix fun Exp.Int.`==`(other: Int) = Exp.Boolean { "$this == $other" }
+    infix fun Exp.String.`==`(other: String) = Exp.Boolean { "$this == \"$other\"" }
+    infix fun Exp.String.`==`(other: Nothing?) = Exp.Boolean { "$this == $other" }
     // == 3/3 (expression + expression)
     infix fun Exp.Float.`==`(other: Exp.Float) = Exp.Boolean { "$this == $other" }
     infix fun Exp.Int.`==`(other: Exp.Float) = Exp.Boolean { "$this == $other" }
     infix fun Exp.Float.`==`(other: Exp.Int) = Exp.Boolean { "$this == $other" }
     infix fun Exp.Int.`==`(other: Exp.Int) = Exp.Boolean { "$this == $other" }
     infix fun Exp.Boolean.`==`(other: Exp.Boolean) = Exp.Boolean { "$this == $other" }
+    infix fun Exp.String.`==`(other: Exp.String) = Exp.Boolean { "$this == $other" }
 
     // != 1/3 (number literal + expression)
     infix fun Float.`!=`(other: Exp.Float) = Exp.Boolean { "$this != $other" }
     infix fun Int.`!=`(other: Exp.Float) = Exp.Boolean { "$this != $other" }
     infix fun Int.`!=`(other: Exp.Int) = Exp.Boolean { "$this != $other" }
+    infix fun String.`!=`(other: Exp.String) = Exp.Boolean { "\"$this\" != $other" }
+    infix fun Nothing?.`!=`(other: Exp.String) = Exp.Boolean { "null != $other" }
     // != 2/3 (expression + number literal)
     infix fun Exp.Float.`!=`(other: Float) = Exp.Boolean { "$this != $other" }
     infix fun Exp.Float.`!=`(other: Int) = Exp.Boolean { "$this != $other" }
     infix fun Exp.Int.`!=`(other: Int) = Exp.Boolean { "$this != $other" }
+    infix fun Exp.String.`!=`(other: String) = Exp.Boolean { "$this != \"$other\"" }
+    infix fun Exp.String.`!=`(other: Nothing?) = Exp.Boolean { "$this != $other" }
     // != 3/3 (expression + expression)
     infix fun Exp.Float.`!=`(other: Exp.Float) = Exp.Boolean { "$this != $other" }
     infix fun Exp.Int.`!=`(other: Exp.Float) = Exp.Boolean { "$this != $other" }
     infix fun Exp.Float.`!=`(other: Exp.Int) = Exp.Boolean { "$this != $other" }
     infix fun Exp.Int.`!=`(other: Exp.Int) = Exp.Boolean { "$this != $other" }
     infix fun Exp.Boolean.`!=`(other: Exp.Boolean) = Exp.Boolean { "$this != $other" }
+    infix fun Exp.String.`!=`(other: Exp.String) = Exp.Boolean { "$this != $other" }
 }
