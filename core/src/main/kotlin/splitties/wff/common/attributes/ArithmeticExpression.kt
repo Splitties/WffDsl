@@ -50,6 +50,7 @@ class ArithmeticExpressionScope private constructor() {
     fun Exp.Int.asString() = Exp.String { toString() }
     fun Exp.Float.asString() = Exp.String { toString() }
     fun Exp.Boolean.asString() = Exp.String { toString() }
+    val NULL = Exp.String { "null" }
 
     fun Exp.Float.roundToInt() = Exp.Int { "round($this)" }
     fun round(input: Exp.Float) = Exp.Int { "round($input)" }
