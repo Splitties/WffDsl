@@ -9,4 +9,29 @@ import splitties.wff.common.condition
 import splitties.wff.common.expression
 import splitties.wff.common.expressions
 
-fun List<Color.Static>.loop(): List<Color.Static> = this + this.first()
+fun List<Color.Static>.loop(
+    syntheticEvening: Boolean = true
+): List<Color.Static> = if (syntheticEvening) buildList(capacity = size * 2) {
+    val initial = this@loop
+    add(initial.first())
+    initial.subList(fromIndex = 1, toIndex = initial.size).forEach {
+        add(it)
+        add(it)
+    }
+    add(initial.first())
+} else this + this.first()
+
+fun Color.Companion.list(
+    builder: ColorListBuilder.() -> Unit
+): List<Color.Static> = ColorListBuilder().apply(builder).list
+
+class ColorListBuilder internal constructor() {
+    internal val list = mutableListOf<Color.Static>()
+    fun rgb(bits: Int) {
+        list += Color.rgb(bits)
+    }
+
+    fun argb(bits: UInt) {
+        list += Color.argb(bits)
+    }
+}
