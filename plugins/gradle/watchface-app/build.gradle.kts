@@ -15,6 +15,13 @@ gradlePlugin {
             tags = listOf("wear-os", "kotlin", "kotlin-dsl", "android")
             implementationClass = "splitties.wff.WatchfaceAppPlugin"
         }
+        create("watchface-lib") {
+            id = "org.splitties.wff.watchface-lib"
+            displayName = id // Not displayed on Gradle Plugins Portal anyway.
+            description = "Lib for a code-free Wear OS 4+ Watch Face app made with the Kotlin WatchFaceDsl."
+            tags = listOf("wear-os", "kotlin", "kotlin-dsl", "android")
+            implementationClass = "splitties.wff.WatchfaceLibPlugin"
+        }
     }
 }
 
