@@ -22,7 +22,7 @@ gradle.beforeProject {
     group = "org.splitties.wff"
 }
 
-rootProject.name = "WatchFaceDsl"
+rootProject.name = "WffDsl"
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 
