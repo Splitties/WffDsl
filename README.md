@@ -2,6 +2,15 @@
 
 Kotlin DSL to generate XML based **Watch Face Format** (WFF) for Wear OS : https://developer.android.com/training/wearables/wff/watch-face
 
+## Example of what you can do with it
+
+<img src="doc/assets/digitalog-sharp-kotlin-colors.png" width="180">
+<img src="doc/assets/digitalog-sharp-orange-yellow.png" width="180">
+<img src="doc/assets/digitalog-sharp-green-blue.png" width="180">
+<img src="doc/assets/digitalog-sharp-blue-sky.png" width="180">
+
+This is [Digitalog Sharp](https://play.google.com/store/apps/details?id=com.louiscad.watchface.digitalog.sharp), built with Splitties WFF DSL. Just $3.5 on the Play Store.
+
 ## Disclaimer
 
 The API is likely to break in future releases.
