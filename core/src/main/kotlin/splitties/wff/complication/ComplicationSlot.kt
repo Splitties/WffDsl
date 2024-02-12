@@ -73,5 +73,7 @@ class COMPLICATIONSLOT(
 ), Container, SupportsScreenReader, SupportsVariants {
     override val width: Int get() = w()
     override val height: Int get() = h()
+    val x: Int get() = attributes.getValue("x").toInt()
+    val y: Int get() = attributes.getValue("y").toInt()
     override val attrs = ContainerAttrs()
 }
