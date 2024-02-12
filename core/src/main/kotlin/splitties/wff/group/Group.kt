@@ -14,7 +14,7 @@ import splitties.wff.attr.ContainerAttrs
  */
 @WffTagMarker
 inline fun SupportsGroup.group(
-    name: String? = null,
+    name: String = "null",
     x: Int = 0,
     y: Int = 0,
     width: Int = this.width,
