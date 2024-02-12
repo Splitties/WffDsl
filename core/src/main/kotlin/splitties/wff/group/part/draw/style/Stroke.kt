@@ -20,6 +20,7 @@ inline fun StrokeAble.stroke(
     crossinline block: STROKE.() -> Unit
 ): Unit = STROKE(
     initialAttributes = attributesMapOf(
+        "color", Color.white.xmlValue(),
         "thickness", thickness.toString(),
         "dashIntervals", dashIntervals?.asDashIntervalsString(),
         "dashPhase", dashPhase.takeUnless { it == 0f }?.toString(),

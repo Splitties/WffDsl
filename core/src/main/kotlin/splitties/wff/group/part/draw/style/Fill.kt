@@ -14,7 +14,9 @@ import splitties.wff.*
 inline fun FillAble.fill(
     crossinline block: FILL.() -> Unit
 ): Unit = FILL(
-    initialAttributes = emptyMap(),
+    initialAttributes = attributesMapOf(
+        "color", Color.white.xmlValue()
+    ),
     emptyTag = false,
     consumer = consumer
 ).visit(block)
