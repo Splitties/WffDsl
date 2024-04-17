@@ -38,6 +38,7 @@ class LAUNCH(
         const val ALARM = "ALARM"
         const val BATTERY_STATUS = "BATTERY_STATUS"
         const val CALENDAR = "CALENDAR"
+        const val HEALTH_HEART_RATE = "HEALTH_HEART_RATE"
         const val MESSAGE = "MESSAGE"
         const val MUSIC_PLAYER = "MUSIC_PLAYER"
         const val PHONE = "PHONE"
