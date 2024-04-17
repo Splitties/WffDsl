@@ -8,6 +8,7 @@ abstract class AttrsHost {
     protected fun int(): ReadOnlyProperty<AttrsHost, AttrRef<ArithmeticExpression.Int>> = p()
     protected fun float(): ReadOnlyProperty<AttrsHost, AttrRef<ArithmeticExpression.Float>> = p()
     protected fun boolean(): ReadOnlyProperty<AttrsHost, AttrRef<ArithmeticExpression.Boolean>> = p()
+    protected fun color(): ReadOnlyProperty<AttrsHost, AttrRef<ArithmeticExpression.Color>> = p()
 
     private fun <T : ArithmeticExpression> p(): ReadOnlyProperty<AttrsHost, AttrRef<T>> =
         ReadOnlyProperty { _, property -> AttrRef(property.name) }

@@ -3,6 +3,7 @@ package splitties.wff
 import kotlinx.html.TagConsumer
 import kotlinx.html.attributesMapOf
 import kotlinx.html.visit
+import splitties.wff.attr.AttrsHost
 
 /**
  * A scene is a container of visual tags. Each watch face must contain exactly one Scene element.
@@ -35,4 +36,9 @@ class SCENE(
 ), SupportsGroup, SupportsPart, SupportsConditions, SupportsListConfiguration, SupportsBooleanConfiguration, SupportsVariants, SupportsClock {
     override val width: Int get() = watchface.width
     override val height: Int get() = watchface.height
+    override val attrs = Attrs()
+
+    class Attrs internal constructor(): AttrsHost() {
+        val backgroundColor by color()
+    }
 }
