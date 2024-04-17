@@ -25,11 +25,11 @@ import splitties.wff.XMLTag
 @WffTagMarker
 fun SupportsLocalization.localization(
     timeZone: String,
-    calendar: String = "GREGORIAN"
+    calendar: Calendar = Calendar.GREGORIAN
 ): Unit = LOCALIZATION(
     initialAttributes = attributesMapOf(
         "timeZone", timeZone,
-        "calendar", calendar
+        "calendar", calendar.xmlValue()
     ),
     consumer = consumer
 ).visit {}
