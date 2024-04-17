@@ -24,7 +24,7 @@ import splitties.wff.XMLTag
  *
  * @param repeat Indicates the number of times that the animation should repeat.
  * A value of 0 (the default value) causes the animation to never repeat.
- * For any other valid value the repeat mode is taken into account.
+ * A value of -1 means the animation will loop indefinitely.
  *
  * This value must be -1 or greater.
  *
