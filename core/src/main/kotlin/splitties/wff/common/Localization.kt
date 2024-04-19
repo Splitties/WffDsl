@@ -24,7 +24,7 @@ import splitties.wff.XMLTag
  */
 @WffTagMarker
 fun SupportsLocalization.localization(
-    timeZone: String,
+    timeZone: String? = "SYNC_TO_DEVICE",
     calendar: Calendar = Calendar.GREGORIAN
 ): Unit = LOCALIZATION(
     initialAttributes = attributesMapOf(
