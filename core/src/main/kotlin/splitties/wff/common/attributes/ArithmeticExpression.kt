@@ -266,17 +266,17 @@ class ArithmeticExpressionScope private constructor() {
     operator fun Exp.Int.not() = Exp.Boolean { "!$this" }
     operator fun Exp.Boolean.not() = Exp.Boolean { "!$this" }
 
-    @Suppress("DANGEROUS_CHARACTERS")
-    infix fun Int.`|`(other: Exp.Int) = Exp.Int { "$this | $other" }
-
-    @Suppress("DANGEROUS_CHARACTERS")
-    infix fun Exp.Int.`|`(other: Int) = Exp.Int { "$this | $other" }
-
-    @Suppress("DANGEROUS_CHARACTERS")
-    infix fun Exp.Int.`|`(other: Exp.Int) = Exp.Int { "$this | $other" }
-
-    @Suppress("DANGEROUS_CHARACTERS")
-    infix fun Exp.Boolean.`||`(other: Exp.Boolean) = Exp.Boolean { "$this || $other" }
+//    @Suppress("DANGEROUS_CHARACTERS")
+//    infix fun Int.`|`(other: Exp.Int) = Exp.Int { "$this | $other" }
+//
+//    @Suppress("DANGEROUS_CHARACTERS")
+//    infix fun Exp.Int.`|`(other: Int) = Exp.Int { "$this | $other" }
+//
+//    @Suppress("DANGEROUS_CHARACTERS")
+//    infix fun Exp.Int.`|`(other: Exp.Int) = Exp.Int { "$this | $other" }
+//
+//    @Suppress("DANGEROUS_CHARACTERS")
+//    infix fun Exp.Boolean.`||`(other: Exp.Boolean) = Exp.Boolean { "$this || $other" }
 
     infix fun Int.`&`(other: Exp.Int) = Exp.Int { "$this & $other" }
     infix fun Exp.Int.`&`(other: Int) = Exp.Int { "$this & $other" }
