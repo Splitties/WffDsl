@@ -29,10 +29,12 @@ enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 include {
     "core"()
     "extensions"()
+    "previews"()
     "plugins" {
         "gradle" {
             "watchface-app"()
         }
     }
+    "sample"()
 }
 

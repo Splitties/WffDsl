@@ -6,6 +6,8 @@ plugins {
 dependencies {
     api(project(":core"))
 
+    implementation(compose.desktop.currentOs)
+
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
 }
